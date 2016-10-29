@@ -39,13 +39,13 @@ int main()
 	//	}
 	//}
 
-	//test = const_regex_string::multi_regex_og_regex_STRING( vector<string> {"pierwsze","drugie","czecie"} );
+	//test = const_regex_string::multi_OR_regex_STRING( vector<string> {"pierwsze","drugie","czecie"} );
 	//
 	//cout 
 	//	<< test
 	//	<< "\n";
 
-	test_regex = const_regex_string::regex_in_box_STRING(const_regex_string::arithmetical_equation);
+	test_regex = const_regex_string::code_surrounded_by_quotation;
 	while (true)
 	{
 		cin >> test;
@@ -58,6 +58,7 @@ int main()
 			cout << "nicht\n";
 		}
 	}
+
 
 
 	system("pause");

@@ -15,11 +15,17 @@ namespace const_regex_string
 	//returns string representing regex1 or regex2
 	string regex_or_regex_STRING						(string regex1, string regex2);
 	//returns string containing regex in brackets (character of bracket)
-	string regex_in_brackets_character_STRING			(string regex_string);
+	string regex_in_brackets_characters_STRING			(string regex_string);
 	//returns string representing one of the regexes given in vector
-	string multi_regex_og_regex_STRING					(vector<string> alternative_strings);
+	string multi_OR_regex_STRING						(vector<string> alternative_strings);
 	//returns string representing regex in box characters
 	string regex_in_box_STRING							(string regex_string);
+	//returns string representing regex separated by string
+	string regex_separation_STRING						(string regex1, string regex2, string separator);
+	//returns string representing regex separated by string
+	string regex_separation_STRING						(string regex1, string regex2, string regex3, string separator);
+	//returns string representing regex surrounded by string
+	string regex_surrounded_STRING						(string regex_string, string surrounder);
 
 
 	const string ID								{ "([[:alpha:]][[:w:]]*)" };
@@ -28,6 +34,10 @@ namespace const_regex_string
 	const string eq								{ "(=)" };
 	const string number							{ "([[:digit:]])+" };
 	const string ID_or_number					{ regex_or_regex_STRING(ID, number) };
+	const string any_code_string				{ "(.*)" };
+	const string colon_symbol					{ "\\:" };
+	const string semicolon_symbol				{ "\\;" };
+	const string quotation_mark_symbol			{ "\"" };
 
 	const string if_string						{ "(if)" };
 	const string else_string					{ "(else)" };
@@ -39,9 +49,22 @@ namespace const_regex_string
 	const string start_string					{ "(start)" };
 	const string call_string					{ "(call)" };
 
-	const string arithmetical_expression		{ regex_or_regex_STRING (ID_or_number, ID_or_number + multi_regex_STRING(arithmetical_symbol + ID_or_number)) };
-	const string logic_expression				{ arithmetical_expression + logic_symbol + arithmetical_expression };
-	const string arithmetical_equation			{ ID + eq + arithmetical_expression };
+	const string arithmetical_expression					{ regex_or_regex_STRING (ID_or_number, ID_or_number + multi_regex_STRING(arithmetical_symbol + ID_or_number)) };
+	const string logic_expression							{ arithmetical_expression + logic_symbol + arithmetical_expression };
+	const string arithmetical_equation						{ ID + eq + arithmetical_expression };
+
+	const string any_code_in_box							{ regex_in_box_STRING(any_code_string) };
+	const string logic_condition_and_box					{ regex_in_brackets_characters_STRING(logic_expression) + any_code_in_box };
+	const string for_for_logic_expression					{ regex_in_brackets_characters_STRING(regex_separation_STRING(arithmetical_equation, logic_expression, arithmetical_equation, semicolon_symbol)) };
+	const string code_surrounded_by_quotation_marks			{ regex_surrounded_STRING(any_code_string,quotation_mark_symbol) };
+	const string string_expression_surrounded_by_brackets	{ regex_in_brackets_characters_STRING(code_surrounded_by_quotation_marks) };
+
+	const string while_expression_string		{ while_string + logic_condition_and_box };
+	const string if_expression_string			{ if_string + logic_condition_and_box  };
+	const string else_expression_string			{ else_string + any_code_in_box};
+	const string for_expression_string			{ for_string + for_for_logic_expression + any_code_in_box };
+	const string input_expression_string		{ input_string + string_expression_surrounded_by_brackets };
+	const string output_expression_string		{ output_string + string_expression_surrounded_by_brackets };
 
 }
 
