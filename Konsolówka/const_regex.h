@@ -26,8 +26,8 @@ namespace const_regex_string
 	const string arithmetical_symbol			{ "(\\*|\\+|-|\\/)" };
 	const string logic_symbol					{ "(<|>|(==)|(!=)|(<=)|(>=))" };
 	const string eq								{ "(=)" };
-	const string digit							{ "([[:digit:]])" };
-	const string ID_or_digit					{ regex_or_regex_STRING(ID, digit) };
+	const string number							{ "([[:digit:]])+" };
+	const string ID_or_number					{ regex_or_regex_STRING(ID, number) };
 
 	const string if_string						{ "(if)" };
 	const string else_string					{ "(else)" };
@@ -39,7 +39,7 @@ namespace const_regex_string
 	const string start_string					{ "(start)" };
 	const string call_string					{ "(call)" };
 
-	const string arithmetical_expression		{ ID_or_digit + multi_regex_STRING(arithmetical_symbol + ID_or_digit) };
+	const string arithmetical_expression		{ regex_or_regex_STRING (ID_or_number, ID_or_number + multi_regex_STRING(arithmetical_symbol + ID_or_number)) };
 	const string logic_expression				{ arithmetical_expression + logic_symbol + arithmetical_expression };
 	const string arithmetical_equation			{ ID + eq + arithmetical_expression };
 
