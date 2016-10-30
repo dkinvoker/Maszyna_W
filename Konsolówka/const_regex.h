@@ -56,11 +56,11 @@ namespace const_regex_string
 
 	const string arithmetical_expression					{ regex_or_regex_STRING (ID_or_number, ID_or_number + multi_regex_STRING(arithmetical_symbol + ID_or_number)) };
 	const string logic_expression							{ arithmetical_expression + logic_symbol + arithmetical_expression };
-	const string arithmetical_equation						{ ID + eq + arithmetical_expression };
+	const string arithmetical_equation						{ ID + eq + arithmetical_expression + semicolon_symbol };
 
 	const string any_code_in_box							{ regex_in_box_STRING(any_code_string) };
 	const string logic_condition_and_box					{ regex_in_brackets_characters_STRING(logic_expression) + any_code_in_box };
-	const string for_for_logic_expression					{ regex_in_brackets_characters_STRING(regex_separation_STRING(arithmetical_equation, logic_expression, arithmetical_equation, semicolon_symbol)) };
+	const string for_for_logic_expression					{ regex_in_brackets_characters_STRING(arithmetical_equation + logic_expression + semicolon_symbol + arithmetical_equation) };
 	const string code_surrounded_by_quotation_marks			{ regex_surrounded_STRING(any_code_string,quotation_mark_symbol) };
 	const string string_expression_surrounded_by_brackets	{ regex_in_brackets_characters_STRING(code_surrounded_by_quotation_marks) };
 	const string sub_parameters								{ regex_in_brackets_characters_STRING(ID + multi_regex_STRING(comma_symbol + ID)) };
@@ -75,10 +75,10 @@ namespace const_regex_string
 	const string output_expression_string					{ regex_or_regex_STRING (output_string + string_expression_surrounded_by_brackets, output_string + ID_in_brackets) };
 	const string sub_declaration_expression_string			{ "(" + subroutine_string + ID + sub_variables_to_call_with + any_code_in_box + ")" };
 	const string sub_call_expression_string					{ "(" + call_string + ID + sub_variables_to_call_with + ")" };
-	const string start_expression_string					{ "(" + start_string + comma_symbol + ")" };
+	const string start_expression_string					{ "(" + start_string + colon_symbol + ")" };
 	const string stack_expression_string					{ "(" + stack_string + number + semicolon_symbol + ")" };
 	const string int_declaration							{ regex_or_regex_STRING(int_string + ID + semicolon_symbol, int_string + ID + eq + number + semicolon_symbol) };
-	const string string_declaration							{ regex_or_regex_STRING(char_string + ID + semicolon_symbol, char_string + ID + eq + code_surrounded_by_quotation_marks + semicolon_symbol) };
+	const string string_declaration							{ regex_or_regex_STRING(string_string + ID + semicolon_symbol, string_string + ID + eq + code_surrounded_by_quotation_marks + semicolon_symbol) };
 
 	const vector<string> all_commands						{ arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, stack_expression_string, int_declaration, string_declaration };
 
