@@ -126,6 +126,9 @@
     <ClInclude Include="const_regex.h" />
     <ClInclude Include="expression.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="code.troll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
