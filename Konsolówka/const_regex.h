@@ -81,8 +81,9 @@ namespace const_regex_string
 	const string int_declaration							{ regex_or_regex_STRING(int_string + ID + semicolon_symbol, int_string + ID + eq + number + semicolon_symbol) };
 	//const string string_declaration							{ regex_or_regex_STRING(string_string + ID + semicolon_symbol, string_string + ID + eq + code_surrounded_by_quotation_marks + semicolon_symbol) };
 	const string char_declaration							{ regex_or_regex_STRING(char_string + ID + semicolon_symbol, char_string + ID + eq + regex_surrounded_STRING(".", "\"")) };
+	const string return_expression							{ "(" + return_string + arithmetical_expression + semicolon_symbol + ")" };
 
-	const vector<string> all_commands						{ arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, stack_expression_string, int_declaration, char_declaration };
+	const vector<string> all_commands						{ arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, stack_expression_string, int_declaration, char_declaration, return_expression };
 
 	const string syntax_sting								{ multi_regex_STRING(multi_OR_regex_STRING(all_commands)) };
 
