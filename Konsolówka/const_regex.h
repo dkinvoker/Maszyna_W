@@ -53,6 +53,7 @@ namespace const_regex_string
 	const string char_string					{ "(char)" };
 	const string stack_string					{ "(stack)" };
 	const string string_string					{ "(string)" };
+	const string return_string					{ "(return)" };
 
 	const string arithmetical_expression					{ regex_or_regex_STRING (ID_or_number, ID_or_number + multi_regex_STRING(arithmetical_symbol + ID_or_number)) };
 	const string logic_expression							{ arithmetical_expression + logic_symbol + arithmetical_expression };
@@ -78,9 +79,10 @@ namespace const_regex_string
 	const string start_expression_string					{ "(" + start_string + colon_symbol + ")" };
 	const string stack_expression_string					{ "(" + stack_string + number + semicolon_symbol + ")" };
 	const string int_declaration							{ regex_or_regex_STRING(int_string + ID + semicolon_symbol, int_string + ID + eq + number + semicolon_symbol) };
-	const string string_declaration							{ regex_or_regex_STRING(string_string + ID + semicolon_symbol, string_string + ID + eq + code_surrounded_by_quotation_marks + semicolon_symbol) };
+	//const string string_declaration							{ regex_or_regex_STRING(string_string + ID + semicolon_symbol, string_string + ID + eq + code_surrounded_by_quotation_marks + semicolon_symbol) };
+	const string char_declaration							{ regex_or_regex_STRING(char_string + ID + semicolon_symbol, char_string + ID + eq + regex_surrounded_STRING(".", "\"")) };
 
-	const vector<string> all_commands						{ arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, stack_expression_string, int_declaration, string_declaration };
+	const vector<string> all_commands						{ arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, stack_expression_string, int_declaration, char_declaration };
 
 	const string syntax_sting								{ multi_regex_STRING(multi_OR_regex_STRING(all_commands)) };
 
