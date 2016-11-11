@@ -56,7 +56,7 @@ bool code_transformator::check_syntax(ostream &log_output)
 	}
 
 
-
+	log_output << "\t OK \n";
 	return true;
 }
 
