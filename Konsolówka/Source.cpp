@@ -12,27 +12,19 @@ int main()
 {
 	ofstream output_file;
 	ifstream input_file;
-	string buffer;
+	code_transformator CodeTranformator;
 
 	input_file.open("code.troll");
 	output_file.open("Asembler.prg");
 
-	code_transformator::clear_blank_and_save(input_file, buffer);
-	output_file << buffer;
+
+	CodeTranformator.clear_blank_and_save(input_file);
+	CodeTranformator.check_syntax();
 
 
-	while (1)
-	{	
-		cin >> buffer;
-		if (regex_match(buffer, regex{const_regex_string::comment_string}))
-		{
-			cout << "OK";
-		}
-		else
-		{
-			cout << "NONE";
-		}
-	}
+
+	system("pause");
+
 
 
 }
