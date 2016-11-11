@@ -30,8 +30,28 @@ bool code_transformator::check_syntax(ostream &log_output)
 		{
 			box_close_index.push(i);
 		}
+
 	}
 
+	if (box_close_index.size() != box_open_index.size())
+	{
+		log_output << "inna liczba klamer zamykajacych i otwierajacych";
+		return false;
+	}
+
+
+	int size_memory = box_open_index.size();
+	for (int i = 0; i < size_memory; i ++)
+	{
+		section = code.substr(box_open_index.front() + 1 , box_close_index.top() - box_open_index.front() - 1);
+		if (!regex_match(section,const_regex::regex_syntax)) 
+		{
+			log_output << "Blok "<< i << "zawiera blad skladniowy";
+			return false;
+		}
+		box_open_index.pop();
+		box_close_index.pop();
+	}
 
 
 

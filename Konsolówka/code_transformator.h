@@ -15,8 +15,8 @@ using namespace std;
 class code_transformator
 {
 	string code;
-	stack<unsigned long long int>box_open_index;
-	queue<unsigned long long int>box_close_index;
+	queue<unsigned long long int>box_open_index;
+	stack<unsigned long long int>box_close_index;
 
 public:
 	//reads code from input to string-buffer and deletes blank symbols
