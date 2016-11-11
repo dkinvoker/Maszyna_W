@@ -1,14 +1,20 @@
-sub Podprogram_O_nazwie (A,B,C):(b)
+sub Podprogram_O_nazwie (A,B,C):(bb)
 {
 	int b;
-	b = 10;
+	bb = 10;
 	return;
+	#Chujawe to jakies#
 }
+
+
 
 start:
 for(i = 0; i < 10; i = i + 1;)
 {
 	int a;
+	int b;
+	int c;
+
 	a = a + 7;
 	if(6 < 7)
 	{
@@ -16,8 +22,12 @@ for(i = 0; i < 10; i = i + 1;)
 		{
 			while(a<a+2/5*6-12)
 			{
-				dupa;
+				char ciotka = "C";
 			}
+		}
+		else
+		{
+			call Program_O_nazwie (a,b,c):(c);
 		}
 	}
 }

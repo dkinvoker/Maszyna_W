@@ -26,35 +26,41 @@ bool code_transformator::check_syntax(ostream &log_output)
 	{
 		if (code[i] == '{')
 		{
-			box_open_index.push(i);
+			box_index.push_back({i,0});
 		}
 		if (code[i] == '}')
 		{
-			box_close_index.push(i);
+			for (int j = box_index.size() - 1; j > -1; j--)
+			{
+				if (box_index[j][1] == 0)
+				{
+					box_index[j][1] = i;
+					break;
+				}
+			}
 		}
 
 	}
 
-	if (box_close_index.size() != box_open_index.size())
-	{
-		log_output << "\tinna liczba klamer zamykajacych i otwierajacych\n";
-		return false;
-	}
 
-
-	int size_memory = box_open_index.size();
-	for (int i = 0; i < size_memory; i ++)
+	for (int i = 0; i < box_index.size(); i ++)
 	{
-		section = code.substr(box_open_index.front() + 1 , box_close_index.top() - box_open_index.front() - 1);
+		section = code.substr(box_index[i][0] + 1, box_index[i][1] - box_index[i][0] - 1);
 		if (!regex_match(section,const_regex::regex_syntax)) 
 		{
 			log_output << "\tBlok "<< i + 1 << " zawiera blad skladniowy\n";
 			return false;
 		}
-		box_open_index.pop();
-		box_close_index.pop();
 	}
 
+	for (int i = 0; i < box_index.size(); i++)
+	{
+		if (box_index[i][1] == 0)
+		{
+			log_output << "\tNierowna liczba klamerek zamykajacych i otwierajacych\n";
+			return false;
+		}
+	}
 
 	log_output << "\t OK \n";
 	return true;

@@ -82,7 +82,7 @@ namespace const_regex_string
 	const string stack_expression_string					{ "(" + stack_string + number + semicolon_symbol + ")" };
 	const string int_declaration							{ regex_or_regex_STRING(int_string + ID + semicolon_symbol, int_string + ID + eq + number + semicolon_symbol) };
 	//const string string_declaration							{ regex_or_regex_STRING(string_string + ID + semicolon_symbol, string_string + ID + eq + code_surrounded_by_quotation_marks + semicolon_symbol) };
-	const string char_declaration							{ regex_or_regex_STRING(char_string + ID + semicolon_symbol, char_string + ID + eq + regex_surrounded_STRING(".", "\"")) };
+	const string char_declaration							{ regex_or_regex_STRING("(" + char_string + ID + semicolon_symbol + ")" , "(" + char_string + ID + eq + regex_surrounded_STRING(".", quotation_mark_symbol)) + semicolon_symbol + ")" };
 	const string return_expression							{ "(" + return_string + semicolon_symbol + ")" };
 	const string stop_expression							{ "(" + stop_string + semicolon_symbol + ")" };
 
