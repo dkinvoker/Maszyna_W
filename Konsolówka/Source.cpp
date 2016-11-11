@@ -21,4 +21,18 @@ int main()
 	output_file << buffer;
 
 
+	while (1)
+	{	
+		cin >> buffer;
+		if (regex_match(buffer, regex{const_regex_string::comment_string}))
+		{
+			cout << "OK";
+		}
+		else
+		{
+			cout << "NONE";
+		}
+	}
+
+
 }

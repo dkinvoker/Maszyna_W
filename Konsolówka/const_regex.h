@@ -46,7 +46,7 @@ namespace const_regex_string
 	const string for_string						{ "(for)" };
 	const string input_string					{ "(input)" };
 	const string output_string					{ "(output)" };
-	const string sub_string				{ "(sub)" };
+	const string sub_string						{ "(sub)" };
 	const string start_string					{ "(start)" };
 	const string call_string					{ "(call)" };
 	const string int_string						{ "(int)" };
@@ -68,6 +68,7 @@ namespace const_regex_string
 	const string sub_parameters								{ regex_in_brackets_characters_STRING(ID + multi_regex_STRING(comma_symbol + ID)) };
 	const string sub_variables_to_call_with					{ regex_separation_STRING(sub_parameters,sub_parameters, colon_symbol) };
 	const string ID_in_brackets								{ regex_in_brackets_characters_STRING(ID) };
+	const string comment_string								{ "(\\#" + any_code_string + "\\#)" };
 
 	const string while_expression_string					{ "(" + while_string + logic_condition_and_box + ")" };
 	const string if_expression_string						{ "(" + if_string + logic_condition_and_box + ")" };
@@ -85,7 +86,7 @@ namespace const_regex_string
 	const string return_expression							{ "(" + return_string + semicolon_symbol + ")" };
 	const string stop_expression							{ "(" + stop_string + semicolon_symbol + ")" };
 
-	const vector<string> all_commands						{ arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, stack_expression_string, int_declaration, char_declaration, return_expression, stop_expression };
+	const vector<string> all_commands						{ arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, stack_expression_string, int_declaration, char_declaration, return_expression, stop_expression, comment_string };
 
 	const string syntax_sting								{ multi_regex_STRING(multi_OR_regex_STRING(all_commands)) };
 
