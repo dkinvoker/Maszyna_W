@@ -15,9 +15,11 @@ void code_transformator::clear_blank_and_save(ifstream &input)
 bool code_transformator::check_syntax(ostream &log_output)
 {
 	string section;
+	log_output << "Sprawdzanie skladni:\n";
+
 	if (!regex_match(code, const_regex::regex_syntax))
 	{
-		log_output << "Blok glowny zawiera blad skladniowy";
+		log_output << "\tBlok glowny zawiera blad skladniowy\n";
 		return false;
 	}
 	for (unsigned long long int i = 0; i < code.size(); i ++)
@@ -35,7 +37,7 @@ bool code_transformator::check_syntax(ostream &log_output)
 
 	if (box_close_index.size() != box_open_index.size())
 	{
-		log_output << "inna liczba klamer zamykajacych i otwierajacych";
+		log_output << "\tinna liczba klamer zamykajacych i otwierajacych\n";
 		return false;
 	}
 
@@ -46,7 +48,7 @@ bool code_transformator::check_syntax(ostream &log_output)
 		section = code.substr(box_open_index.front() + 1 , box_close_index.top() - box_open_index.front() - 1);
 		if (!regex_match(section,const_regex::regex_syntax)) 
 		{
-			log_output << "Blok "<< i << "zawiera blad skladniowy";
+			log_output << "\tBlok "<< i << " zawiera blad skladniowy\n";
 			return false;
 		}
 		box_open_index.pop();
