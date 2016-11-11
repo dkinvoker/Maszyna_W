@@ -118,15 +118,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="code_transformator.cpp" />
     <ClCompile Include="const_regex.cpp" />
     <ClCompile Include="expression.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="code_transformator.h" />
     <ClInclude Include="const_regex.h" />
     <ClInclude Include="expression.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Asembler.prg" />
     <None Include="code.troll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

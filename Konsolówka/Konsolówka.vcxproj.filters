@@ -24,6 +24,9 @@
     <ClCompile Include="expression.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code_transformator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const_regex.h">
@@ -32,9 +35,15 @@
     <ClInclude Include="expression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="code_transformator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="code.troll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Asembler.prg">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

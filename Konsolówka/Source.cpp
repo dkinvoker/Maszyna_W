@@ -4,39 +4,21 @@
 #include <regex>
 #include "const_regex.h"
 #include <vector>
-#include <fstream>
+#include "code_transformator.h"
 
 using namespace std;
 
 int main()
 {
-	ofstream out_put_file;
-	out_put_file.open("code.troll");
-	string test;
-	regex liczba_w_nawiasch{"(\\([[:digit:]]\\))"};
-	regex test_regex;
+	ofstream output_file;
+	ifstream input_file;
+	string buffer;
 
-	test = const_regex::syntax_sting;
-	test_regex = test;
+	input_file.open("code.troll");
+	output_file.open("Asembler.prg");
 
+	code_transformator::clear_blank_and_save(input_file, buffer);
+	output_file << buffer;
 
-	out_put_file
-		<< test;
-
-	//while (true)
-	//{
-	//	cin >> test;
-	//	if (regex_match(test, test_regex))
-	//	{
-	//		cout << "GOOD\n";
-	//	}
-	//	else
-	//	{
-	//		cout << "nicht\n";
-	//	}
-	//}
-
-
-	system("pause");
 
 }
