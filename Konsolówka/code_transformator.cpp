@@ -48,7 +48,7 @@ bool code_transformator::check_syntax(ostream &log_output)
 		section = code.substr(box_open_index.front() + 1 , box_close_index.top() - box_open_index.front() - 1);
 		if (!regex_match(section,const_regex::regex_syntax)) 
 		{
-			log_output << "\tBlok "<< i << " zawiera blad skladniowy\n";
+			log_output << "\tBlok "<< i + 1 << " zawiera blad skladniowy\n";
 			return false;
 		}
 		box_open_index.pop();
