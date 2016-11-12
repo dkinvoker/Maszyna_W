@@ -1,2 +1,33 @@
+Dzielenie kodu na sekcje
+		OK
+
 Sprawdzanie skladni:
-	 OK 
+	Blok: 0
+	OK
+
+	Blok: 1
+	OK
+
+	Blok: 2
+	OK
+
+	Blok: 3
+	OK
+
+	Blok: 4
+	OK
+
+	Blok: 5
+	OK
+
+	Blok: 6
+	OK
+
+	Blok: 7
+	OK
+
+	Blok: 8
+	OK
+
+
+ Skladnia OK 

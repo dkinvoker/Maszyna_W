@@ -26,13 +26,15 @@ namespace const_regex_string
 	string regex_separation_STRING						(string regex1, string regex2, string regex3, string separator);
 	//returns string representing regex surrounded by string
 	string regex_surrounded_STRING						(string regex_string, string surrounder);
+	//
+	string regex_one_or_more_STRING						(string regex_string);
 
 
 	const string ID								{ "(([[:alpha:]]|_)([[:w:]]|_)*)" };
 	const string arithmetical_symbol			{ "(\\*|\\+|-|\\/)" };
 	const string logic_symbol					{ "(<|>|(==)|(!=)|(<=)|(>=))" };
 	const string eq								{ "(=)" };
-	const string number							{ "([[:digit:]])+" };
+	const string number							{ "(([[:digit:]])+)" };
 	const string ID_or_number					{ regex_or_regex_STRING(ID, number) };
 	const string any_code_string				{ "(.*)" };
 	const string colon_symbol					{ "\\:" };
@@ -57,7 +59,7 @@ namespace const_regex_string
 	const string stop_string					{ "(stop)" };
 
 	const string arithmetical_expression					{ regex_or_regex_STRING (ID_or_number, ID_or_number + multi_regex_STRING(arithmetical_symbol + ID_or_number)) };
-	const string logic_expression							{ arithmetical_expression + logic_symbol + arithmetical_expression };
+	const string logic_expression							{ "(" + arithmetical_expression + logic_symbol + arithmetical_expression + ")" };
 	const string arithmetical_equation						{ ID + eq + arithmetical_expression + semicolon_symbol };
 
 	const string any_code_in_box							{ regex_in_box_STRING(any_code_string) };
@@ -66,7 +68,7 @@ namespace const_regex_string
 	const string code_surrounded_by_quotation_marks			{ regex_surrounded_STRING(any_code_string,quotation_mark_symbol) };
 	const string string_expression_surrounded_by_brackets	{ regex_in_brackets_characters_STRING(code_surrounded_by_quotation_marks) };
 	const string sub_parameters								{ regex_in_brackets_characters_STRING(ID + multi_regex_STRING(comma_symbol + ID)) };
-	const string sub_variables_to_call_with					{ regex_separation_STRING(sub_parameters,sub_parameters, colon_symbol) };
+	const string sub_variables_to_call_with					{ regex_separation_STRING(sub_parameters, sub_parameters, colon_symbol) };
 	const string ID_in_brackets								{ regex_in_brackets_characters_STRING(ID) };
 	const string comment_string								{ "(\\#" + any_code_string + "\\#)" };
 
@@ -75,7 +77,7 @@ namespace const_regex_string
 	const string else_expression_string						{ "(" + else_string + any_code_in_box + ")" };
 	const string for_expression_string						{ "(" + for_string + for_for_logic_expression + any_code_in_box + ")" };
 	const string input_expression_string					{ "(" + input_string + ID_in_brackets + semicolon_symbol + ")" };
-	const string output_expression_string					{ regex_or_regex_STRING (output_string + string_expression_surrounded_by_brackets, output_string + ID_in_brackets) };
+	const string output_expression_string					{ regex_or_regex_STRING (output_string + string_expression_surrounded_by_brackets + semicolon_symbol, output_string + ID_in_brackets + semicolon_symbol) };
 	const string sub_declaration_expression_string			{ "(" + sub_string + ID + sub_variables_to_call_with + any_code_in_box + ")" };
 	const string sub_call_expression_string					{ "(" + call_string + ID + sub_variables_to_call_with + semicolon_symbol + ")" };
 	const string start_expression_string					{ "(" + start_string + colon_symbol + ")" };
@@ -88,18 +90,19 @@ namespace const_regex_string
 
 	const vector<string> all_commands						{ arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, stack_expression_string, int_declaration, char_declaration, return_expression, stop_expression, comment_string };
 
-	const string syntax_sting								{ multi_regex_STRING(multi_OR_regex_STRING(all_commands)) };
+	const string all_commands_string						{ multi_OR_regex_STRING(all_commands) };
+	const string syntax_sting								{ multi_regex_STRING(all_commands_string) };
 
 }
 
-namespace const_regex 
+namespace const_regex
 {
-	using namespace const_regex_string;
-	const regex regex_arithmetical_expression	{ arithmetical_expression };
-	const regex regex_logic_expression			{ logic_expression };
-	const regex regex_arithmetical_equation		{ arithmetical_equation };
+	const regex regex_all_commands				{ const_regex_string::all_commands_string };
+	const regex regex_arithmetical_expression	{ const_regex_string::arithmetical_expression };
+	const regex regex_logic_expression			{ const_regex_string::logic_expression };
+	const regex regex_arithmetical_equation		{ const_regex_string::arithmetical_equation };
 
-	const regex regex_syntax					{ syntax_sting };
+	const regex regex_syntax					{ const_regex_string::syntax_sting };
 
 }
 

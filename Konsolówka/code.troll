@@ -1,16 +1,25 @@
-sub Podprogram_O_nazwie (A,B,C):(bb)
+start:
+
+output("dupa");
+input (b);
+
+for(b = 2; b < 10; b = b + 1;)
 {
-	int b;
-	bb = 10;
-	return;
-	#Chujawe to jakies#
+	int 1 = 5;
 }
 
+#dupa;#
 
-
-start:
 for(i = 0; i < 10; i = i + 1;)
 {
+	
+	int aa;
+
+	for(i = 0; i < 15; i = i + 1;)
+	{
+
+	}
+
 	int a;
 	int b;
 	int c;
@@ -30,4 +39,14 @@ for(i = 0; i < 10; i = i + 1;)
 			call Program_O_nazwie (a,b,c):(c);
 		}
 	}
+}
+
+#dupa;#
+
+sub Podprogram_O_nazwie (A,B,C):(bb)
+{
+	int b;
+	bb = 10;
+	return;
+	#Chujawe to jakies#
 }
