@@ -29,5 +29,8 @@ Sprawdzanie skladni:
 	Blok: 8
 	OK
 
+	Blok: 9
+	OK
+
 
  Skladnia OK 
