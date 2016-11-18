@@ -13,7 +13,7 @@ int main()
 	ofstream output_file;
 	ofstream log_file;
 	ifstream input_file;
-	code_transformator CodeTranformator	{ log_file, input_file };
+	code_transformator CodeTranformator	{ log_file, input_file, output_file };
 
 	input_file.open("code.troll");
 	output_file.open("Asembler.prg");

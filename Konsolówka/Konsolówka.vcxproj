@@ -119,12 +119,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="code_transformator.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="const_regex.cpp" />
     <ClCompile Include="expression.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code_transformator.h" />
+    <ClInclude Include="Command.h" />
     <ClInclude Include="const_regex.h" />
     <ClInclude Include="expression.h" />
   </ItemGroup>

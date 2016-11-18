@@ -5,7 +5,7 @@ input (b);
 
 for(b = 2; b < 10; b = b + 1;)
 {
-	int 1 = 5;
+	int a = 5;
 }
 
 #dupa;#
@@ -23,6 +23,7 @@ for(i = 0; i < 10; i = i + 1;)
 	int a;
 	int b;
 	int c;
+
 
 	a = a + 7;
 	if(6 < 7)

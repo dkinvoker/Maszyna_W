@@ -17,7 +17,7 @@ void code_transformator::clear_blank_and_save()
 bool code_transformator::check_syntax()
 {
 
-	log_output << "Sprawdzanie skladni:\n";
+	log_output << "Sprawdzanie sk³adni:\n";
 	log_output.flush();
 
 
@@ -49,13 +49,43 @@ bool code_transformator::check_syntax()
 				buffer = buffer + code_selected[i];
 			}
 
-			for (int j = 0; j < const_regex_string::all_commands.size(); j++)
+
+			//if (regex_match(buffer, const_regex::regex_all_commands))
+			//{
+
+			//	if (box_open != 0)
+			//	{
+			//		i = box_close;
+			//		box_open = 0;
+			//	}
+
+			//	buffer.clear();
+			//	break;
+			//}
+
+
+			for (int j = 0; j < const_regex::all_regex.size(); j++)
 			{
 
-				if (regex_match(buffer, regex{const_regex_string::all_commands[j]}))
+				if (regex_match(buffer, const_regex::all_regex[j]))
 				{
 					//log_output << "\t\t" << buffer << " -> " << j << "\n";
 					log_output.flush();
+
+					if (j == const_regex::index_char_declaration)
+					{
+						if (regex_match(buffer, const_regex::regex_char_declaration_and_init))
+						{
+							expression_with_consts.push_back(buffer);
+						}
+					}
+					else if (j == const_regex::index_int_declaration)
+					{
+						if (regex_match(buffer, const_regex::regex_int_declaration_and_init))
+						{
+							expression_with_consts.push_back(buffer);
+						}
+					}
 
 					if (box_open != 0)
 					{
@@ -72,7 +102,7 @@ bool code_transformator::check_syntax()
 
 		if (!buffer.empty())
 		{
-			log_output << "\t\tBlok zawiera skladniowy:\n\t" << buffer << "\n";
+			log_output << "\t\tBlok zawiera b³¹d sk³adniowy:\n\t" << buffer << "\n";
 			log_output.flush();
 			return false;
 		}
@@ -83,7 +113,7 @@ bool code_transformator::check_syntax()
 
 	//---------------------------------------------------
 
-	log_output << "\n Skladnia OK \n";
+	log_output << "\n Sk³adnia OK \n";
 	return true;
 }
 
@@ -109,7 +139,7 @@ bool code_transformator::code_into_sections()
 
 	if (open_number != close_number)
 	{
-		log_output << "\t\tNiepowodzenie: Liczba klamer otwierajacych nie jest rowna liczbie klamer zamykajacych\n";
+		log_output << "\t\tNiepowodzenie: Liczba klamer otwierajacych nie jest równa liczbie klamer zamykajacych\n";
 		log_output.flush();
 		return false;
 	}
@@ -154,12 +184,19 @@ bool code_transformator::code_into_sections()
 	return true;
 }
 
-
-code_transformator::code_transformator(ostream &log_output, ifstream &input)
-	:
-	log_output(log_output), input(input)
+void code_transformator::catch_consts()
 {
+	log_output << "\n Zbieranie Sta³ych:\n";
+	log_output.flush();
 
+
+}
+
+
+code_transformator::code_transformator(ostream &log_output, ifstream &input, ofstream &output)
+	:
+	log_output(log_output), input(input), assembler_prg_output_file(output)
+{
 }
 
 
