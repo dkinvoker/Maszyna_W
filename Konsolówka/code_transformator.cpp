@@ -2,7 +2,7 @@
 
 //---------------------------
 //OH KURNA to jest mistrzostwo chiñskiego programowania..... 
-string Char_to_asci_code (char arg_char)
+string Char_to_asci_code_as_string (char arg_char)
 {
 	int buffer = arg_char;
 	return to_string(buffer);
@@ -218,7 +218,7 @@ bool code_transformator::code_into_sections()
 //			if (!const_set.const_exists(expression_with_consts[i].expression_code[expression_with_consts[i].expression_code.size() - 3]))
 //			{
 //				tag_creator = "t" + to_string(tag_iterator++);
-//				data.push_back(W_Assembler_line{ tag_creator, "RST", Char_to_asci_code (expression_with_consts[i].expression_code[expression_with_consts[i].expression_code.size() - 3]) });
+//				data.push_back(W_Assembler_line{ tag_creator, "RST", Char_to_asci_code_as_string (expression_with_consts[i].expression_code[expression_with_consts[i].expression_code.size() - 3]) });
 //				const_set.add(data.back());
 //
 //				log_output 

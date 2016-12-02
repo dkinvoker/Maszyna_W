@@ -125,7 +125,6 @@
     <ClCompile Include="Declaration.cpp" />
     <ClCompile Include="expression.cpp" />
     <ClCompile Include="Initialization.cpp" />
-    <ClCompile Include="Int_Initialization.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tag_menager.cpp" />
   </ItemGroup>
@@ -137,7 +136,6 @@
     <ClInclude Include="Declaration.h" />
     <ClInclude Include="expression.h" />
     <ClInclude Include="Initialization.h" />
-    <ClInclude Include="Int_Initialization.h" />
     <ClInclude Include="Struct_header.h" />
     <ClInclude Include="Tag_menager.h" />
   </ItemGroup>

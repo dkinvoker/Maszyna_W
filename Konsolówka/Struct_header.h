@@ -120,5 +120,4 @@ struct Tag_and_its_name
 	{
 	}
 
-
 };

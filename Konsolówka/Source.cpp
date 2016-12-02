@@ -34,11 +34,18 @@ int main()
 	Declaration test{ "char_XXX;", CodeTranformator };
 	Declaration test2{ "char_XXX;", CodeTranformator };
 	Initialization test3{ "intDUPA=123;", CodeTranformator };
+	Initialization test4{ "intDUPAA=123;", CodeTranformator };
+
+	//Initialization test5{ CodeTranformator.code, CodeTranformator };
+	Initialization test5{ "chara=\"a\";", CodeTranformator };
 	try
 	{
 		CodeTranformator.adapt_section(test.translate());
-		CodeTranformator.adapt_section(test2.translate());
+		//CodeTranformator.adapt_section(test2.translate());
 		CodeTranformator.adapt_section(test3.translate());
+		CodeTranformator.adapt_section(test4.translate());
+		CodeTranformator.adapt_section(test5.translate());
+
 	}
 	catch (string Error)
 	{

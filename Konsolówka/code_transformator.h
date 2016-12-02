@@ -13,7 +13,7 @@
 
 using namespace std;
 
-
+string Char_to_asci_code_as_string(char arg_char);
 
 
 class code_transformator
@@ -27,7 +27,7 @@ class code_transformator
 	vector<array<unsigned long long int, 2>> box_index;
 	vector<code_section> code_sections;
 
-	int tag_iterator = 0;
+
 	vector<W_Assembler_line> program;
 	vector<W_Assembler_line> data;
 

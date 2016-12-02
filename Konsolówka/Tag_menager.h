@@ -13,8 +13,9 @@
 
 class Tag_menager
 {
+
 	vector<Tag_and_its_name> Tags_vector;
-	vector<Tag_and_its_name*> Const_tags_vector;
+	vector<unsigned int> Const_tags_vector;
 
 public:
 
@@ -26,7 +27,8 @@ public:
 	void add(string name, int type);
 	Tag_and_its_name* find_const_by_value(string value);
 	const string get_tag_by_const_value(string value);
-	void add_const(string value);
+	//returns true if added, false if not
+	bool add_const(string value);
 	const string get_last_tag();
 	const string get_last_constant_tag();
 	int how_many_tags();
