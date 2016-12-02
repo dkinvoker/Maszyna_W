@@ -1,5 +1,16 @@
 #include "code_transformator.h"
 
+//---------------------------
+//OH KURNA to jest mistrzostwo chiñskiego programowania..... 
+string Char_to_asci_code (char arg_char)
+{
+	int buffer = arg_char;
+	return to_string(buffer);
+}
+
+//---------------------------
+
+
 
 void code_transformator::clear_blank_and_save()
 {
@@ -9,8 +20,6 @@ void code_transformator::clear_blank_and_save()
 		code = code + IN_buffer;
 	}
 }
-
-
 
 
 
@@ -70,22 +79,29 @@ bool code_transformator::check_syntax()
 				if (regex_match(buffer, const_regex::all_regex[j]))
 				{
 					//log_output << "\t\t" << buffer << " -> " << j << "\n";
-					log_output.flush();
+					//log_output.flush();
 
-					if (j == const_regex::index_char_declaration)
-					{
-						if (regex_match(buffer, const_regex::regex_char_declaration_and_init))
-						{
-							expression_with_consts.push_back(buffer);
-						}
-					}
-					else if (j == const_regex::index_int_declaration)
-					{
-						if (regex_match(buffer, const_regex::regex_int_declaration_and_init))
-						{
-							expression_with_consts.push_back(buffer);
-						}
-					}
+					//if (j == const_regex::index_char_declaration)
+					//{
+					//	if (regex_match(buffer, const_regex::regex_char_declaration_and_init))
+					//	{
+					//		expression_with_consts.push_back(Const_expresion{ buffer, const_regex::index_char_declaration });
+					//	}
+					//}
+					//else if (j == const_regex::index_int_declaration)
+					//{
+					//	if (regex_match(buffer, const_regex::regex_int_declaration_and_init))
+					//	{
+					//		expression_with_consts.push_back(Const_expresion{ buffer, const_regex::index_int_declaration });
+					//	}
+					//}
+					//else if (j == const_regex::index_output_expression)
+					//{
+					//	if (regex_match(buffer, const_regex::regex_output_string))
+					//	{
+					//		expression_with_consts.push_back(Const_expresion{ buffer, const_regex::index_output_expression });
+					//	}
+					//}
 
 					if (box_open != 0)
 					{
@@ -184,14 +200,78 @@ bool code_transformator::code_into_sections()
 	return true;
 }
 
-void code_transformator::catch_consts()
+//void code_transformator::catch_consts()
+//{
+//	log_output << "\n Zbieranie Sta³ych:\n";
+//	log_output.flush();
+//
+//	int start_reading_index = 0;
+//	int stop_reading_index = 0;
+//	string buffer;
+//	string tag_creator;
+//
+//	for (int i = 0; i < expression_with_consts.size(); i ++)
+//	{
+//		if (expression_with_consts[i].expression_type == const_regex::index_char_declaration)
+//		{
+//			
+//			if (!const_set.const_exists(expression_with_consts[i].expression_code[expression_with_consts[i].expression_code.size() - 3]))
+//			{
+//				tag_creator = "t" + to_string(tag_iterator++);
+//				data.push_back(W_Assembler_line{ tag_creator, "RST", Char_to_asci_code (expression_with_consts[i].expression_code[expression_with_consts[i].expression_code.size() - 3]) });
+//				const_set.add(data.back());
+//
+//				log_output 
+//					<< "\t"
+//					<< expression_with_consts[i].expression_code[expression_with_consts[i].expression_code.size() - 3] 
+//					<< " -> "
+//					<< data.back().argument
+//					<<"\n";
+//				log_output.flush();
+//
+//			}
+//			
+//
+//
+//		}
+//		else if (expression_with_consts[i].expression_type == const_regex::index_int_declaration)
+//		{
+//			start_reading_index = expression_with_consts[i].expression_code.find('=') + 1;
+//			stop_reading_index = expression_with_consts[i].expression_code.find(';');
+//			buffer = expression_with_consts[i].expression_code.substr(start_reading_index, stop_reading_index - start_reading_index);
+//
+//			if (!const_set.const_exists(stoi(buffer)))
+//			{
+//				tag_creator = "t" + to_string(tag_iterator++);
+//				data.push_back(W_Assembler_line{ tag_creator, "RST", buffer });
+//				const_set.add(data.back());
+//
+//				log_output
+//					<< "\t"
+//					<< buffer
+//					<< "\n";
+//				log_output.flush();
+//			}
+//
+//
+//		}
+//		else if (expression_with_consts[i].expression_type == const_regex::index_output_expression)
+//		{
+//			start_reading_index = 8;
+//			stop_reading_index = expression_with_consts[i].expression_code.size() - 4;
+//			//!!!
+//		}
+//	}
+//
+//	log_output << "\tOK\n";
+//
+//}
+
+
+Tag_menager& code_transformator::get_tag_menager_ref()
 {
-	log_output << "\n Zbieranie Sta³ych:\n";
-	log_output.flush();
-
-
+	return tag_menager;
 }
-
 
 code_transformator::code_transformator(ostream &log_output, ifstream &input, ofstream &output)
 	:

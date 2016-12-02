@@ -5,6 +5,7 @@
 #include "const_regex.h"
 #include <vector>
 #include "code_transformator.h"
+#include "Declaration.h"
 
 using namespace std;
 
@@ -23,8 +24,10 @@ int main()
 	CodeTranformator.clear_blank_and_save();
 	CodeTranformator.code_into_sections();
 	CodeTranformator.check_syntax();
+	//CodeTranformator.catch_consts();
 
-
+	Declaration test{ "char_XXX;", CodeTranformator };
+	CodeTranformator.adapt_section(test.expand());
 
 	output_file.close();
 	input_file.close();

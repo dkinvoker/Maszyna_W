@@ -76,13 +76,16 @@ namespace const_regex_string
 	const string any_char									{ regex_surrounded_STRING(".", quotation_mark_symbol) };
 	const string char_declaration_no_init					{ "(" + char_string + ID + semicolon_symbol + ")" };
 	const string char_declaration_and_init					{ "(" + char_string + ID + eq + any_char + semicolon_symbol + ")" };
+	const string output_expression_ID						{ "(" + output_string + ID_in_brackets + semicolon_symbol + ")" };
+	const string output_string_data							{ "(" + output_string + string_expression_surrounded_by_brackets + semicolon_symbol + ")" };
+
 
 	const string while_expression_string					{ "(" + while_string + logic_condition_and_box + ")" };
 	const string if_expression_string						{ "(" + if_string + logic_condition_and_box + ")" };
 	const string else_expression_string						{ "(" + else_string + any_code_in_box + ")" };
 	const string for_expression_string						{ "(" + for_string + for_for_logic_expression + any_code_in_box + ")" };
 	const string input_expression_string					{ "(" + input_string + ID_in_brackets + semicolon_symbol + ")" };
-	const string output_expression_string					{ regex_or_regex_STRING (output_string + string_expression_surrounded_by_brackets + semicolon_symbol, output_string + ID_in_brackets + semicolon_symbol) };
+	const string output_expression_string					{ regex_or_regex_STRING (output_expression_ID, output_string_data) };
 	const string sub_declaration_expression_string			{ "(" + sub_string + ID + sub_variables_to_call_with + any_code_in_box + ")" };
 	const string sub_call_expression_string					{ "(" + call_string + ID + sub_variables_to_call_with + semicolon_symbol + ")" };
 	const string start_expression_string					{ "(" + start_string + colon_symbol + ")" };
@@ -111,7 +114,7 @@ namespace const_regex
 		index_else_expression,
 		index_for_expression,
 		index_input_expression,
-		index_output_rexpression,
+		index_output_expression,
 		index_sub_declaration,
 		index_sub_call,
 		index_start,
@@ -133,6 +136,8 @@ namespace const_regex
 	const regex regex_int_declaration_and_init	{ const_regex_string::int_declaration_and_init };
 	const regex regex_char_declaration_no_init	{ const_regex_string::char_declaration_no_init };
 	const regex regex_char_declaration_and_init	{ const_regex_string::char_declaration_and_init };
+	const regex regex_output_ID					{ const_regex_string::output_expression_ID };
+	const regex regex_output_string				{ const_regex_string::output_string };
 
 
 	const regex regex_arithmetical_equation		{ const_regex_string::arithmetical_equation };
