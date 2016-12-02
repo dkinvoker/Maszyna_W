@@ -33,9 +33,6 @@
     <ClCompile Include="Arithmetical_expression.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Char_Initialization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Declaration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,9 +60,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Arithmetical_expression.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Char_Initialization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Declaration.h">

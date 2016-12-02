@@ -75,13 +75,34 @@ struct Assembler_section
 {
 	vector<W_Assembler_line> program_assembler_vector;
 	vector<W_Assembler_line> data_assembler_vector;
+
+	void add_data(string tag, string command, string argument)
+	{
+		data_assembler_vector.push_back(W_Assembler_line{ tag + ":", command, argument });
+	}
+	void add_data(string command, string argument)
+	{
+		data_assembler_vector.push_back(W_Assembler_line{ "", command, argument });
+	}
+
+
+	void add_program(string tag, string command, string argument)
+	{
+		program_assembler_vector.push_back(W_Assembler_line{ tag + ":", command, argument });
+	}
+	void add_program(string command, string argument)
+	{
+		program_assembler_vector.push_back(W_Assembler_line{ "", command, argument });
+	}
+
 };
 
 
 enum Tag_type
 {
 	constant,
-	variable,
+	variable_int,
+	variable_char,
 	sub
 };
 

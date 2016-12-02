@@ -21,9 +21,9 @@ Command::Command(string code, code_transformator &to_ref_to)
 }
 
 
-Command::Command()
-{
-}
+//Command::Command()
+//{
+//}
 
 
 Command::~Command()

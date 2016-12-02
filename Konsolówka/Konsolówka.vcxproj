@@ -119,7 +119,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Arithmetical_expression.cpp" />
-    <ClCompile Include="Char_Initialization.cpp" />
     <ClCompile Include="code_transformator.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="const_regex.cpp" />
@@ -132,7 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arithmetical_expression.h" />
-    <ClInclude Include="Char_Initialization.h" />
     <ClInclude Include="code_transformator.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="const_regex.h" />

@@ -6,6 +6,7 @@
 #include <vector>
 #include "code_transformator.h"
 #include "Declaration.h"
+#include "Initialization.h"
 
 using namespace std;
 
@@ -26,8 +27,26 @@ int main()
 	CodeTranformator.check_syntax();
 	//CodeTranformator.catch_consts();
 
+
+	// SEKCJA TESTOWA
+	log_file << "\nTEST:\n";
+
 	Declaration test{ "char_XXX;", CodeTranformator };
-	CodeTranformator.adapt_section(test.expand());
+	Declaration test2{ "char_XXX;", CodeTranformator };
+	Initialization test3{ "intDUPA=123;", CodeTranformator };
+	try
+	{
+		CodeTranformator.adapt_section(test.translate());
+		CodeTranformator.adapt_section(test2.translate());
+		CodeTranformator.adapt_section(test3.translate());
+	}
+	catch (string Error)
+	{
+		log_file << Error << "\n" << "Zaniechanie dalszej pracy\n";
+	}
+	// KONIEC SEKCJI TESTOWEJ
+
+	log_file << "\n KONIEC \n";
 
 	output_file.close();
 	input_file.close();

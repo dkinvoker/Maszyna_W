@@ -18,7 +18,7 @@
 
 
 //chiñskoœæ 100%
-string ITOS(int a);
+string Int_TO_String(int a);
 
 
 class Command
@@ -29,13 +29,13 @@ protected:
 
 public:
 
-	virtual Assembler_section expand() = 0;
+	virtual Assembler_section translate() = 0;
 	virtual void Load_sring_into(string&);
 
 	Command(string code, code_transformator &CT_to_ref);
 	//Command(Tag_menager &ref, string code);
 
-	Command();
+	Command() = delete;
 	~Command();
 };
 

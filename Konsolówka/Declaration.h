@@ -18,10 +18,10 @@ class Declaration:
 
 public:
 
-	Assembler_section expand();
+	virtual Assembler_section translate();
 
 	Declaration(string code, code_transformator &CT_to_ref);
-	Declaration();
+	Declaration() = delete;
 	~Declaration();
 };
 
