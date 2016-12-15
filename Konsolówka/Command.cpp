@@ -1,5 +1,7 @@
 #include "Command.h"
 
+Tag_menager* Command::tag_menager_ptr = nullptr;
+
 void Command::Load_sring_into(string &a)
 {
 	command_string = a;
@@ -12,11 +14,15 @@ void Command::Load_sring_into(string &a)
 //
 //}
 
+void Command::set_static_tag_menager_ptr(Tag_menager* ptr)
+{
+	tag_menager_ptr = ptr;
+}
 
-Command::Command(string code, code_transformator &to_ref_to)
+
+Command::Command(string code)
 	:
-	command_string(code),
-	tag_menager_ptr(&(to_ref_to.tag_menager))
+	command_string(code)
 {
 }
 

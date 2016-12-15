@@ -9,6 +9,7 @@
 #include <map>
 #include "Struct_header.h"
 #include "Tag_menager.h"
+#include "Command.h"
 
 
 using namespace std;

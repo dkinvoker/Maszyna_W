@@ -277,6 +277,7 @@ code_transformator::code_transformator(ostream &log_output, ifstream &input, ofs
 	:
 	log_output(log_output), input(input), assembler_prg_output_file(output)
 {
+	Command::set_static_tag_menager_ptr(&tag_menager);
 }
 
 

@@ -20,7 +20,7 @@ public:
 
 	virtual Assembler_section translate();
 
-	Declaration(string code, code_transformator &CT_to_ref);
+	Declaration(string code);
 	Declaration() = delete;
 	~Declaration();
 };

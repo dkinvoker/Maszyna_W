@@ -179,9 +179,9 @@ Assembler_section Equation::translate()
 	return returner;
 }
 
-Equation::Equation(string code, code_transformator &CT_to_ref)
+Equation::Equation(string code)
 	:
-	Command(code, CT_to_ref)
+	Command(code)
 {
 }
 

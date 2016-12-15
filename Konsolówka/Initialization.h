@@ -19,7 +19,7 @@ public:
 
 	virtual Assembler_section translate();
 
-	Initialization(string code, code_transformator &CT_to_ref);
+	Initialization(string code);
 	Initialization() = delete;
 	~Initialization();
 };

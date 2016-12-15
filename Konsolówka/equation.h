@@ -19,7 +19,7 @@ class Equation :
 public:
 
 	virtual Assembler_section translate();
-	Equation(string code, code_transformator &CT_to_ref);
+	Equation(string code);
 	Equation() = delete;
 	~Equation();
 };

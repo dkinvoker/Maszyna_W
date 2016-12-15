@@ -32,17 +32,17 @@ int main()
 	// SEKCJA TESTOWA
 	log_file << "\nTEST:\n";
 
-	Declaration test{ "char_XXX;", CodeTranformator };
-	Declaration test2{ "char_XXX;", CodeTranformator };
-	Initialization test3{ "intDUPA=123;", CodeTranformator };
-	Initialization test4{ "intDUPAA=123;", CodeTranformator };
-	Equation eq_test{ "_XXX=_XXX+1/DUPA*DUPA-DUPAA", CodeTranformator };
-	Equation eq_test2{ "DUPA=3", CodeTranformator };
-	Equation eq_test3{ "DUP=3", CodeTranformator };
+	Declaration test{ "char_XXX;" };
+	Declaration test2{ "char_XXX;" };
+	Initialization test3{ "intDUPA=123;" };
+	Initialization test4{ "intDUPAA=123;" };
+	Equation eq_test{ "_XXX=_XXX+1/DUPA*DUPA-DUPAA" };
+	Equation eq_test2{ "DUPA=3" };
+	Equation eq_test3{ "DUP=3" };
 
 
 	//Initialization test5{ CodeTranformator.code, CodeTranformator };
-	Initialization test5{ "chara=\"a\";", CodeTranformator };
+	Initialization test5{ "chara=\"a\";" };
 	try
 	{
 		CodeTranformator.adapt_section(test.translate());

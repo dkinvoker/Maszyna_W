@@ -25,17 +25,18 @@ class Command
 {
 protected:
 	string command_string;
-	Tag_menager *tag_menager_ptr = nullptr;
+	static Tag_menager *tag_menager_ptr;
 
 public:
 
 	virtual Assembler_section translate() = 0;
 	virtual void Load_sring_into(string&);
 
-	Command(string code, code_transformator &CT_to_ref);
+	static void set_static_tag_menager_ptr (Tag_menager* ptr);
+
+	Command(string code);
 	//Command(Tag_menager &ref, string code);
 
 	Command() = delete;
 	~Command();
 };
-
