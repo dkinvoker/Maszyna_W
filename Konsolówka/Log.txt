@@ -9,5 +9,7 @@ Sprawdzanie sk³adni:
  Sk³adnia OK 
 
 TEST:
+B³¹d: Odwo³anie do nizdefiniowanej nazwy: DUP
+Zaniechanie dalszej pracy
 
  KONIEC 

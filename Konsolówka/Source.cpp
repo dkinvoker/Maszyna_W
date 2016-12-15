@@ -7,6 +7,7 @@
 #include "code_transformator.h"
 #include "Declaration.h"
 #include "Initialization.h"
+#include "equation.h"
 
 using namespace std;
 
@@ -35,6 +36,10 @@ int main()
 	Declaration test2{ "char_XXX;", CodeTranformator };
 	Initialization test3{ "intDUPA=123;", CodeTranformator };
 	Initialization test4{ "intDUPAA=123;", CodeTranformator };
+	Equation eq_test{ "_XXX=_XXX+1/DUPA*DUPA-DUPAA", CodeTranformator };
+	Equation eq_test2{ "DUPA=3", CodeTranformator };
+	Equation eq_test3{ "DUP=3", CodeTranformator };
+
 
 	//Initialization test5{ CodeTranformator.code, CodeTranformator };
 	Initialization test5{ "chara=\"a\";", CodeTranformator };
@@ -45,12 +50,20 @@ int main()
 		CodeTranformator.adapt_section(test3.translate());
 		CodeTranformator.adapt_section(test4.translate());
 		CodeTranformator.adapt_section(test5.translate());
+		CodeTranformator.adapt_section(eq_test.translate());
+		CodeTranformator.adapt_section(eq_test2.translate());
+		CodeTranformator.adapt_section(eq_test3.translate());
 
 	}
 	catch (string Error)
 	{
 		log_file << Error << "\n" << "Zaniechanie dalszej pracy\n";
 	}
+
+
+
+
+
 	// KONIEC SEKCJI TESTOWEJ
 
 	log_file << "\n KONIEC \n";

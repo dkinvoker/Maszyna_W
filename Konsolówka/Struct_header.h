@@ -121,3 +121,11 @@ struct Tag_and_its_name
 	}
 
 };
+
+enum int_symbolic_vbalue_to_operators
+{
+	divid_symbol,
+	add_symbol,
+	subtract_symbol,
+	multiplication_symbol
+};

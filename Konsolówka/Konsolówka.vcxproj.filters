@@ -21,16 +21,10 @@
     <ClCompile Include="const_regex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="expression.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="code_transformator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Command.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Arithmetical_expression.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Declaration.cpp">
@@ -42,21 +36,18 @@
     <ClCompile Include="Tag_menager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="equation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const_regex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="expression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code_transformator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Command.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Arithmetical_expression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Declaration.h">
@@ -69,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tag_menager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="equation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -118,23 +118,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Arithmetical_expression.cpp" />
     <ClCompile Include="code_transformator.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="const_regex.cpp" />
     <ClCompile Include="Declaration.cpp" />
-    <ClCompile Include="expression.cpp" />
+    <ClCompile Include="equation.cpp" />
     <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tag_menager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arithmetical_expression.h" />
     <ClInclude Include="code_transformator.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="const_regex.h" />
     <ClInclude Include="Declaration.h" />
-    <ClInclude Include="expression.h" />
+    <ClInclude Include="equation.h" />
     <ClInclude Include="Initialization.h" />
     <ClInclude Include="Struct_header.h" />
     <ClInclude Include="Tag_menager.h" />

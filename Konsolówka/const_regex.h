@@ -125,6 +125,8 @@ namespace const_regex
 		index_comment,
 	};
 
+	const regex regex_ID						{ const_regex_string::ID };
+	const regex regex_number					{ const_regex_string::number };
 
 	const regex regex_all_commands				{ const_regex_string::all_commands_string };
 	const regex regex_arithmetical_expression	{ const_regex_string::arithmetical_expression };
