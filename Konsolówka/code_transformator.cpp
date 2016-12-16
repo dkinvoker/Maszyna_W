@@ -1,8 +1,9 @@
 #include "code_transformator.h"
 
+
 //---------------------------
 //OH KURNA to jest mistrzostwo chiñskiego programowania..... 
-string Char_to_asci_code_as_string (char arg_char)
+string Char_to_asci_code_as_string(char arg_char)
 {
 	int buffer = arg_char;
 	return to_string(buffer);

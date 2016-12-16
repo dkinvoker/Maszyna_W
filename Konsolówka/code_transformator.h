@@ -10,7 +10,7 @@
 #include "Struct_header.h"
 #include "Tag_menager.h"
 #include "Command.h"
-//#include "translate_string.h"
+#include "translate_string.h"
 
 
 using namespace std;

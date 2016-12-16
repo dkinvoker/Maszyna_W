@@ -75,6 +75,9 @@ int main()
 
 	// KONIEC SEKCJI TESTOWEJ
 
+	vector<Command*> lel;
+	lel.push_back(new Declaration{"xD"});
+
 	log_file << "\n KONIEC \n";
 
 	output_file.close();
