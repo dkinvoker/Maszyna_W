@@ -10,6 +10,7 @@
 #include "Struct_header.h"
 #include "Tag_menager.h"
 #include "Command.h"
+//#include "translate_string.h"
 
 
 using namespace std;
@@ -32,14 +33,24 @@ class code_transformator
 	vector<W_Assembler_line> program;
 	vector<W_Assembler_line> data;
 
+	Tag_menager tag_menager;
+
+	string last_success;
+	bool was_last_success_if;
 	
+
+	void save_one_line_of_assembler_code(W_Assembler_line &line);
+
 
 	//queue<unsigned long long int>box_open_index;
 	//stack<unsigned long long int>box_close_index;
 
 public:
 
-	Tag_menager tag_menager;
+	//returns last successfully translated command
+	const string get_last_successfully_translated_command();
+
+	void bind_commands();
 
 	//reads code from input to string-buffer and deletes blank symbols
 	void clear_blank_and_save();
@@ -58,18 +69,14 @@ public:
 
 
 	//copy argument Assembler_Section to global-transformator-container
-	void adapt_section(Assembler_section section_to_add)
-	{
-		for (int i = 0; i < section_to_add.program_assembler_vector.size(); i ++)
-		{
-			program.push_back(section_to_add.program_assembler_vector[i]);
-		}
-		for (int i = 0; i < section_to_add.data_assembler_vector.size(); i++)
-		{
-			data.push_back(section_to_add.data_assembler_vector[i]);
-		}
-	}
-	
+	void adapt_section(Assembler_section &section_to_add);
+
+	//translate all commands and save it in private program/data sections
+	//void generate_assembler_code();
+
+	//saving generated code into output file
+	//void save_generated_code();
+
 	code_transformator() = delete;
 	code_transformator(ostream &log_output, ifstream &input, ofstream &output);
 	~code_transformator();

@@ -11,6 +11,18 @@ string Char_to_asci_code_as_string (char arg_char)
 //---------------------------
 
 
+void code_transformator::bind_commands()
+{
+	Command::set_static_tag_menager_ptr(&tag_menager);
+	Command::set_last_success_string_ptr(&last_success);
+	Command::set_was_last_success_if_ptr(&was_last_success_if);
+}
+
+
+const string code_transformator::get_last_successfully_translated_command()
+{
+	return last_success;
+}
 
 void code_transformator::clear_blank_and_save()
 {
@@ -267,6 +279,45 @@ bool code_transformator::code_into_sections()
 //
 //}
 
+void code_transformator::adapt_section(Assembler_section &section_to_add)
+{
+	for (int i = 0; i < section_to_add.program_assembler_vector.size(); i++)
+	{
+		program.push_back(section_to_add.program_assembler_vector[i]);
+	}
+	for (int i = 0; i < section_to_add.data_assembler_vector.size(); i++)
+	{
+		data.push_back(section_to_add.data_assembler_vector[i]);
+	}
+}
+
+
+//void code_transformator::generate_assembler_code()
+//{
+//	this->adapt_section(translate_string(code));
+//}
+
+void code_transformator::save_one_line_of_assembler_code(W_Assembler_line &line)
+{
+	assembler_prg_output_file << line.tag << "\t" << line.W_command << "\t" << line.argument << "\n";
+}
+
+//void code_transformator::save_generated_code()
+//{
+//	for (int i = 0; i < program.size(); i++)
+//	{
+//		this->save_one_line_of_assembler_code(program[i]);
+//	}
+//
+//	//why i < data.size() - 1??? provents from '\n' at the end of file
+//	for (int i = 0; i < data.size() - 1; i++)
+//	{
+//		this->save_one_line_of_assembler_code(data[i]);
+//	}
+//
+//	//provents from '\n' at the end of file
+//	assembler_prg_output_file << data[data.size()-1].tag << "\t" << data[data.size() - 1].W_command << "\t" << data[data.size() - 1].argument;
+//}
 
 Tag_menager& code_transformator::get_tag_menager_ref()
 {
@@ -277,7 +328,6 @@ code_transformator::code_transformator(ostream &log_output, ifstream &input, ofs
 	:
 	log_output(log_output), input(input), assembler_prg_output_file(output)
 {
-	Command::set_static_tag_menager_ptr(&tag_menager);
 }
 
 

@@ -76,7 +76,8 @@ void Equation::extract_components()
 
 	equation_head = command_string.substr(0, eq_index);
 
-	expression = command_string.substr(eq_index + 1, command_string.size() - eq_index);
+	//without semicolon
+	expression = command_string.substr(eq_index + 1, command_string.size() - eq_index - 2);
 
 }
 
@@ -176,6 +177,9 @@ Assembler_section Equation::translate()
 
 	returner.add_program( "£AD", tag_menager_ptr->get_tag_by_name(equation_head) );
 
+
+	*last_success_string_ptr = command_string;
+	*was_last_success_if_ptr = false;
 	return returner;
 }
 

@@ -65,6 +65,9 @@
     <ClInclude Include="equation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="translate_string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="code.troll">

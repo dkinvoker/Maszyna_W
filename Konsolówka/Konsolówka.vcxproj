@@ -136,6 +136,7 @@
     <ClInclude Include="Initialization.h" />
     <ClInclude Include="Struct_header.h" />
     <ClInclude Include="Tag_menager.h" />
+    <ClInclude Include="translate_string.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Asembler.prg" />
