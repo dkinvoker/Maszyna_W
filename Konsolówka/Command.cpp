@@ -16,7 +16,7 @@ void Command::Load_sring_into(string &a)
 //
 //}
 
-void Command::set_static_tag_menager_ptr(Tag_menager* ptr)
+void Command::set_static_tag_menager_ptr(Tag_menager *ptr)
 {
 	tag_menager_ptr = ptr;
 }

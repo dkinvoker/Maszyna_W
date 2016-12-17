@@ -25,12 +25,23 @@ int main()
 	log_file.open("Log.txt");
 	CodeTranformator.bind_commands();
 
-	CodeTranformator.clear_blank_and_save();
-	CodeTranformator.code_into_sections();
-	CodeTranformator.check_syntax();
-	//CodeTranformator.catch_consts();
-	CodeTranformator.generate_assembler_code();
-	CodeTranformator.save_generated_code();
+
+	try
+	{
+		CodeTranformator.clear_blank_and_save();
+		CodeTranformator.code_into_sections();
+		CodeTranformator.check_syntax();
+		//CodeTranformator.catch_consts();
+		CodeTranformator.generate_assembler_code();
+		CodeTranformator.save_generated_code();
+	}
+	catch (const string &Error)
+	{
+			log_file
+				<< Error
+				<< "\n\n" << "Ostatnie wyra¿enie rozwiniête z sukcesem: " << "\n" << CodeTranformator.get_last_successfully_translated_command()
+				<< "\n\n" << "Zaniechanie dalszej pracy\n";
+	}
 
 
 
@@ -76,8 +87,6 @@ int main()
 
 	// KONIEC SEKCJI TESTOWEJ
 
-	vector<Command*> lel;
-	lel.push_back(new Declaration{"xD"});
 
 	log_file << "\n KONIEC \n";
 
