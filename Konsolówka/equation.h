@@ -1,5 +1,9 @@
 #pragma once
+
+
 #include "Command.h"
+
+
 class Equation :
 	public Command
 {

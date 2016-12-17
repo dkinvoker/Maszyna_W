@@ -126,6 +126,7 @@
     <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tag_menager.cpp" />
+    <ClCompile Include="translate_string.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code_transformator.h" />

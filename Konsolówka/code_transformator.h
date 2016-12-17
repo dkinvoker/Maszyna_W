@@ -1,4 +1,6 @@
 #pragma once
+
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -15,7 +17,7 @@
 
 using namespace std;
 
-string Char_to_asci_code_as_string(char arg_char);
+//string Char_to_asci_code_as_string(char arg_char);
 
 
 class code_transformator
@@ -72,10 +74,10 @@ public:
 	void adapt_section(Assembler_section &section_to_add);
 
 	//translate all commands and save it in private program/data sections
-	//void generate_assembler_code();
+	void generate_assembler_code();
 
 	//saving generated code into output file
-	//void save_generated_code();
+	void save_generated_code();
 
 	code_transformator() = delete;
 	code_transformator(ostream &log_output, ifstream &input, ofstream &output);

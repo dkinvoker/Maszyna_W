@@ -1,19 +1,19 @@
 #pragma once
 
+
+
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <regex>
 #include "const_regex.h"
 #include <vector>
-#include <stack>
-#include <algorithm>
-#include <queue>
-#include <array>
-#include <map>
 #include "Struct_header.h"
 #include "Tag_menager.h"
-#include "code_transformator.h"
+
+
+
+
 
 //extern code_transformator Code_Transormator;
 
@@ -45,3 +45,5 @@ public:
 	Command() = delete;
 	~Command();
 };
+
+

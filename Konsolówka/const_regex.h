@@ -1,10 +1,14 @@
 #pragma once
+
+
+
 #include <string>
 #include <regex>
 #include <vector>
 
 
 using namespace std;
+
 
 
 namespace const_regex_string
@@ -162,7 +166,6 @@ namespace const_regex
 	const vector<regex>	all_regex				{ regex_int_declaration, regex_arithmetical_equation, regex_while_expression, regex_if_expression, regex_else_expression, regex_for_expression, regex_input_expression, regex_output_rexpression, regex_sub_declaration, regex_sub_call, regex_start, regex_stack, regex_char_declaration, regex_return, regex_stop, regex_comment };
 
 }
-
 
 
 

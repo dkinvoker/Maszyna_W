@@ -3,11 +3,11 @@
 
 //---------------------------
 //OH KURNA to jest mistrzostwo chiñskiego programowania..... 
-string Char_to_asci_code_as_string(char arg_char)
-{
-	int buffer = arg_char;
-	return to_string(buffer);
-}
+//string Char_to_asci_code_as_string(char arg_char)
+//{
+//	int buffer = arg_char;
+//	return to_string(buffer);
+//}
 
 //---------------------------
 
@@ -43,7 +43,7 @@ bool code_transformator::check_syntax()
 	log_output.flush();
 
 
-	for (int x = 0; x < code_sections.size(); x ++)
+	for (unsigned int x = 0; x < code_sections.size(); x ++)
 	{
 		string code_selected = code_sections[x].code;
 		string buffer;
@@ -51,12 +51,12 @@ bool code_transformator::check_syntax()
 		log_output.flush();
 		unsigned long long int box_open = 0;
 		unsigned long long int box_close = 0;
-		for (int i = 0; i < code_selected.size(); i++)
+		for (unsigned int i = 0; i < code_selected.size(); i++)
 		{
 			if (code_selected[i] == '{')
 			{
 				box_open = i;
-				for (int y = 0; y < box_index.size(); y++)
+				for (unsigned int y = 0; y < box_index.size(); y++)
 				{
 					if (box_index[y][0] == box_open + code_sections[x].begin_index)
 					{
@@ -86,7 +86,7 @@ bool code_transformator::check_syntax()
 			//}
 
 
-			for (int j = 0; j < const_regex::all_regex.size(); j++)
+			for (unsigned int j = 0; j < const_regex::all_regex.size(); j++)
 			{
 
 				if (regex_match(buffer, const_regex::all_regex[j]))
@@ -154,7 +154,7 @@ bool code_transformator::code_into_sections()
 	log_output << "Dzielenie kodu na sekcje\n";
 	log_output.flush();
 
-	for (int i = 0; i < code.size(); i++)
+	for (unsigned int i = 0; i < code.size(); i++)
 	{
 		if (code[i] == '{')
 		{
@@ -173,7 +173,7 @@ bool code_transformator::code_into_sections()
 		return false;
 	}
 
-	for (unsigned long long int i = 0; i < code.size(); i ++)
+	for (unsigned int i = 0; i < code.size(); i ++)
 	{
 		if (code[i] == '{')
 		{
@@ -195,14 +195,14 @@ bool code_transformator::code_into_sections()
 
 
 	code_sections.push_back(code_section{code,0});
-	for (int i = 0; i < box_index.size(); i ++)
+	for (unsigned int i = 0; i < box_index.size(); i ++)
 	{
 		code_sections.push_back(code_section{ code.substr(box_index[i][0] + 1, box_index[i][1] - box_index[i][0] - 1), box_index[i][0]} );
 	}
 
 
 	//Bez tej pêtli nie dzia³a... chuj wie dlaczego
-	for (int i = 1; i < code_sections.size(); i++)
+	for (unsigned int i = 1; i < code_sections.size(); i++)
 	{
 		code_sections[i].begin_index++;
 	}
@@ -282,43 +282,43 @@ bool code_transformator::code_into_sections()
 
 void code_transformator::adapt_section(Assembler_section &section_to_add)
 {
-	for (int i = 0; i < section_to_add.program_assembler_vector.size(); i++)
+	for (unsigned int i = 0; i < section_to_add.program_assembler_vector.size(); i++)
 	{
 		program.push_back(section_to_add.program_assembler_vector[i]);
 	}
-	for (int i = 0; i < section_to_add.data_assembler_vector.size(); i++)
+	for (unsigned int i = 0; i < section_to_add.data_assembler_vector.size(); i++)
 	{
 		data.push_back(section_to_add.data_assembler_vector[i]);
 	}
 }
 
 
-//void code_transformator::generate_assembler_code()
-//{
-//	this->adapt_section(translate_string(code));
-//}
+void code_transformator::generate_assembler_code()
+{
+	this->adapt_section(translate_string(code));
+}
 
 void code_transformator::save_one_line_of_assembler_code(W_Assembler_line &line)
 {
 	assembler_prg_output_file << line.tag << "\t" << line.W_command << "\t" << line.argument << "\n";
 }
 
-//void code_transformator::save_generated_code()
-//{
-//	for (int i = 0; i < program.size(); i++)
-//	{
-//		this->save_one_line_of_assembler_code(program[i]);
-//	}
-//
-//	//why i < data.size() - 1??? provents from '\n' at the end of file
-//	for (int i = 0; i < data.size() - 1; i++)
-//	{
-//		this->save_one_line_of_assembler_code(data[i]);
-//	}
-//
-//	//provents from '\n' at the end of file
-//	assembler_prg_output_file << data[data.size()-1].tag << "\t" << data[data.size() - 1].W_command << "\t" << data[data.size() - 1].argument;
-//}
+void code_transformator::save_generated_code()
+{
+	for (unsigned int i = 0; i < program.size(); i++)
+	{
+		this->save_one_line_of_assembler_code(program[i]);
+	}
+
+	//why i < data.size() - 1??? provents from '\n' at the end of file
+	for (unsigned int i = 0; i < data.size() - 1; i++)
+	{
+		this->save_one_line_of_assembler_code(data[i]);
+	}
+
+	//provents from '\n' at the end of file
+	assembler_prg_output_file << data[data.size()-1].tag << "\t" << data[data.size() - 1].W_command << "\t" << data[data.size() - 1].argument;
+}
 
 Tag_menager& code_transformator::get_tag_menager_ref()
 {

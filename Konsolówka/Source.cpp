@@ -5,6 +5,7 @@
 #include "const_regex.h"
 #include <vector>
 #include "code_transformator.h"
+#include "Command.h"
 #include "Declaration.h"
 #include "Initialization.h"
 #include "equation.h"
@@ -28,8 +29,8 @@ int main()
 	CodeTranformator.code_into_sections();
 	CodeTranformator.check_syntax();
 	//CodeTranformator.catch_consts();
-	//CodeTranformator.generate_assembler_code();
-	//CodeTranformator.save_generated_code();
+	CodeTranformator.generate_assembler_code();
+	CodeTranformator.save_generated_code();
 
 
 

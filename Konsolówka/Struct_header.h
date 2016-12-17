@@ -1,4 +1,6 @@
 #pragma once
+
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -6,12 +8,15 @@
 #include "const_regex.h"
 #include <vector>
 #include <array>
-#include <map>
 #include <sstream>
 
 using namespace std;
 
-
+inline string Char_to_asci_code_as_string(char arg_char)
+{
+	int buffer = arg_char;
+	return to_string(buffer);
+}
 
 struct code_section
 {
@@ -129,3 +134,5 @@ enum int_symbolic_vbalue_to_operators
 	subtract_symbol,
 	multiplication_symbol
 };
+
+

@@ -39,6 +39,9 @@
     <ClCompile Include="equation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="translate_string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const_regex.h">
