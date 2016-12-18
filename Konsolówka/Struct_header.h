@@ -127,7 +127,7 @@ struct Tag_and_its_name
 
 };
 
-enum int_symbolic_vbalue_to_operators
+enum int_symbolic_value_to_operators
 {
 	divid_symbol,
 	add_symbol,
@@ -136,3 +136,12 @@ enum int_symbolic_vbalue_to_operators
 };
 
 
+enum int_symbolic_logic_operators
+{
+	less,
+	greater,
+	equal_to,
+	not_equal_to,
+	less_or_equal_to,
+	greater_or_equal_to
+};

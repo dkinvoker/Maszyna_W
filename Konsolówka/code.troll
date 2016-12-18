@@ -1,4 +1,5 @@
 int DUPA = 5;
+int dupa2 = 5;
 char lel = "A";
 
 DUPA = 3 + 7*lel;

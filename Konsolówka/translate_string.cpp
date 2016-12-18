@@ -52,43 +52,43 @@ Assembler_section translate_string(const string &arg_string)
 					break;
 				case const_regex::index_while_expression:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_if_expression:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_else_expression:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_for_expression:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_input_expression:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_output_expression:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_sub_declaration:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_sub_call:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_start:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_stack:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_char_declaration:
 
@@ -106,15 +106,15 @@ Assembler_section translate_string(const string &arg_string)
 					break;
 				case const_regex::index_return:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_stop:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_comment:
 					buffer.clear();
-					throw "Tego jeszcze nie zaimplementowalem";
+					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 
 

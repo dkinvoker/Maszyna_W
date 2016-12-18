@@ -9,6 +9,7 @@
 #include "Declaration.h"
 #include "Initialization.h"
 #include "equation.h"
+#include "If_expression.h"
 
 using namespace std;
 
@@ -57,29 +58,31 @@ int main()
 	//Equation eq_test{ "_XXX=_XXX+1/DUPA*DUPA-DUPAA;" };
 	//Equation eq_test2{ "DUPA=3;" };
 	//Equation eq_test3{ "DUP=3;" };
+	If_expression test_ifa{"if(troll!=elizabet+8){randomaction}"};
 
 
-	////Initialization test5{ CodeTranformator.code, CodeTranformator };
+	//Initialization test5{ CodeTranformator.code, CodeTranformator };
 	//Initialization test5{ "chara=\"a\";" };
-	//try
-	//{
-	//	CodeTranformator.adapt_section(test.translate());
-	//	//CodeTranformator.adapt_section(test2.translate());
-	//	CodeTranformator.adapt_section(test3.translate());
-	//	CodeTranformator.adapt_section(test4.translate());
-	//	CodeTranformator.adapt_section(test5.translate());
-	//	CodeTranformator.adapt_section(eq_test.translate());
-	//	CodeTranformator.adapt_section(eq_test2.translate());
-	//	CodeTranformator.adapt_section(eq_test3.translate());
+	try
+	{
+		//CodeTranformator.adapt_section(test.translate());
+		////CodeTranformator.adapt_section(test2.translate());
+		//CodeTranformator.adapt_section(test3.translate());
+		//CodeTranformator.adapt_section(test4.translate());
+		//CodeTranformator.adapt_section(test5.translate());
+		//CodeTranformator.adapt_section(eq_test.translate());
+		//CodeTranformator.adapt_section(eq_test2.translate());
+		//CodeTranformator.adapt_section(eq_test3.translate());
+		test_ifa.translate();
 
-	//}
-	//catch (string &Error)
-	//{
-	//	log_file
-	//		<< Error
-	//		<< "\n\n" << "Ostatnie wyra¿enie rozwiniête z sukcesem: " << "\n" << CodeTranformator.get_last_successfully_translated_command()
-	//		<< "\n\n" << "Zaniechanie dalszej pracy\n";
-	//}
+	}
+	catch (string &Error)
+	{
+		log_file
+			<< Error
+			<< "\n\n" << "Ostatnie wyra¿enie rozwiniête z sukcesem: " << "\n" << CodeTranformator.get_last_successfully_translated_command()
+			<< "\n\n" << "Zaniechanie dalszej pracy\n";
+	}
 
 
 
