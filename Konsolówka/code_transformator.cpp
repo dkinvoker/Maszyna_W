@@ -36,7 +36,7 @@ void code_transformator::clear_blank_and_save()
 
 
 
-bool code_transformator::check_syntax()
+void code_transformator::check_syntax()
 {
 
 	log_output << "Sprawdzanie sk³adni:\n";
@@ -49,8 +49,8 @@ bool code_transformator::check_syntax()
 		string buffer;
 		log_output << "\tBlok: "<< x << "\n";
 		log_output.flush();
-		unsigned long long int box_open = 0;
-		unsigned long long int box_close = 0;
+		unsigned int box_open = 0;
+		unsigned int box_close = 0;
 		for (unsigned int i = 0; i < code_selected.size(); i++)
 		{
 			if (code_selected[i] == '{')
@@ -131,9 +131,7 @@ bool code_transformator::check_syntax()
 
 		if (!buffer.empty())
 		{
-			log_output << "\t\tBlok zawiera b³¹d sk³adniowy:\n\t" << buffer << "\n";
-			log_output.flush();
-			return false;
+			throw "\t\tBlok zawiera b³¹d sk³adniowy:\n\t" + buffer + "\n";
 		}
 
 		log_output << "\tOK\n\n";
@@ -143,15 +141,14 @@ bool code_transformator::check_syntax()
 	//---------------------------------------------------
 
 	log_output << "\n Sk³adnia OK \n";
-	return true;
 }
 
-bool code_transformator::code_into_sections()
+void code_transformator::code_into_sections()
 {
 	int open_number = 0;
 	int close_number = 0;
 
-	log_output << "Dzielenie kodu na sekcje\n";
+	log_output << "Dzielenie kodu na sekcje:\n";
 	log_output.flush();
 
 	for (unsigned int i = 0; i < code.size(); i++)
@@ -168,9 +165,7 @@ bool code_transformator::code_into_sections()
 
 	if (open_number != close_number)
 	{
-		log_output << "\t\tNiepowodzenie: Liczba klamer otwierajacych nie jest równa liczbie klamer zamykajacych\n";
-		log_output.flush();
-		return false;
+		throw "\t\tNiepowodzenie: Liczba klamer otwierajacych nie jest równa liczbie klamer zamykajacych\n";
 	}
 
 	for (unsigned int i = 0; i < code.size(); i ++)
@@ -210,7 +205,6 @@ bool code_transformator::code_into_sections()
 	log_output << "\t\tOK\n\n";
 	log_output.flush();
 
-	return true;
 }
 
 //void code_transformator::catch_consts()
@@ -295,7 +289,9 @@ void code_transformator::adapt_section(Assembler_section &section_to_add)
 
 void code_transformator::generate_assembler_code()
 {
+	log_output << "\n Generowanie assemblera:\n\n";
 	this->adapt_section(translate_string(code));
+	log_output << "\n\t OK";
 }
 
 void code_transformator::save_one_line_of_assembler_code(W_Assembler_line &line)
@@ -318,6 +314,11 @@ void code_transformator::save_generated_code()
 
 	//provents from '\n' at the end of file
 	assembler_prg_output_file << data[data.size()-1].tag << "\t" << data[data.size() - 1].W_command << "\t" << data[data.size() - 1].argument;
+}
+
+void code_transformator::add_stop_at_the_end()
+{
+	program.push_back( W_Assembler_line{ "", "STP", "" }) ;
 }
 
 Tag_menager& code_transformator::get_tag_menager_ref()

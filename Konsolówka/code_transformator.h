@@ -58,10 +58,10 @@ public:
 	void clear_blank_and_save();
 
 	//checks syntax. return true if succesed, false if fail. Throw log to log_output
-	bool check_syntax();
+	void check_syntax();
 
 	//Divides code into box-sections
-	bool code_into_sections();
+	void code_into_sections();
 
 	//catches_consts_from_code
 	//void catch_consts();
@@ -78,6 +78,9 @@ public:
 
 	//saving generated code into output file
 	void save_generated_code();
+
+	//obvious
+	void add_stop_at_the_end();
 
 	code_transformator() = delete;
 	code_transformator(ostream &log_output, ifstream &input, ofstream &output);

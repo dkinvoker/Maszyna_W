@@ -33,13 +33,14 @@ int main()
 		CodeTranformator.check_syntax();
 		//CodeTranformator.catch_consts();
 		CodeTranformator.generate_assembler_code();
+		CodeTranformator.add_stop_at_the_end();
 		CodeTranformator.save_generated_code();
 	}
 	catch (const string &Error)
 	{
 			log_file
 				<< Error
-				<< "\n\n" << "Ostatnie wyra¿enie rozwiniête z sukcesem: " << "\n" << CodeTranformator.get_last_successfully_translated_command()
+				<< "\n\n" << "Ostatnie wyra¿enie rozwiniête z sukcesem: " << "\n\t" << CodeTranformator.get_last_successfully_translated_command()
 				<< "\n\n" << "Zaniechanie dalszej pracy\n";
 	}
 

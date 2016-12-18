@@ -1,4 +1,4 @@
-Dzielenie kodu na sekcje
+Dzielenie kodu na sekcje:
 		OK
 
 Sprawdzanie sk³adni:
@@ -8,4 +8,8 @@ Sprawdzanie sk³adni:
 
  Sk³adnia OK 
 
+ Generowanie assemblera:
+
+
+	 OK
  KONIEC 

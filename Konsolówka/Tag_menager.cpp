@@ -81,7 +81,7 @@ void Tag_menager::add(string name, int type)
 	}
 	else
 	{
-		throw "B³¹d: próbca redefinicji nazwy: " + name;
+		throw "\tB³¹d: \n\t\tpróbca redefinicji nazwy: " + name;
 	}
 }
 
@@ -103,7 +103,7 @@ const string Tag_menager::get_tag_by_name(string name)
 	{
 		return ptr_to_object->tag;
 	}
-	throw "B³¹d: Odwo³anie do nizdefiniowanej nazwy: " + name;
+	throw "\tB³¹d: \n\t\tOdwo³anie do nizdefiniowanej nazwy: " + name;
 	
 }
 

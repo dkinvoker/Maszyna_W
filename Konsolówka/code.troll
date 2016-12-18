@@ -1,2 +1,4 @@
 int DUPA = 5;
-DUPA = 3;
+char lel = "A";
+
+DUPA = 3 + 7*lel;
