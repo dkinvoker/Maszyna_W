@@ -20,6 +20,7 @@ class Tag_menager
 
 	vector<Tag_and_its_name> Tags_vector;
 	vector<unsigned int> Const_tags_vector;
+	unsigned int number_of_jump_meta_tags = 0;
 
 public:
 
@@ -36,6 +37,10 @@ public:
 	const string get_last_tag();
 	const string get_last_constant_tag();
 	int how_many_tags();
+	void add_next_jump_tag();
+	const string get_last_jump_tag();
+	const string get_last_jump_name();
+	const string get_LAST_BUT_ONE_jump_tag();
 
 	Tag_menager();
 	~Tag_menager();

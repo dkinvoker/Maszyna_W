@@ -1,4 +1,9 @@
 #include "translate_string.h"
+#include "Command.h"
+#include "Declaration.h"
+#include "Initialization.h"
+#include "equation.h"
+#include "If_expression.h"
 
 Assembler_section translate_string(const string &arg_string)
 {
@@ -34,11 +39,11 @@ Assembler_section translate_string(const string &arg_string)
 
 					if (regex_match(buffer, const_regex::regex_int_declaration_no_init))
 					{
-						object_to_translate_ptr_vector.push_back(new Declaration(buffer));
+						object_to_translate_ptr_vector.push_back(new Declaration{ buffer });
 					}
 					else
 					{
-						object_to_translate_ptr_vector.push_back(new Initialization(buffer));
+						object_to_translate_ptr_vector.push_back(new Initialization{ buffer });
 					}
 
 					buffer.clear();
@@ -46,7 +51,7 @@ Assembler_section translate_string(const string &arg_string)
 					break;
 				case const_regex::index_arithmetical_equation:
 
-					object_to_translate_ptr_vector.push_back(new Equation(buffer));
+					object_to_translate_ptr_vector.push_back(new Equation{ buffer });
 					buffer.clear();
 
 					break;
@@ -55,8 +60,10 @@ Assembler_section translate_string(const string &arg_string)
 					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_if_expression:
+					
+					object_to_translate_ptr_vector.push_back(new If_expression{ buffer });
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+					//throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_else_expression:
 					buffer.clear();
@@ -134,8 +141,6 @@ Assembler_section translate_string(const string &arg_string)
 		}
 		throw Error;
 	}
-
-
 
 
 

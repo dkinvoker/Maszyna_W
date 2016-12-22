@@ -131,7 +131,7 @@ void code_transformator::check_syntax()
 
 		if (!buffer.empty())
 		{
-			throw "\t\tBlok zawiera b³¹d sk³adniowy:\n\t" + buffer + "\n";
+			throw string("\t\tBlok zawiera b³¹d sk³adniowy:\n\t" + buffer + "\n");
 		}
 
 		log_output << "\tOK\n\n";
@@ -165,7 +165,7 @@ void code_transformator::code_into_sections()
 
 	if (open_number != close_number)
 	{
-		throw "\t\tNiepowodzenie: Liczba klamer otwierajacych nie jest równa liczbie klamer zamykajacych\n";
+		throw string("\t\tNiepowodzenie: Liczba klamer otwierajacych nie jest równa liczbie klamer zamykajacych\n");
 	}
 
 	for (unsigned int i = 0; i < code.size(); i ++)

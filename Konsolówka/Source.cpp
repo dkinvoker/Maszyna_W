@@ -36,13 +36,15 @@ int main()
 		CodeTranformator.generate_assembler_code();
 		CodeTranformator.add_stop_at_the_end();
 		CodeTranformator.save_generated_code();
+		log_file << "\nTranslacja zakoñczona sukcesem";
 	}
 	catch (const string &Error)
 	{
 			log_file
 				<< Error
 				<< "\n\n" << "Ostatnie wyra¿enie rozwiniête z sukcesem: " << "\n\t" << CodeTranformator.get_last_successfully_translated_command()
-				<< "\n\n" << "Zaniechanie dalszej pracy\n";
+				<< "\n\n" << "Zaniechanie dalszej pracy\n"
+				<< "\n NIEPOWODZENIE";
 	}
 
 
@@ -58,7 +60,7 @@ int main()
 	//Equation eq_test{ "_XXX=_XXX+1/DUPA*DUPA-DUPAA;" };
 	//Equation eq_test2{ "DUPA=3;" };
 	//Equation eq_test3{ "DUP=3;" };
-	If_expression test_ifa{"if(troll!=elizabet+8){randomaction}"};
+	//If_expression test_ifa{"if(troll!=elizabet+8){randomaction}"};
 
 
 	//Initialization test5{ CodeTranformator.code, CodeTranformator };
@@ -73,7 +75,7 @@ int main()
 		//CodeTranformator.adapt_section(eq_test.translate());
 		//CodeTranformator.adapt_section(eq_test2.translate());
 		//CodeTranformator.adapt_section(eq_test3.translate());
-		test_ifa.translate();
+		//test_ifa.translate();
 
 	}
 	catch (string &Error)
@@ -92,7 +94,7 @@ int main()
 	// KONIEC SEKCJI TESTOWEJ
 
 
-	log_file << "\n KONIEC \n";
+	//log_file << "\n KONIEC \n";
 
 	output_file.close();
 	input_file.close();

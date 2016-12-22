@@ -108,7 +108,8 @@ enum Tag_type
 	constant,
 	variable_int,
 	variable_char,
-	sub
+	sub,
+	meta_tag
 };
 
 struct Tag_and_its_name

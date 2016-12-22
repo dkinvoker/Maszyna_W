@@ -40,7 +40,7 @@ bool Tag_menager::add_const(string value)
 
 Tag_and_its_name* Tag_menager::find_by_tag(string tag_to_find)
 {
-	for (int i = 0; i < Tags_vector.size(); i++)
+	for (unsigned int i = 0; i < Tags_vector.size(); i++)
 	{
 		if (Tags_vector[i].tag == tag_to_find)
 		{
@@ -81,7 +81,7 @@ void Tag_menager::add(string name, int type)
 	}
 	else
 	{
-		throw "\tB³¹d: \n\t\tpróbca redefinicji nazwy: " + name;
+		throw string("\tB³¹d: \n\t\tpróbca redefinicji nazwy: " + name);
 	}
 }
 
@@ -103,7 +103,7 @@ const string Tag_menager::get_tag_by_name(string name)
 	{
 		return ptr_to_object->tag;
 	}
-	throw "\tB³¹d: \n\t\tOdwo³anie do nizdefiniowanej nazwy: " + name;
+	throw string("\tB³¹d: \n\t\tOdwo³anie do nizdefiniowanej nazwy: " + name);
 	
 }
 
@@ -111,6 +111,28 @@ const string Tag_menager::get_tag_by_const_value(string value)
 {
 	return (this->find_const_by_value(value))->tag;
 }
+
+void Tag_menager::add_next_jump_tag()
+{
+	this->add("0JUMP" + Int_TO_String(number_of_jump_meta_tags), meta_tag);
+	number_of_jump_meta_tags++;
+}
+
+const string Tag_menager::get_last_jump_tag()
+{
+	return (this->find_by_name("0JUMP" + Int_TO_String(number_of_jump_meta_tags - 1)))->tag;
+}
+
+const string Tag_menager::get_last_jump_name()
+{
+	return "0JUMP" + Int_TO_String(number_of_jump_meta_tags - 1);
+}
+
+const string Tag_menager::get_LAST_BUT_ONE_jump_tag()
+{
+	return (this->find_by_name("0JUMP" + Int_TO_String(number_of_jump_meta_tags - 2)))->tag;
+}
+
 
 Tag_menager::Tag_menager()
 {

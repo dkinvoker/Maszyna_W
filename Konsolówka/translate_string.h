@@ -8,10 +8,7 @@
 #include "const_regex.h"
 #include <vector>
 #include "Struct_header.h"
-#include "Command.h"
-#include "Declaration.h"
-#include "Initialization.h"
-#include "equation.h"
+
 
 using namespace std;
 

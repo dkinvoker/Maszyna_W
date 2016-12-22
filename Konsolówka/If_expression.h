@@ -10,7 +10,13 @@ class If_expression :
 	string code_to_execute;
 
 	//obvious
-	void extract_logic_expresions();
+	void extract_logic_expresions_and_execute_code();
+
+
+	//obvious
+	void register_slot_for_expression_1_result();
+	void register_slot_for_expression_2_result();
+
 
 public:
 
