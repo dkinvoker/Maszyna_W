@@ -16,9 +16,9 @@ class If_expression :
 	Assembler_section make_calculations(string first_expression, bool is_first_const, bool is_first_FullType_expression, string secound_expression, bool is_secound_const, bool is_secound_FullType_expression);
 
 
-	//obvious
-	void register_slot_for_expression_1_result();
-	void register_slot_for_expression_2_result();
+	//obvious; true if it is necessary to add RPA command
+	bool register_slot_for_expression_1_result();
+	bool register_slot_for_expression_2_result();
 
 
 public:

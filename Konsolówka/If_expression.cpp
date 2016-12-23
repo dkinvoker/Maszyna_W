@@ -91,20 +91,24 @@ void If_expression::extract_logic_expresions_and_execute_code()
 const string string_meta_expression1{ "0Expression1" };
 const string string_meta_expression2{ "0Expression2" };
 
-void If_expression::register_slot_for_expression_1_result()
+bool If_expression::register_slot_for_expression_1_result()
 {
 	if (tag_menager_ptr->find_by_name(string_meta_expression1) == nullptr)
 	{
 		tag_menager_ptr->add(string_meta_expression1, meta_tag);
+		return true;
 	}
+	return false;
 }
 
-void If_expression::register_slot_for_expression_2_result()
+bool If_expression::register_slot_for_expression_2_result()
 {
 	if (tag_menager_ptr->find_by_name(string_meta_expression2) == nullptr)
 	{
 		tag_menager_ptr->add(string_meta_expression2, meta_tag);
+		return true;
 	}
+	return false;
 }
 
 Assembler_section If_expression::make_calculations(string first_expression, bool is_first_const, bool is_first_FullType_expression, string secound_expression, bool is_secound_const, bool is_secound_FullType_expression)
@@ -132,14 +136,20 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 	//register
 	if (is_first_FullType_expression)
 	{
-		this->register_slot_for_expression_1_result();
-		first_component = string_meta_expression1 + "=" + first_expression;
+		if (this->register_slot_for_expression_1_result())
+		{
+			returner.add_data(tag_menager_ptr->get_tag_by_name(string_meta_expression1), "RPA", "");
+		}
+		first_component = string_meta_expression1 + "=" + first_expression + ";";
 		adapt_section(returner, Equation{ first_component }.translate());
 	}
 	if (is_secound_FullType_expression)
 	{
-		this->register_slot_for_expression_2_result();
-		first_component = string_meta_expression2 + "=" + secound_expression;
+		if (this->register_slot_for_expression_2_result())
+		{
+			returner.add_data(tag_menager_ptr->get_tag_by_name(string_meta_expression2), "RPA", "");
+		}
+		secound_component = string_meta_expression2 + "=" + secound_expression + ";";
 		adapt_section(returner, Equation{ secound_component }.translate());
 	}
 
@@ -148,8 +158,32 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 	{
 	case int_symbolic_logic_operators::less:
 
-		returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(first_component));
-		returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		if (is_first_const)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(first_component));
+		}
+		else if (is_first_FullType_expression)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(string_meta_expression1));
+		}
+		else
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(first_component));
+		}
+
+		if (is_secound_const)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		}
+		else if (is_secound_FullType_expression)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(string_meta_expression2));
+		}
+		else
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(secound_component));
+		}
+
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOM", tag_menager_ptr->get_last_jump_tag());
 		tag_menager_ptr->add_next_jump_tag();
@@ -162,8 +196,32 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		break;
 	case int_symbolic_logic_operators::greater:
 
-		returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(secound_component));
-		returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(first_component));
+		if (is_secound_const)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		}
+		else if (is_secound_FullType_expression)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(string_meta_expression2));
+		}
+		else
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(secound_component));
+		}
+
+		if (is_first_const)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(first_component));
+		}
+		else if (is_first_FullType_expression)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(string_meta_expression1));
+		}
+		else
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(first_component));
+		}
+
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOM", tag_menager_ptr->get_last_jump_tag());
 		tag_menager_ptr->add_next_jump_tag();
@@ -176,8 +234,31 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		break;
 	case int_symbolic_logic_operators::equal_to:
 
-		returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(first_component));
-		returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		if (is_first_const)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(first_component));
+		}
+		else if (is_first_FullType_expression)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(string_meta_expression1));
+		}
+		else
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(first_component));
+		}
+
+		if (is_secound_const)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		}
+		else if (is_secound_FullType_expression)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(string_meta_expression2));
+		}
+		else
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(secound_component));
+		}
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOZ", tag_menager_ptr->get_last_jump_tag());
 		tag_menager_ptr->add_next_jump_tag();
@@ -189,8 +270,31 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		break;
 	case int_symbolic_logic_operators::greater_or_equal_to:
 
-		returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(first_component));
-		returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		if (is_first_const)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(first_component));
+		}
+		else if (is_first_FullType_expression)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(string_meta_expression1));
+		}
+		else
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(first_component));
+		}
+
+		if (is_secound_const)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		}
+		else if (is_secound_FullType_expression)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(string_meta_expression2));
+		}
+		else
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(secound_component));
+		}
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOM", tag_menager_ptr->get_last_jump_tag());
 		adapt_section(returner, translate_string(code_to_execute));
@@ -199,8 +303,31 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		break;
 	case int_symbolic_logic_operators::less_or_equal_to:
 
-		returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(secound_component));
-		returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(first_component));
+		if (is_secound_const)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		}
+		else if (is_secound_FullType_expression)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(string_meta_expression2));
+		}
+		else
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(secound_component));
+		}
+
+		if (is_first_const)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(first_component));
+		}
+		else if (is_first_FullType_expression)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(string_meta_expression1));
+		}
+		else
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(first_component));
+		}
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOM", tag_menager_ptr->get_last_jump_tag());
 		adapt_section(returner, translate_string(code_to_execute));
@@ -209,8 +336,31 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		break;
 	case int_symbolic_logic_operators::not_equal_to:
 
-		returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(first_component));
-		returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		if (is_first_const)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_const_value(first_component));
+		}
+		else if (is_first_FullType_expression)
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(string_meta_expression1));
+		}
+		else
+		{
+			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(first_component));
+		}
+
+		if (is_secound_const)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_const_value(secound_component));
+		}
+		else if (is_secound_FullType_expression)
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(string_meta_expression2));
+		}
+		else
+		{
+			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(secound_component));
+		}
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOZ", tag_menager_ptr->get_last_jump_tag());
 		adapt_section(returner, translate_string(code_to_execute));
