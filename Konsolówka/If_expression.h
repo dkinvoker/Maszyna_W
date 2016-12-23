@@ -12,6 +12,9 @@ class If_expression :
 	//obvious
 	void extract_logic_expresions_and_execute_code();
 
+	//returns assembler code doing good things ^^
+	Assembler_section make_calculations(string first_expression, bool is_first_const, bool is_first_FullType_expression, string secound_expression, bool is_secound_const, bool is_secound_FullType_expression);
+
 
 	//obvious
 	void register_slot_for_expression_1_result();
