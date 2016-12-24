@@ -37,7 +37,8 @@ public:
 	const string get_last_tag();
 	const string get_last_constant_tag();
 	int how_many_tags();
-	void add_next_jump_tag();
+	//Adds new jump tag, and returns its name
+	const string add_next_jump_tag();
 	const string get_last_jump_tag();
 	const string get_last_jump_name();
 	const string get_LAST_BUT_ONE_jump_tag();

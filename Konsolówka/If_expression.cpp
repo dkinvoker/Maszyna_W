@@ -116,20 +116,21 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 	Assembler_section returner;
 	string first_component = first_expression;
 	string secound_component = secound_expression;
+	string jumper_tag_name;
 
 	//adding const
 	if (is_first_const)
 	{
 		if (tag_menager_ptr->add_const(first_expression))
 		{
-			returner.add_data("RST", first_expression);
+			returner.add_data(tag_menager_ptr->get_tag_by_const_value(first_expression) , "RST", first_expression);
 		}
 	}
 	if (is_secound_const)
 	{
 		if (tag_menager_ptr->add_const(secound_expression))
 		{
-			returner.add_data("RST", secound_expression);
+			returner.add_data(tag_menager_ptr->get_tag_by_const_value(secound_expression) , "RST", secound_expression);
 		}
 	}
 
@@ -186,11 +187,11 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOM", tag_menager_ptr->get_last_jump_tag());
-		tag_menager_ptr->add_next_jump_tag();
+		jumper_tag_name = tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOB", tag_menager_ptr->get_last_jump_tag());
 		returner.add_program(tag_menager_ptr->get_LAST_BUT_ONE_jump_tag(), "", "");
 		adapt_section(returner, translate_string(code_to_execute));
-		returner.add_program(tag_menager_ptr->get_last_jump_tag(), "", "");
+		returner.add_program(tag_menager_ptr->get_tag_by_name(jumper_tag_name), "", "");
 
 
 		break;
@@ -224,11 +225,11 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOM", tag_menager_ptr->get_last_jump_tag());
-		tag_menager_ptr->add_next_jump_tag();
+		jumper_tag_name = tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOB", tag_menager_ptr->get_last_constant_tag());
 		returner.add_program(tag_menager_ptr->get_LAST_BUT_ONE_jump_tag(), "", "");
 		adapt_section(returner, translate_string(code_to_execute));
-		returner.add_program(tag_menager_ptr->get_last_jump_tag(), "", "");
+		returner.add_program(tag_menager_ptr->get_tag_by_name(jumper_tag_name), "", "");
 
 
 		break;
@@ -261,11 +262,11 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		}
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOZ", tag_menager_ptr->get_last_jump_tag());
-		tag_menager_ptr->add_next_jump_tag();
+		jumper_tag_name = tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOB", tag_menager_ptr->get_last_jump_tag());
 		returner.add_program(tag_menager_ptr->get_LAST_BUT_ONE_jump_tag(), "", "");
 		adapt_section(returner, translate_string(code_to_execute));
-		returner.add_program(tag_menager_ptr->get_last_jump_tag(), "", "");
+		returner.add_program(tag_menager_ptr->get_tag_by_name(jumper_tag_name), "", "");
 
 		break;
 	case int_symbolic_logic_operators::greater_or_equal_to:
@@ -295,10 +296,10 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		{
 			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(secound_component));
 		}
-		tag_menager_ptr->add_next_jump_tag();
+		jumper_tag_name = tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOM", tag_menager_ptr->get_last_jump_tag());
 		adapt_section(returner, translate_string(code_to_execute));
-		returner.add_program(tag_menager_ptr->get_last_jump_tag(), "", "");
+		returner.add_program(tag_menager_ptr->get_tag_by_name(jumper_tag_name), "", "");
 
 		break;
 	case int_symbolic_logic_operators::less_or_equal_to:
@@ -328,10 +329,10 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		{
 			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(first_component));
 		}
-		tag_menager_ptr->add_next_jump_tag();
+		jumper_tag_name = tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOM", tag_menager_ptr->get_last_jump_tag());
 		adapt_section(returner, translate_string(code_to_execute));
-		returner.add_program(tag_menager_ptr->get_last_jump_tag(), "", "");
+		returner.add_program(tag_menager_ptr->get_tag_by_name(jumper_tag_name), "", "");
 
 		break;
 	case int_symbolic_logic_operators::not_equal_to:
@@ -361,10 +362,10 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		{
 			returner.add_program("ODE", tag_menager_ptr->get_tag_by_name(secound_component));
 		}
-		tag_menager_ptr->add_next_jump_tag();
+		jumper_tag_name = tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOZ", tag_menager_ptr->get_last_jump_tag());
 		adapt_section(returner, translate_string(code_to_execute));
-		returner.add_program(tag_menager_ptr->get_last_jump_tag(), "", "");
+		returner.add_program(tag_menager_ptr->get_tag_by_name(jumper_tag_name), "", "");
 
 		break;
 	default:

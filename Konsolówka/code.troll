@@ -1,3 +1,19 @@
 int DUPA = -7;
 int lel = 5;
 DUPA = 3 * -7*lel;
+
+if(-7 < 1)
+{
+	if(1!=2)
+	{
+		DUPA = -8;
+		if(2>=2)
+		{
+			lel = DUPA * lel*-1;
+			if(2<1)
+			{
+				lel = DUPA * lel*-1;
+			}
+		}
+	}
+}

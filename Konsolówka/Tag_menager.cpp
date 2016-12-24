@@ -112,10 +112,11 @@ const string Tag_menager::get_tag_by_const_value(string value)
 	return (this->find_const_by_value(value))->tag;
 }
 
-void Tag_menager::add_next_jump_tag()
+const string Tag_menager::add_next_jump_tag()
 {
 	this->add("0JUMP" + Int_TO_String(number_of_jump_meta_tags), meta_tag);
 	number_of_jump_meta_tags++;
+	return this->get_last_jump_name();
 }
 
 const string Tag_menager::get_last_jump_tag()
