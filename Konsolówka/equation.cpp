@@ -47,9 +47,26 @@ void Equation::get_all_expression_information()
 		if ( is_operator_symbol(expression[i]) )
 		{
 			operands_vector.push_back(buffer);
-			buffer = "";
-
 			operators_vector.push_back( get_int_symbolic_value_from_char(expression[i]) );
+
+
+			//negative numbers: skiping the '-' and initializing number as negative
+			if (i+1 >= expression.size())
+			{
+				throw string("Równanie: Przekroczenie zakresu... Teoretycznie niemo¿liwe");
+			}
+			if (expression[i+1] == '-')
+			{
+				buffer = "-";
+				i++;
+			}
+			//Non negative
+			else
+			{
+				buffer = "";
+			}
+
+			
 		}
 		else
 		{

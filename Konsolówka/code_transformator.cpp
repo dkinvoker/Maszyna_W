@@ -289,9 +289,9 @@ void code_transformator::adapt_section(Assembler_section &section_to_add)
 
 void code_transformator::generate_assembler_code()
 {
-	log_output << "\n Generowanie assemblera:\n\n";
+	log_output << "\n Generowanie assemblera:\n";
 	this->adapt_section(translate_string(code));
-	log_output << "\n\t OK";
+	log_output << "\t OK";
 }
 
 void code_transformator::save_one_line_of_assembler_code(W_Assembler_line &line)

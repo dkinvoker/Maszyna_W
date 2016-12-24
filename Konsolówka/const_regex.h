@@ -38,7 +38,7 @@ namespace const_regex_string
 	const string arithmetical_symbol			{ "(\\*|\\+|-|\\/)" };
 	const string logic_symbol					{ "(<|>|(==)|(!=)|(<=)|(>=))" };
 	const string eq								{ "(=)" };
-	const string number							{ "(([[:digit:]])+)" };
+	const string number							{ "((-?)(([[:digit:]])+))" };
 	const string ID_or_number					{ regex_or_regex_STRING(ID, number) };
 	const string any_code_string				{ "(.*)" };
 	const string colon_symbol					{ "\\:" };
