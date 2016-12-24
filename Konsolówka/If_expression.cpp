@@ -456,7 +456,6 @@ Assembler_section If_expression::translate()
 
 
 
-
 	*last_success_string_ptr = command_string;
 	*was_last_success_if_ptr = true;
 }
