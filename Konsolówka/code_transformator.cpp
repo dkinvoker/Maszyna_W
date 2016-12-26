@@ -55,16 +55,17 @@ void code_transformator::check_syntax()
 		{
 			if (code_selected[i] == '{')
 			{
-				box_open = i;
+				box_open = i + code_sections[x].begin_index;
 				for (unsigned int y = 0; y < box_index.size(); y++)
 				{
-					if (box_index[y][0] == box_open + code_sections[x].begin_index)
+					if (box_index[y][0] == box_open)
 					{
 						box_close = box_index[y][1] - code_sections[x].begin_index;
+						box_open = box_open;
 						break;
 					}
 				}
-				buffer = buffer + code_selected.substr(box_open, box_close - box_open);
+				buffer = buffer + code_selected.substr(i, box_close - i + 1);
 			}
 			else
 			{
