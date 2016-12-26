@@ -8,7 +8,6 @@
 //	int buffer = arg_char;
 //	return to_string(buffer);
 //}
-
 //---------------------------
 
 
@@ -292,7 +291,7 @@ void code_transformator::generate_assembler_code()
 {
 	log_output << "\n Generowanie assemblera:\n";
 	this->adapt_section(translate_string(code));
-	log_output << "\t OK";
+	log_output << "\tOK";
 }
 
 void code_transformator::save_one_line_of_assembler_code(W_Assembler_line &line)
@@ -335,7 +334,7 @@ void code_transformator::merge_tags()
 	vector<tag_swaps> swaping_tags;
 
 	//detecting swaps
-	for (int i = 0; i < program.size() - 1; i++)
+	for (unsigned int i = 0; i < program.size() - 1; i++)
 	{
 		if (program[i].is_just_tag() && program[i+1].is_just_tag())
 		{
@@ -344,10 +343,10 @@ void code_transformator::merge_tags()
 	}
 
 	//reduction
-	for (int i = 0; i < swaping_tags.size(); i ++)
+	for (unsigned int i = 0; i < swaping_tags.size(); i ++)
 	{
 		tag_swaps buffer = swaping_tags[i];
-		for (int j = 0; j < swaping_tags.size(); j++)
+		for (unsigned int j = 0; j < swaping_tags.size(); j++)
 		{
 			if (swaping_tags[j].swaper == buffer.swaped_tag)
 			{
@@ -387,7 +386,45 @@ void code_transformator::merge_tags()
 
 
 	program = returning_swaping_asembler_line_vector;
-	log_output << "\nOK";
+	log_output << "\n\tOK";
+}
+
+
+void code_transformator::execute_meta_commands()
+{
+	log_output << "\nWykonywanie Meta-Rozkazów";
+
+	vector<W_Assembler_line> returning_program;
+	W_Assembler_line buffer{"", "", ""};
+
+	for (unsigned int i = 0; i < program.size(); i ++)
+	{
+		switch (command_to_meta_ID(program[i].W_command))
+		{
+		case meta_command_ID::REVERSE:
+
+			program[i].W_command = "DELETE";
+			buffer = program[i - 1];
+			program[i - 1] = program[i + 1];
+			program[i + 1] = buffer;
+
+			break;
+		default:
+			break;
+		}
+	}
+
+	for (unsigned int i = 0; i < program.size(); i++)
+	{
+		if (!(program[i].W_command == "DELETE"))
+		{
+			returning_program.push_back(program[i]);
+		}
+	}
+
+	program = returning_program;
+	log_output << "\n\tOK";
+
 }
 
 code_transformator::code_transformator(ostream &log_output, ifstream &input, ofstream &output)

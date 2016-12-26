@@ -17,6 +17,14 @@ if(-7 < 1)
 			if(2<1)
 			{
 				lel = DUPA * lel*-1;
+				if(DUPA == 1)
+				{
+					DUPA = DUPA + DUPA;
+				}
+				else
+				{
+					DUPA = DUPA - 9;
+				}
 			}
 			DUPA = -8;
 		}

@@ -4,6 +4,7 @@
 #include "Initialization.h"
 #include "equation.h"
 #include "If_expression.h"
+#include "Else_expression.h"
 
 Assembler_section translate_string(const string &arg_string)
 {
@@ -63,11 +64,13 @@ Assembler_section translate_string(const string &arg_string)
 					
 					object_to_translate_ptr_vector.push_back(new If_expression{ buffer });
 					buffer.clear();
-					//throw string("Tego jeszcze nie zaimplementowalem");
+					
 					break;
 				case const_regex::index_else_expression:
+
+					object_to_translate_ptr_vector.push_back(new Else_expression{ buffer });
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 				case const_regex::index_for_expression:
 					buffer.clear();

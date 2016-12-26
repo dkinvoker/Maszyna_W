@@ -45,6 +45,11 @@ enum int_symbolic_logic_operators
 	greater_or_equal_to
 };
 
+enum meta_command_ID
+{
+	no_meta,
+	REVERSE
+};
 
 inline string Char_to_asci_code_as_string(char arg_char)
 {
@@ -55,6 +60,18 @@ inline string Char_to_asci_code_as_string(char arg_char)
 inline string return_without_last_symbol (string a)
 {
 	return a.substr(0, a.size() - 1);
+}
+
+inline int command_to_meta_ID(string a)
+{
+	if (a == "REVERSE")
+	{
+		return meta_command_ID::REVERSE;
+	}
+	else
+	{
+		return meta_command_ID::no_meta;
+	}
 }
 
 struct tag_swaps
@@ -159,6 +176,11 @@ struct Assembler_section
 	void add_program(string command, string argument)
 	{
 		program_assembler_vector.push_back(W_Assembler_line{ "", command, argument });
+	}
+
+	void add_meta_command(string meta_command)
+	{
+		program_assembler_vector.push_back(W_Assembler_line{ "", meta_command, "" });
 	}
 
 };

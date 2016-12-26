@@ -122,6 +122,7 @@
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="const_regex.cpp" />
     <ClCompile Include="Declaration.cpp" />
+    <ClCompile Include="Else_expression.cpp" />
     <ClCompile Include="equation.cpp" />
     <ClCompile Include="If_expression.cpp" />
     <ClCompile Include="Initialization.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="const_regex.h" />
     <ClInclude Include="Declaration.h" />
+    <ClInclude Include="Else_expression.h" />
     <ClInclude Include="equation.h" />
     <ClInclude Include="If_expression.h" />
     <ClInclude Include="Initialization.h" />
