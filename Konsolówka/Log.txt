@@ -22,4 +22,5 @@ Sprawdzanie sk³adni:
 
  Generowanie assemblera:
 	 OK
+
 Translacja zakoñczona sukcesem

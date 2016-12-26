@@ -46,8 +46,18 @@ void Equation::get_all_expression_information()
 	{
 		if ( is_operator_symbol(expression[i]) )
 		{
-			operands_vector.push_back(buffer);
-			operators_vector.push_back( get_int_symbolic_value_from_char(expression[i]) );
+			//checking if first operand is negative.... (lel = -8)
+			if (buffer.size() != 0)
+			{
+				operands_vector.push_back(buffer);
+				operators_vector.push_back( get_int_symbolic_value_from_char(expression[i]) );
+			}
+			else
+			{
+				buffer = "-";
+				continue;
+			}
+			
 
 
 			//negative numbers: skiping the '-' and initializing number as negative
@@ -187,7 +197,7 @@ Assembler_section Equation::translate()
 
 			break;
 		default:
-			throw "RÓWNANIE: NIEZNANY OPERATOR!!!!!!" ;
+			throw string("RÓWNANIE: NIEZNANY OPERATOR!!!!!!") ;
 			break;
 		}
 	}
