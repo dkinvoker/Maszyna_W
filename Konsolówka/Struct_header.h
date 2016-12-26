@@ -12,11 +12,62 @@
 
 using namespace std;
 
+enum Assembler_type
+{
+	program_type,
+	data_type
+};
+
+enum Tag_type
+{
+	constant,
+	variable_int,
+	variable_char,
+	sub,
+	meta_tag
+};
+
+enum int_symbolic_value_to_operators
+{
+	divid_symbol,
+	add_symbol,
+	subtract_symbol,
+	multiplication_symbol
+};
+
+enum int_symbolic_logic_operators
+{
+	less,
+	greater,
+	equal_to,
+	not_equal_to,
+	less_or_equal_to,
+	greater_or_equal_to
+};
+
+
 inline string Char_to_asci_code_as_string(char arg_char)
 {
 	int buffer = arg_char;
 	return to_string(buffer);
 }
+
+inline string return_without_last_symbol (string a)
+{
+	return a.substr(0, a.size() - 1);
+}
+
+struct tag_swaps
+{
+	string swaped_tag;
+	string swaper;
+
+	tag_swaps(string swaped, string swaper)
+		:
+		swaped_tag(swaped), swaper(swaper)
+	{
+	}
+};
 
 struct code_section
 {
@@ -36,6 +87,21 @@ struct W_Assembler_line
 	string tag;
 	string W_command;
 	string argument;
+
+
+	bool is_just_tag()
+	{
+		if (tag != "" && W_command == "" && argument == "")
+		{
+			return true;
+		}
+		return false;
+	}
+
+	W_Assembler_line return_with_swaped_tag(string swaper_tag)
+	{
+		return W_Assembler_line{this->tag, this->W_command, swaper_tag};
+	}
 
 	W_Assembler_line(string tag, string W_command, string argument)
 		:
@@ -70,11 +136,6 @@ struct Const_expresion
 	}
 };
 
-enum Assembler_type
-{
-	program_type,
-	data_type
-};
 
 struct Assembler_section
 {
@@ -103,15 +164,6 @@ struct Assembler_section
 };
 
 
-enum Tag_type
-{
-	constant,
-	variable_int,
-	variable_char,
-	sub,
-	meta_tag
-};
-
 struct Tag_and_its_name
 {
 	string name;
@@ -128,21 +180,4 @@ struct Tag_and_its_name
 
 };
 
-enum int_symbolic_value_to_operators
-{
-	divid_symbol,
-	add_symbol,
-	subtract_symbol,
-	multiplication_symbol
-};
 
-
-enum int_symbolic_logic_operators
-{
-	less,
-	greater,
-	equal_to,
-	not_equal_to,
-	less_or_equal_to,
-	greater_or_equal_to
-};

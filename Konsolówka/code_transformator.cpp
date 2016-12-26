@@ -327,6 +327,69 @@ Tag_menager& code_transformator::get_tag_menager_ref()
 	return tag_menager;
 }
 
+void code_transformator::merge_tags()
+{
+	log_output << "\nScalanie Etykiet";
+
+	vector<W_Assembler_line> returning_swaping_asembler_line_vector;
+	vector<tag_swaps> swaping_tags;
+
+	//detecting swaps
+	for (int i = 0; i < program.size() - 1; i++)
+	{
+		if (program[i].is_just_tag() && program[i+1].is_just_tag())
+		{
+			swaping_tags.push_back(tag_swaps{ return_without_last_symbol(program[i].tag), return_without_last_symbol(program[i+1].tag) });
+		}
+	}
+
+	//reduction
+	for (int i = 0; i < swaping_tags.size(); i ++)
+	{
+		tag_swaps buffer = swaping_tags[i];
+		for (int j = 0; j < swaping_tags.size(); j++)
+		{
+			if (swaping_tags[j].swaper == buffer.swaped_tag)
+			{
+				swaping_tags[j].swaper = buffer.swaper;
+			}
+		}
+	}
+
+
+
+	//swaping
+	bool copy;
+	for (unsigned int i = 0; i < program.size(); i++)
+	{
+		for (unsigned int  j = 0; j < swaping_tags.size(); j++)
+		{
+			copy = true;
+			if (program[i].argument == swaping_tags[j].swaped_tag)
+			{
+				returning_swaping_asembler_line_vector.push_back(program[i].return_with_swaped_tag(swaping_tags[j].swaper));
+				copy = false;
+				break;
+			}
+			else if (program[i].tag == swaping_tags[j].swaped_tag + ":")
+			{
+				copy = false;
+				break;
+			}
+			
+		}
+		if (copy)
+		{
+			returning_swaping_asembler_line_vector.push_back(program[i]);
+		}
+		
+	}
+
+
+	program = returning_swaping_asembler_line_vector;
+	log_output << "\nOK";
+}
+
 code_transformator::code_transformator(ostream &log_output, ifstream &input, ofstream &output)
 	:
 	log_output(log_output), input(input), assembler_prg_output_file(output)

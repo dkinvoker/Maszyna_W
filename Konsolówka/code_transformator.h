@@ -82,6 +82,9 @@ public:
 	//obvious
 	void add_stop_at_the_end();
 
+	//two tags into one tag!
+	void merge_tags();
+
 	code_transformator() = delete;
 	code_transformator(ostream &log_output, ifstream &input, ofstream &output);
 	~code_transformator();

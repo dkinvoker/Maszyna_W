@@ -1,5 +1,5 @@
 int katapulta;
-katapulta = -6;
+katapulta = -6 -- 1;
 int DUPA = -7;
 int lel = 5;
 DUPA = 3 * -7*lel;
