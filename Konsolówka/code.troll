@@ -1,32 +1,5 @@
-int katapulta;
-katapulta = -6 -- 1;
-int DUPA = -7;
-int lel = 5;
-DUPA = 3 * -7*lel;
-
-DUPA = 8;
-
-if(-7 < 1)
+char a = "A";
+while (1 < 2)
 {
-	if(1!=2)
-	{
-		DUPA = -8;
-		if(2>=2)
-		{
-			lel = DUPA * lel*-1;
-			if(2<1)
-			{
-				lel = DUPA * lel*-1;
-				if(DUPA == 1)
-				{
-					DUPA = DUPA + DUPA;
-				}
-				else
-				{
-					DUPA = DUPA - 9;
-				}
-			}
-			DUPA = -8;
-		}
-	}
+	a = a+-8;
 }

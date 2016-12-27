@@ -2,7 +2,11 @@
 #include "equation.h"
 #include "translate_string.h"
 
-void extract_logic_symbol_and_indexes(string &arg_string, int &logic_operator, unsigned int &logic_symbol_start_index, unsigned int &logic_symbol_end_index)
+const string string_meta_expression1{ "0Expression1" };
+const string string_meta_expression2{ "0Expression2" };
+
+
+void If_expression::extract_logic_symbol_and_indexes(string &arg_string, int &logic_operator, unsigned int &logic_symbol_start_index, unsigned int &logic_symbol_end_index)
 {
 	for (unsigned int i = 0; i < arg_string.size(); i ++)
 	{
@@ -10,7 +14,7 @@ void extract_logic_symbol_and_indexes(string &arg_string, int &logic_operator, u
 		{
 			if (arg_string[i+1] == '=')
 			{
-				logic_operator = less_or_equal_to;
+				logic_operator = int_symbolic_logic_operators::less_or_equal_to;
 				logic_symbol_start_index = i;
 				logic_symbol_end_index = i + 1;
 				break;
@@ -25,7 +29,7 @@ void extract_logic_symbol_and_indexes(string &arg_string, int &logic_operator, u
 		}
 		else if (arg_string[i] == '!')
 		{
-			logic_operator = not_equal_to;
+			logic_operator = int_symbolic_logic_operators::not_equal_to;
 			logic_symbol_start_index = i;
 			logic_symbol_end_index = i + 1;
 			break;
@@ -34,7 +38,7 @@ void extract_logic_symbol_and_indexes(string &arg_string, int &logic_operator, u
 		{
 			if (arg_string[i + 1] == '=')
 			{
-				logic_operator = greater_or_equal_to;
+				logic_operator = int_symbolic_logic_operators::greater_or_equal_to;
 				logic_symbol_start_index = i;
 				logic_symbol_end_index = i + 1;
 				break;
@@ -88,8 +92,6 @@ void If_expression::extract_logic_expresions_and_execute_code()
 
 }
 
-const string string_meta_expression1{ "0Expression1" };
-const string string_meta_expression2{ "0Expression2" };
 
 bool If_expression::register_slot_for_expression_1_result()
 {
@@ -382,7 +384,6 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 
 Assembler_section If_expression::translate()
 {
-
 	this->extract_logic_expresions_and_execute_code();
 
 

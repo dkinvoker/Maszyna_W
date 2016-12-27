@@ -8,30 +8,14 @@ Sprawdzanie sk³adni:
 	Blok: 1
 	OK
 
-	Blok: 2
-	OK
-
-	Blok: 3
-	OK
-
-	Blok: 4
-	OK
-
-	Blok: 5
-	OK
-
-	Blok: 6
-	OK
-
 
  Sk³adnia OK 
 
  Generowanie assemblera:
-S³owo kluczowe 'else' nie mo¿e wystêpowaæ samodzielnie
+	OK
+Scalanie Etykiet
+	OK
+Wykonywanie Meta-Rozkazów
+	OK
 
-Ostatnie wyra¿enie rozwiniête z sukcesem: 
-	DUPA=DUPA+DUPA;
-
-Zaniechanie dalszej pracy
-
- NIEPOWODZENIE
+Translacja zakoñczona sukcesem

@@ -7,7 +7,7 @@ Assembler_section Else_expression::translate()
 	string tag_to_the_else_end;
 	if (*was_last_success_if_ptr == false)
 	{
-		throw string("S³owo kluczowe 'else' nie mo¿e wystêpowaæ samodzielnie");
+		throw string("Blok 'else' musi wystêpowaæ bezpoœrednio po bloku 'if'");
 	}
 
 	//Must to skip '{', '}' and 'else'

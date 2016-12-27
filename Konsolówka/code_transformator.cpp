@@ -358,7 +358,7 @@ void code_transformator::merge_tags()
 
 
 	//swaping
-	bool copy;
+	bool copy = true;
 	for (unsigned int i = 0; i < program.size(); i++)
 	{
 		for (unsigned int  j = 0; j < swaping_tags.size(); j++)
