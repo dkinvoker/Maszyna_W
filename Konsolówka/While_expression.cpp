@@ -22,7 +22,7 @@ Assembler_section While_expression::translate()
 
 
 	*last_success_string_ptr = command_string;
-	*was_last_success_if_ptr = true;
+	*was_last_success_if_ptr = false;
 	return returner;
 }
 

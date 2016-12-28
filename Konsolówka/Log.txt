@@ -8,6 +8,15 @@ Sprawdzanie sk³adni:
 	Blok: 1
 	OK
 
+	Blok: 2
+	OK
+
+	Blok: 3
+	OK
+
+	Blok: 4
+	OK
+
 
  Sk³adnia OK 
 
