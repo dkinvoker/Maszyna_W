@@ -124,6 +124,7 @@
     <ClCompile Include="Declaration.cpp" />
     <ClCompile Include="Else_expression.cpp" />
     <ClCompile Include="equation.cpp" />
+    <ClCompile Include="For_expression.cpp" />
     <ClCompile Include="If_expression.cpp" />
     <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="Declaration.h" />
     <ClInclude Include="Else_expression.h" />
     <ClInclude Include="equation.h" />
+    <ClInclude Include="For_expression.h" />
     <ClInclude Include="If_expression.h" />
     <ClInclude Include="Initialization.h" />
     <ClInclude Include="Struct_header.h" />

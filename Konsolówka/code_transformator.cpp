@@ -409,6 +409,12 @@ void code_transformator::execute_meta_commands()
 			program[i + 1] = buffer;
 
 			break;
+		case meta_command_ID::DELETE_UP:
+
+			program[i - 1].W_command = "DELETE";
+			program[i].W_command = "DELETE";
+
+			break;
 		default:
 			break;
 		}

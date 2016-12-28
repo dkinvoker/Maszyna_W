@@ -6,6 +6,7 @@
 #include "If_expression.h"
 #include "Else_expression.h"
 #include "While_expression.h"
+#include "For_expression.h"
 
 Assembler_section translate_string(const string &arg_string)
 {
@@ -76,8 +77,10 @@ Assembler_section translate_string(const string &arg_string)
 
 					break;
 				case const_regex::index_for_expression:
+
+					object_to_translate_ptr_vector.push_back(new For_expression{ buffer });
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 				case const_regex::index_input_expression:
 					buffer.clear();

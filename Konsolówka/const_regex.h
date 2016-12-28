@@ -65,10 +65,11 @@ namespace const_regex_string
 	const string arithmetical_expression					{ regex_or_regex_STRING (ID_or_number, ID_or_number + multi_regex_STRING(arithmetical_symbol + ID_or_number)) };
 	const string logic_expression							{ "(" + arithmetical_expression + logic_symbol + arithmetical_expression + ")" };
 	const string arithmetical_equation						{ ID + eq + arithmetical_expression + semicolon_symbol };
+	const string arithmetical_equation_without_semicolon    { ID + eq + arithmetical_expression };
 
 	const string any_code_in_box							{ regex_in_box_STRING(any_code_string) };
 	const string logic_condition_and_box					{ regex_in_brackets_characters_STRING(logic_expression) + any_code_in_box };
-	const string for_for_logic_expression					{ regex_in_brackets_characters_STRING(arithmetical_equation + logic_expression + semicolon_symbol + arithmetical_equation) };
+	const string for_for_logic_expression					{ regex_in_brackets_characters_STRING(arithmetical_equation + logic_expression + semicolon_symbol + arithmetical_equation_without_semicolon) };
 	const string code_surrounded_by_quotation_marks			{ regex_surrounded_STRING(any_code_string,quotation_mark_symbol) };
 	const string string_expression_surrounded_by_brackets	{ regex_in_brackets_characters_STRING(code_surrounded_by_quotation_marks) };
 	const string sub_parameters								{ regex_in_brackets_characters_STRING(ID + multi_regex_STRING(comma_symbol + ID)) };

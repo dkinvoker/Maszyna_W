@@ -432,7 +432,6 @@ Assembler_section If_expression::translate()
 			//1- variable
 			else
 			{
-
 				return this->make_calculations(expression_1, false, false, expression_2, false, true);
 			}
 		}

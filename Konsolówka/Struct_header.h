@@ -48,7 +48,8 @@ enum int_symbolic_logic_operators
 enum meta_command_ID
 {
 	no_meta,
-	REVERSE
+	REVERSE,
+	DELETE_UP
 };
 
 inline string Char_to_asci_code_as_string(char arg_char)
@@ -67,6 +68,10 @@ inline int command_to_meta_ID(string a)
 	if (a == "REVERSE")
 	{
 		return meta_command_ID::REVERSE;
+	}
+	else if (a == "DELETE_UP")
+	{
+		return meta_command_ID::DELETE_UP;
 	}
 	else
 	{

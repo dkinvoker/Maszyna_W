@@ -5,15 +5,15 @@
 class If_expression :
 	public Command
 {
+protected: 
+	string code_to_execute;
 
-protected:
+private:
 	string expression_1;
 	string expression_2;
 	int logic_operator;
-	string code_to_execute;
 
-	static void extract_logic_symbol_and_indexes(string &arg_string, int &logic_operator, unsigned int &logic_symbol_start_index, unsigned int &logic_symbol_end_index);
-
+	void extract_logic_symbol_and_indexes(string &arg_string, int &logic_operator, unsigned int &logic_symbol_start_index, unsigned int &logic_symbol_end_index);
 
 	//obvious
 	void extract_logic_expresions_and_execute_code();
@@ -28,8 +28,6 @@ protected:
 
 
 public:
-
-
 	virtual Assembler_section translate();
 	If_expression(string code);
 	If_expression() = delete;
