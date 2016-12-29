@@ -7,6 +7,8 @@
 #include "Else_expression.h"
 #include "While_expression.h"
 #include "For_expression.h"
+#include "Start_command.h"
+#include "Output_expression.h"
 
 Assembler_section translate_string(const string &arg_string)
 {
@@ -87,8 +89,10 @@ Assembler_section translate_string(const string &arg_string)
 					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_output_expression:
+
+					object_to_translate_ptr_vector.push_back(new Output_expression{ buffer });
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 				case const_regex::index_sub_declaration:
 					buffer.clear();
@@ -99,8 +103,10 @@ Assembler_section translate_string(const string &arg_string)
 					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_start:
+
+					object_to_translate_ptr_vector.push_back(new Start_command{ buffer });
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 				case const_regex::index_char_declaration:
 

@@ -127,6 +127,7 @@
     <ClCompile Include="For_expression.cpp" />
     <ClCompile Include="If_expression.cpp" />
     <ClCompile Include="Initialization.cpp" />
+    <ClCompile Include="Output_expression.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tag_menager.cpp" />
     <ClCompile Include="translate_string.cpp" />
@@ -142,6 +143,8 @@
     <ClInclude Include="For_expression.h" />
     <ClInclude Include="If_expression.h" />
     <ClInclude Include="Initialization.h" />
+    <ClInclude Include="Output_expression.h" />
+    <ClInclude Include="Start_command.h" />
     <ClInclude Include="Struct_header.h" />
     <ClInclude Include="Tag_menager.h" />
     <ClInclude Include="translate_string.h" />

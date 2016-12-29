@@ -37,6 +37,8 @@ int main()
 		CodeTranformator.merge_tags();
 		CodeTranformator.execute_meta_commands();
 		CodeTranformator.merge_tags();
+		CodeTranformator.save_start_to_the_file();
+		CodeTranformator.save_additional_subs();
 		CodeTranformator.add_stop_at_the_end();
 		CodeTranformator.save_generated_code();
 		log_file << "\n\nTranslacja zakoñczona sukcesem";

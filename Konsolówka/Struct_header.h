@@ -49,6 +49,8 @@ enum meta_command_ID
 {
 	no_meta,
 	REVERSE,
+	START,
+	GENERATE_OUTPUT,
 	DELETE_UP
 };
 
@@ -72,6 +74,14 @@ inline int command_to_meta_ID(string a)
 	else if (a == "DELETE_UP")
 	{
 		return meta_command_ID::DELETE_UP;
+	}
+	else if (a == "START")
+	{
+		return meta_command_ID::START;
+	}
+	else if (a == "GENERATE_OUTPUT")
+	{
+		return meta_command_ID::GENERATE_OUTPUT;
 	}
 	else
 	{

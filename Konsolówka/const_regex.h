@@ -70,7 +70,7 @@ namespace const_regex_string
 	const string any_code_in_box							{ regex_in_box_STRING(any_code_string) };
 	const string logic_condition_and_box					{ regex_in_brackets_characters_STRING(logic_expression) + any_code_in_box };
 	const string for_for_logic_expression					{ regex_in_brackets_characters_STRING(arithmetical_equation + logic_expression + semicolon_symbol + arithmetical_equation_without_semicolon) };
-	const string code_surrounded_by_quotation_marks			{ regex_surrounded_STRING(any_code_string,quotation_mark_symbol) };
+	const string code_surrounded_by_quotation_marks			{ regex_surrounded_STRING(any_code_string, quotation_mark_symbol) };
 	const string string_expression_surrounded_by_brackets	{ regex_in_brackets_characters_STRING(code_surrounded_by_quotation_marks) };
 	const string sub_parameters								{ regex_in_brackets_characters_STRING(ID + multi_regex_STRING(comma_symbol + ID)) };
 	const string sub_variables_to_call_with					{ regex_separation_STRING(sub_parameters, sub_parameters, colon_symbol) };
@@ -146,6 +146,7 @@ namespace const_regex
 	const regex regex_output_ID					{ const_regex_string::output_expression_ID };
 	const regex regex_output_string				{ const_regex_string::output_string };
 
+	const regex output_ID						{ const_regex_string::output_expression_ID };
 
 	const regex regex_arithmetical_equation		{ const_regex_string::arithmetical_equation };
 	const regex regex_while_expression			{ const_regex_string::while_expression_string };
@@ -157,7 +158,6 @@ namespace const_regex
 	const regex regex_sub_declaration			{ const_regex_string::sub_declaration_expression_string };
 	const regex regex_sub_call					{ const_regex_string::sub_call_expression_string };
 	const regex regex_start						{ const_regex_string::start_expression_string };
-	//const regex regex_stack						{ const_regex_string::stack_expression_string };
 	const regex regex_int_declaration			{ const_regex_string::int_declaration };
 	const regex regex_char_declaration			{ const_regex_string::char_declaration };
 	const regex regex_return					{ const_regex_string::return_expression };

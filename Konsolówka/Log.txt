@@ -3,13 +3,21 @@ Dzielenie kodu na sekcje:
 
 Sprawdzanie sk³adni:
 	Blok: 0
-		Blok zawiera b³¹d sk³adniowy:
-	stack10;for(i=0;i<10;i=i+1){i=-1;while(i!=2*i){for(i=0;9==0*i--5/-8;i=i*-9){}if(1<2){if(2<1){}else{i=i+i*i;}}else{}i=12*i;}i=i*-4;}i=-1;while(i!=2*i){for(i=0;9==0*i--5/-8;i=i*-9){}if(1<2){if(2<1){}else{i=i+i*i;}}else{}i=12*i;}for(i=0;9==0*i--5/-8;i=i*-9){}}if(1<2){if(2<1){}else{i=i+i*i;}}if(2<1){}}else{i=i+i*i;}i=i+i*i;}}else{}}i=12*i;}i=i*-4;}
+	OK
 
 
-Ostatnie wyra¿enie rozwiniête z sukcesem: 
-	
+ Sk³adnia OK 
 
-Zaniechanie dalszej pracy
+ Generowanie assemblera:
+	OK
+Scalanie Etykiet
+	OK
+Wykonywanie Meta-Rozkazów
+	OK
+Scalanie Etykiet
+	OK
+Dodawanie predefiniowanych procedur:
+	OK
 
- NIEPOWODZENIE
+
+Translacja zakoñczona sukcesem

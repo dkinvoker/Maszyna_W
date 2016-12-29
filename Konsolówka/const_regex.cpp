@@ -18,7 +18,7 @@ string const_regex_string::regex_in_brackets_characters_STRING(string regex_stri
 string const_regex_string::multi_OR_regex_STRING(vector<string> alternative_strings)
 {
 	string buffer_string;
-	for (int i = 0; i < alternative_strings.size(); i++)
+	for (unsigned int i = 0; i < alternative_strings.size(); i++)
 	{
 		if (i == alternative_strings.size() - 1)
 		{

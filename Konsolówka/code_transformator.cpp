@@ -392,7 +392,7 @@ void code_transformator::merge_tags()
 
 void code_transformator::execute_meta_commands()
 {
-	log_output << "\nWykonywanie Meta-Rozkazów";
+	log_output << "\nWykonywanie Meta-Rozkazów\n";
 
 	vector<W_Assembler_line> returning_program;
 	W_Assembler_line buffer{"", "", ""};
@@ -415,6 +415,25 @@ void code_transformator::execute_meta_commands()
 			program[i].W_command = "DELETE";
 
 			break;
+		case meta_command_ID::START:
+
+			if (!starting_tag.empty())
+			{
+				throw string("B£¥D: S³owo Kluczowe 'start' mo¿e wystêpowaæ jedynie raz");
+			}
+			tag_menager.add_next_jump_tag();
+			starting_tag = tag_menager.get_last_jump_tag();
+
+			program[i].tag = starting_tag + ":";
+			program[i].W_command.clear();
+
+			break;
+		case meta_command_ID::GENERATE_OUTPUT:
+
+			generate_int_output_code = true;
+			program[i].W_command = "DELETE";
+
+			break;
 		default:
 			break;
 		}
@@ -429,8 +448,139 @@ void code_transformator::execute_meta_commands()
 	}
 
 	program = returning_program;
-	log_output << "\n\tOK";
+	log_output << "\tOK";
 
+}
+
+
+//fun:    pob     JEDEN
+//		  ³ad     licz
+//	      pzs
+//	      ³ad     pow
+//	      pzs
+//	      som     uj
+//	      ³ad     a
+//pent:   dzi     dycha
+//		  ³ad     buff
+//	      soz     koniec
+//	      pob     licz
+//	      mno     dycha
+//	      ³ad     licz
+//	      pob     buff
+//	      sob     pent
+//koniec: pob     a
+//	      dzi     licz
+//	      dod     asci48
+//	      wyp     2
+//	      ode     asci48
+//	      mno     licz
+//	      ode     a
+//	      mno     min1
+//	      ³ad     a
+//	      pob     licz
+//	      dzi     dycha
+//	      soz     retu
+//	      ³ad     licz
+//	      sob     koniec
+//retu:   pob     pow
+//	      dns
+//	      pwr
+//uj:     mno     min1
+//	      ³ad     a
+//	      pob     min_s
+//	      wyp     2
+//	      pob     a
+//	      sob     pent
+
+void code_transformator::save_additional_subs()
+{
+	log_output << "\nDodawanie predefiniowanych procedur:\n";
+	if (generate_int_output_code)
+	{
+		if (tag_menager.add_const("1"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("1") + ":", "RST", "1" });
+		}
+		save_one_line_of_assembler_code(W_Assembler_line{ "mOI:", "POB", tag_menager.get_tag_by_const_value("1") });
+
+		data.push_back(W_Assembler_line{ "mOIl:", "RPA", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mOIl" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "PZS", "" });
+		data.push_back(W_Assembler_line{ "mOIp:", "RPA", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mOIp" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "PZS", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOM", "mOI_U" });
+		data.push_back(W_Assembler_line{"mOIa:", "RPA", ""});
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mOIa" });
+
+		if (tag_menager.add_const("10"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("10") + ":", "RST", "10" });
+		}
+
+		save_one_line_of_assembler_code(W_Assembler_line{ "mOI_P:", "DZI", tag_menager.get_tag_by_const_value("10") });
+		data.push_back(W_Assembler_line{ "mOIb:", "RPA", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mOIb" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOZ", "mOI_K" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", "mOIl" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "MNO", tag_menager.get_tag_by_const_value("10") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mOIl" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", "mOIb" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOB", "mOI_P" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "mOI_K:", "POB", "mOIa" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "DZI", "mOIl" });
+
+		if (tag_menager.add_const("48"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("48") + ":", "RST", "48" });
+		}
+
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "DOD", tag_menager.get_tag_by_const_value("48") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "WYP", "2" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "ODE", tag_menager.get_tag_by_const_value("48") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "MNO", "mOIl" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "ODE", "mOIa" });
+
+		if (tag_menager.add_const("-1"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("-1") + ":", "RST", "-1" });
+		}
+
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "MNO", tag_menager.get_tag_by_const_value("-1") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mOIa" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", "mOIl" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "DZI", tag_menager.get_tag_by_const_value("10") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOZ", "mOI_R" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mOIl" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOB", "mOI_K" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "mOI_R:", "POB", "mOIp" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "DNS", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "PWR", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "mOI_U:", "MNO", tag_menager.get_tag_by_const_value("-1") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mOIa" });
+
+		if (tag_menager.add_const("45"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("45") + ":", "RST", "45" });
+		}
+
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", tag_menager.get_tag_by_const_value("45") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "WYP", "2" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", "mOIa" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOB", "mOI_P" });
+	}
+
+	log_output << "\tOK\n";
+
+}
+
+void code_transformator::save_start_to_the_file()
+{
+	if (starting_tag.empty())
+	{
+		throw string("\n\n B£¥D: W programie musi wystêpowaæ s³owo kluczowe 'start'");
+	}
+	save_one_line_of_assembler_code(W_Assembler_line{ "" ,"SOB", starting_tag });
 }
 
 code_transformator::code_transformator(ostream &log_output, ifstream &input, ofstream &output)

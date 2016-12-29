@@ -39,7 +39,9 @@ class code_transformator
 
 	string last_success;
 	bool was_last_success_if;
+	bool generate_int_output_code = false;
 	
+	string starting_tag;
 
 	void save_one_line_of_assembler_code(W_Assembler_line &line);
 
@@ -48,6 +50,8 @@ class code_transformator
 	//stack<unsigned long long int>box_close_index;
 
 public:
+
+	void save_additional_subs();
 
 	//returns last successfully translated command
 	const string get_last_successfully_translated_command();
@@ -87,6 +91,9 @@ public:
 
 	//ovious (REVERSE and so on)
 	void execute_meta_commands();
+
+	//obvious
+	void save_start_to_the_file();
 
 	code_transformator() = delete;
 	code_transformator(ostream &log_output, ifstream &input, ofstream &output);

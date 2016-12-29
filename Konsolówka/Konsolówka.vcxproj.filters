@@ -54,6 +54,9 @@
     <ClCompile Include="For_expression.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Output_expression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const_regex.h">
@@ -93,6 +96,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="For_expression.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Start_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Output_expression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

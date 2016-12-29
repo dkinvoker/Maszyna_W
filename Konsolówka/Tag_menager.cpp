@@ -134,6 +134,16 @@ const string Tag_menager::get_LAST_BUT_ONE_jump_tag()
 	return (this->find_by_name("0JUMP" + Int_TO_String(number_of_jump_meta_tags - 2)))->tag;
 }
 
+const int Tag_menager::get_type_by_name(string name)
+{
+	auto ptr_to_the_object = this->find_by_name(name);
+	if (ptr_to_the_object != nullptr)
+	{
+		return ptr_to_the_object->type;
+	}
+	throw string("\tB³¹d: \n\t\tOdwo³anie do nizdefiniowanej nazwy: " + name);
+}
+
 
 Tag_menager::Tag_menager()
 {

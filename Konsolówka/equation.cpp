@@ -42,7 +42,7 @@ int get_int_symbolic_value_from_char( const char a )
 void Equation::get_all_expression_information()
 {
 	string buffer;
-	for (int i = 0; i < expression.size(); i ++)
+	for (unsigned int i = 0; i < expression.size(); i ++)
 	{
 		if ( is_operator_symbol(expression[i]) )
 		{
@@ -92,7 +92,7 @@ void Equation::extract_components()
 {
 	int eq_index;
 
-	for (int i = 0; i < command_string.size(); i ++)
+	for (unsigned int i = 0; i < command_string.size(); i ++)
 	{
 		if (command_string[i] == '=')
 		{
@@ -134,7 +134,7 @@ Assembler_section Equation::translate()
 	}
 
 	//dooing arithmetical stuff
-	for (int i = 1; i < operands_vector.size(); i ++)
+	for (unsigned int i = 1; i < operands_vector.size(); i ++)
 	{
 
 		if (is_constant_bool_helper = is_constant_type(operands_vector[i]))

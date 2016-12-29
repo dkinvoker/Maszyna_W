@@ -28,7 +28,7 @@ void For_expression::extract_for_expression_steps()
 	//+2 bo... cza omin¹æ "{"
 	code_to_execute = command_string.substr(second_bracket_symbol_index + 2, command_string.size() - 3 - second_bracket_symbol_index);
 
-	for (int i = 0; i < buffer.size(); i++)
+	for (unsigned int i = 0; i < buffer.size(); i++)
 	{
 		if (buffer[i] == ';')
 		{

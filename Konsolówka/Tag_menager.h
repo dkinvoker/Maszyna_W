@@ -42,6 +42,7 @@ public:
 	const string get_last_jump_tag();
 	const string get_last_jump_name();
 	const string get_LAST_BUT_ONE_jump_tag();
+	const int get_type_by_name(string name);
 
 	Tag_menager();
 	~Tag_menager();
