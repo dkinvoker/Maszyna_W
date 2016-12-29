@@ -57,7 +57,7 @@ namespace const_regex_string
 	const string call_string					{ "(call)" };
 	const string int_string						{ "(int)" };
 	const string char_string					{ "(char)" };
-	const string stack_string					{ "(stack)" };
+	//const string stack_string					{ "(stack)" };
 	const string string_string					{ "(string)" };
 	const string return_string					{ "(return)" };
 	const string stop_string					{ "(stop)" };
@@ -94,14 +94,14 @@ namespace const_regex_string
 	const string sub_declaration_expression_string			{ "(" + sub_string + ID + sub_variables_to_call_with + any_code_in_box + ")" };
 	const string sub_call_expression_string					{ "(" + call_string + ID + sub_variables_to_call_with + semicolon_symbol + ")" };
 	const string start_expression_string					{ "(" + start_string + colon_symbol + ")" };
-	const string stack_expression_string					{ "(" + stack_string + number + semicolon_symbol + ")" };
+	//const string stack_expression_string					{ "(" + stack_string + number + semicolon_symbol + ")" };
 	const string int_declaration							{ regex_or_regex_STRING(int_declaration_no_init, int_declaration_and_init) };
 	//const string string_declaration							{ regex_or_regex_STRING(string_string + ID + semicolon_symbol, string_string + ID + eq + code_surrounded_by_quotation_marks + semicolon_symbol) };
 	const string char_declaration							{ regex_or_regex_STRING( char_declaration_no_init, char_declaration_and_init ) };
 	const string return_expression							{ "(" + return_string + semicolon_symbol + ")" };
 	const string stop_expression							{ "(" + stop_string + semicolon_symbol + ")" };
 
-	const vector<string> all_commands						{ int_declaration, arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, stack_expression_string, char_declaration, return_expression, stop_expression, comment_string };
+	const vector<string> all_commands						{ int_declaration, arithmetical_equation, while_expression_string, if_expression_string, else_expression_string, for_expression_string, input_expression_string, output_expression_string, sub_declaration_expression_string, sub_call_expression_string, start_expression_string, char_declaration, return_expression, stop_expression, comment_string };
 
 	const string all_commands_string						{ multi_OR_regex_STRING(all_commands) };
 	const string syntax_sting								{ multi_regex_STRING(all_commands_string) };
@@ -123,7 +123,6 @@ namespace const_regex
 		index_sub_declaration,
 		index_sub_call,
 		index_start,
-		index_stack,
 		index_char_declaration,
 		index_return,
 		index_stop,
@@ -158,14 +157,14 @@ namespace const_regex
 	const regex regex_sub_declaration			{ const_regex_string::sub_declaration_expression_string };
 	const regex regex_sub_call					{ const_regex_string::sub_call_expression_string };
 	const regex regex_start						{ const_regex_string::start_expression_string };
-	const regex regex_stack						{ const_regex_string::stack_expression_string };
+	//const regex regex_stack						{ const_regex_string::stack_expression_string };
 	const regex regex_int_declaration			{ const_regex_string::int_declaration };
 	const regex regex_char_declaration			{ const_regex_string::char_declaration };
 	const regex regex_return					{ const_regex_string::return_expression };
 	const regex regex_stop						{ const_regex_string::stop_expression };
 	const regex regex_comment					{ const_regex_string::comment_string };
 
-	const vector<regex>	all_regex				{ regex_int_declaration, regex_arithmetical_equation, regex_while_expression, regex_if_expression, regex_else_expression, regex_for_expression, regex_input_expression, regex_output_rexpression, regex_sub_declaration, regex_sub_call, regex_start, regex_stack, regex_char_declaration, regex_return, regex_stop, regex_comment };
+	const vector<regex>	all_regex				{ regex_int_declaration, regex_arithmetical_equation, regex_while_expression, regex_if_expression, regex_else_expression, regex_for_expression, regex_input_expression, regex_output_rexpression, regex_sub_declaration, regex_sub_call, regex_start, regex_char_declaration, regex_return, regex_stop, regex_comment };
 
 }
 

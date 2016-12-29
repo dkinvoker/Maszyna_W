@@ -102,10 +102,6 @@ Assembler_section translate_string(const string &arg_string)
 					buffer.clear();
 					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
-				case const_regex::index_stack:
-					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
-					break;
 				case const_regex::index_char_declaration:
 
 					if (regex_match(buffer, const_regex::regex_char_declaration_no_init))

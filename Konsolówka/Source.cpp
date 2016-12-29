@@ -36,6 +36,7 @@ int main()
 		CodeTranformator.generate_assembler_code();
 		CodeTranformator.merge_tags();
 		CodeTranformator.execute_meta_commands();
+		CodeTranformator.merge_tags();
 		CodeTranformator.add_stop_at_the_end();
 		CodeTranformator.save_generated_code();
 		log_file << "\n\nTranslacja zakoñczona sukcesem";
