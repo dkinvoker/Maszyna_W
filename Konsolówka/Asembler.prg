@@ -51,7 +51,7 @@ t49:
 	POB	t4
 	ODE	t0
 	SOM	t11
-	SOB	t7
+	SOB	t12
 t11:		
 	POB	t13
 	WYP	2
@@ -77,19 +77,19 @@ t18:
 	POB	t10
 	ODE	t7
 	SOM	t19
-	SOB	t12
+	SOB	t43
 t19:		
 	POB	t21
 	ODE	t10
 	SOM	t22
-	SOB	t21
+	SOB	t23
 t22:		
 	POB	t8
 	WYP	2
 	POB	t10
 	DNS	
 	SDP	mOI
-	SOB	t12
+	SOB	t43
 t23:		
 	POB	t10
 	ODE	t21
@@ -132,7 +132,7 @@ t25:
 	WYP	2
 	POB	t39
 	WYP	2
-	SOB	t12
+	SOB	t43
 t26:		
 	POB	t8
 	WYP	2
@@ -141,6 +141,7 @@ t26:
 	£AD	t9
 	POB	t9
 	DNS	
+	SDP	mOI
 	POB	t10
 	DOD	t42
 	£AD	t10
