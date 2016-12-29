@@ -31,8 +31,6 @@ Sprawdzanie sk³adni:
 
  Generowanie assemblera:
 	OK
-Scalanie Etykiet
-	OK
 Wykonywanie Meta-Rozkazów
 	OK
 Scalanie Etykiet

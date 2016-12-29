@@ -34,7 +34,7 @@ int main()
 		CodeTranformator.check_syntax();
 		//CodeTranformator.catch_consts();
 		CodeTranformator.generate_assembler_code();
-		CodeTranformator.merge_tags();
+		//CodeTranformator.merge_tags();
 		CodeTranformator.execute_meta_commands();
 		CodeTranformator.merge_tags();
 		CodeTranformator.save_start_to_the_file();

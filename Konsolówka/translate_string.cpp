@@ -12,6 +12,11 @@
 
 Assembler_section translate_string(const string &arg_string)
 {
+	//debug
+	fstream debug_log;
+	debug_log.open("Debug_log.txt", std::ios::app);
+	//debug
+
 	string buffer;
 	unsigned int how_many_bracked_symbol = 0;
 	vector<Command*> object_to_translate_ptr_vector;
@@ -161,6 +166,13 @@ Assembler_section translate_string(const string &arg_string)
 		adapt_section(returner, object_to_translate_ptr_vector[i]->translate());
 		delete object_to_translate_ptr_vector[i];
 	}
+
+	debug_log << "\n\n\n " << arg_string << "   T³umaczone na:\n";
+	for (unsigned int i = 0; i < returner.program_assembler_vector.size(); i ++)
+	{
+		debug_log << returner.program_assembler_vector[i].tag << "\t" << returner.program_assembler_vector[i].W_command << "\t" << returner.program_assembler_vector[i].argument << "\n";
+	}
+
 	return returner;
 
 }

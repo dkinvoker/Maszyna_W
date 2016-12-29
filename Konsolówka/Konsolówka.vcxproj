@@ -155,6 +155,7 @@
     <None Include="code.troll" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Debug_log.txt" />
     <Text Include="Log.txt" />
     <Text Include="Schowek.txt" />
   </ItemGroup>

@@ -335,49 +335,54 @@ void code_transformator::merge_tags()
 
 	unsigned int swap_index;
 
-	for (unsigned int i = 0; i < program.size() - 1; i ++)
-	{
-		if (program[i].is_just_tag() && program[i+1].is_just_tag())
-		{
-			swap_index = i + 1;
-			unsigned int memory = i + 2;
-			while (memory < program.size())
-			{
-				if (program[memory].is_just_tag())
-				{
-					swap_index = memory;
-				}
-				memory++;
-			}
-			
-			swaping_tags.push_back(tag_swaps{ return_without_last_symbol(program[i].tag), return_without_last_symbol(program[swap_index].tag) });
-
-		}
-	}
-
-
-
-	////detecting swaps
-	//for (unsigned int i = 0; i < program.size() - 1; i++)
+	//for (unsigned int i = 0; i < program.size() - 1; i ++)
 	//{
 	//	if (program[i].is_just_tag() && program[i+1].is_just_tag())
 	//	{
-	//		swaping_tags.push_back(tag_swaps{ return_without_last_symbol(program[i].tag), return_without_last_symbol(program[i+1].tag) });
+	//		swap_index = i + 1;
+	//		unsigned int memory = i + 2;
+	//		while (memory < program.size())
+	//		{
+	//			if (program[memory].is_just_tag())
+	//			{
+	//				swap_index = memory;
+	//				memory++;
+	//			}
+	//			else
+	//			{
+	//				break;
+	//			}
+	//			
+	//		}
+	//		
+	//		swaping_tags.push_back(tag_swaps{ return_without_last_symbol(program[i].tag), return_without_last_symbol(program[swap_index].tag) });
+
 	//	}
 	//}
 
-	////reduction
-	//for (unsigned int i = 0; i < swaping_tags.size(); i ++)
-	//{
-	//	tag_swaps buffer = swaping_tags[i];
-	//	for (unsigned int j = 0; j < swaping_tags.size(); j++)
-	//	{
-	//		if (swaping_tags[j].swaper == buffer.swaped_tag)
-	//		{
-	//			swaping_tags[j].swaper = buffer.swaper;
-	//		}
-	//	}
-	//}
+
+
+	//detecting swaps
+	for (unsigned int i = 0; i < program.size() - 1; i++)
+	{
+		if (program[i].is_just_tag() && program[i+1].is_just_tag())
+		{
+			swaping_tags.push_back(tag_swaps{ return_without_last_symbol(program[i].tag), return_without_last_symbol(program[i+1].tag) });
+		}
+	}
+
+	//reduction
+	for (unsigned int i = 0; i < swaping_tags.size(); i ++)
+	{
+		tag_swaps buffer = swaping_tags[i];
+		for (unsigned int j = 0; j < swaping_tags.size(); j++)
+		{
+			if (swaping_tags[j].swaper == buffer.swaped_tag)
+			{
+				swaping_tags[j].swaper = buffer.swaper;
+			}
+		}
+	}
 
 
 
