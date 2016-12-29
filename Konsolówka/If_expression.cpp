@@ -228,7 +228,7 @@ Assembler_section If_expression::make_calculations(string first_expression, bool
 		tag_menager_ptr->add_next_jump_tag();
 		returner.add_program("SOM", tag_menager_ptr->get_last_jump_tag());
 		jumper_tag_name = tag_menager_ptr->add_next_jump_tag();
-		returner.add_program("SOB", tag_menager_ptr->get_last_constant_tag());
+		returner.add_program("SOB", tag_menager_ptr->get_last_jump_tag());
 		returner.add_program(tag_menager_ptr->get_LAST_BUT_ONE_jump_tag(), "", "");
 		adapt_section(returner, translate_string(code_to_execute));
 		returner.add_program(tag_menager_ptr->get_tag_by_name(jumper_tag_name), "", "");
