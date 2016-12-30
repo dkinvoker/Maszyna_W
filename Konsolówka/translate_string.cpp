@@ -131,8 +131,10 @@ Assembler_section translate_string(const string &arg_string)
 					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_stop:
+
+					returner.add_program("STP", "");
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 				case const_regex::index_comment:
 

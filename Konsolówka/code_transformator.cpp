@@ -27,6 +27,7 @@ const string code_transformator::get_last_successfully_translated_command()
 void code_transformator::clear_blank_and_save()
 {
 	string IN_buffer;
+
 	while (input >> IN_buffer)
 	{
 		code = code + IN_buffer;
