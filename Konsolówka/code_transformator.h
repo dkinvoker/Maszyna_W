@@ -40,6 +40,7 @@ class code_transformator
 	string last_success;
 	bool was_last_success_if;
 	bool generate_int_output_code = false;
+	bool generate_int_input_code = false;
 	
 	string starting_tag;
 

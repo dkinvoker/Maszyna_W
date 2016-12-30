@@ -467,6 +467,12 @@ void code_transformator::execute_meta_commands()
 			program[i].W_command = "DELETE";
 
 			break;
+		case meta_command_ID::GENERATE_INPUT:
+
+			generate_int_input_code = true;
+			program[i].W_command = "DELETE";
+
+			break;
 		default:
 			break;
 		}
@@ -601,6 +607,123 @@ void code_transformator::save_additional_subs()
 		save_one_line_of_assembler_code(W_Assembler_line{ "", "WYP", "2" });
 		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", "mOIa" });
 		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOB", "mOI_P" });
+	}
+
+	//		  sob     start
+	//	fun:  pzs
+	//	      ³ad     pow
+	//	      pob     jeden
+	//	      ³ad     mnoz
+	//	      pob     zero
+	//	      ³ad     suma
+	//	pent: wpr     1
+	//	      ode     min_c
+	//	      soz     minus
+	//	      dod     cip
+	//	      soz     retur
+	//	      ode     E16
+	//	      ³ad     a
+	//	      pob     suma
+	//	      mno     dycha
+	//	      ³ad     suma
+	//	      pob     a
+	//	      dod     suma
+	//	      ³ad     suma
+	//	      sob     pent
+	// minus: pob     mnoz
+	//	      ode     jeden
+	//	      ode     jeden
+	//	      ³ad     mnoz
+	//	      sob     pent
+	// retur: pob     suma
+	//	      mno     mnoz
+	//	      dns
+	//	      pob     pow
+	//	      dns
+	//	      pwr
+
+
+
+	//	start : sdp     fun
+	//	pzs
+	//	³ad     liczba
+	//	stp
+	//	liczba : rpa
+	//	jeden : rst     1
+	//	zero : rst     0
+	//	mnoz : rpa
+	//	pow : rpa
+	//	czi : rst     1
+	//	min_c : rst     45
+	//	suma : rpa
+	//	cip : rst     13
+	//	dycha : rst     10
+	//	a : rpa
+	//	E16 : rst     16
+
+
+	if (generate_int_input_code)
+	{
+		save_one_line_of_assembler_code(W_Assembler_line{ "mII:", "PZS", "" });
+		data.push_back(W_Assembler_line{ "mIIp:", "RPA", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mIIp" });
+		if (tag_menager.add_const("1"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("1") + ":", "RST", "1" });
+		}
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", tag_menager.get_tag_by_const_value("1") });
+		data.push_back(W_Assembler_line{ "mIIm:", "RPA", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mIIm" });
+		if (tag_menager.add_const("0"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("0") + ":", "RST", "0" });
+		}
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", tag_menager.get_tag_by_const_value("0") });
+		data.push_back(W_Assembler_line{ "mIIs:", "RPA", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mIIs" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "mII_P:", "WPR", "1" });
+		if (tag_menager.add_const("45"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("45") + ":", "RST", "45" });
+		}
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "ODE", tag_menager.get_tag_by_const_value("45") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOZ", "mII_M" });
+		if (tag_menager.add_const("13"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("13") + ":", "RST", "13" });
+		}
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "DOD", tag_menager.get_tag_by_const_value("13") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOZ", "mII_R" });
+		if (tag_menager.add_const("16"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("16") + ":", "RST", "16" });
+		}
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "ODE", tag_menager.get_tag_by_const_value("16") });
+		data.push_back(W_Assembler_line{ "mIIa:", "RPA", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mIIa" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", "mIIs" });
+		if (tag_menager.add_const("10"))
+		{
+			data.push_back(W_Assembler_line{ tag_menager.get_tag_by_const_value("10") + ":", "RST", "10" });
+		}
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "MNO", tag_menager.get_tag_by_const_value("10") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mIIs" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", "mIIa" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "DOD", "mIIs" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mIIs" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOB", "mII_P" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "mII_M:", "POB", "mIIm" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "ODE", tag_menager.get_tag_by_const_value("1") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "ODE", tag_menager.get_tag_by_const_value("1") });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "£AD", "mIIm" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "SOB", "mII_P" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "mII_R:", "POB", "mIIs" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "MNO", "mIIm" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "DNS", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "POB", "mIIp" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "DNS", "" });
+		save_one_line_of_assembler_code(W_Assembler_line{ "", "PWR", "" });
+
 	}
 
 	log_output << "\tOK\n";

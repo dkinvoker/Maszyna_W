@@ -1,41 +1,11 @@
 start:
-int Int_123 = 123;
-int Int_0 = 0;
-int Int_neg_123 =-123;
-int Int_new_line = 10;
-char new_line;
-new_line = Int_new_line;
-int buffer;
-int i;
+#Randomowy komentarz do beki#
 
-if(Int_123 > Int_neg_123)
-{
-	output("123<-123");
-	output(new_line);
-	for(i = 0; i < 10; i = i + 1)
-	{
-		if(i>5)
-		{
-			output(new_line);
-			output(i);
-		}
-		else
-		{
-			if(i == 5)
-			{
-				output(new_line);
-				output("i W³aœnie równa siê 5");
-			}
-			else
-			{
-				output(new_line);
-				buffer = i*100;
-				output(buffer);
-			}
-		}
-	}
-}
-else
-{
-	output("Coœ siê zdupi³o");
-}
+int a;
+int b;
+int wynik;
+input(a);
+input(b);
+wynik = a + b;
+output("SUMA: ");
+output(wynik);

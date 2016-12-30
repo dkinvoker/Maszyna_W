@@ -1,223 +1,118 @@
-	SOB	t49
-mOI:	POB	t42
+	SOB	t8
+mOI:	POB	t9
 	£AD	mOIl
 	PZS	
 	£AD	mOIp
 	PZS	
 	SOM	mOI_U
 	£AD	mOIa
-mOI_P:	DZI	t7
+mOI_P:	DZI	t10
 	£AD	mOIb
 	SOZ	mOI_K
 	POB	mOIl
-	MNO	t7
+	MNO	t10
 	£AD	mOIl
 	POB	mOIb
 	SOB	mOI_P
 mOI_K:	POB	mOIa
 	DZI	mOIl
-	DOD	t50
+	DOD	t11
 	WYP	2
-	ODE	t50
+	ODE	t11
 	MNO	mOIl
 	ODE	mOIa
-	MNO	t51
+	MNO	t12
 	£AD	mOIa
 	POB	mOIl
-	DZI	t7
+	DZI	t10
 	SOZ	mOI_R
 	£AD	mOIl
 	SOB	mOI_K
 mOI_R:	POB	mOIp
 	DNS	
 	PWR	
-mOI_U:	MNO	t51
+mOI_U:	MNO	t12
 	£AD	mOIa
-	POB	t17
+	POB	t13
 	WYP	2
 	POB	mOIa
 	SOB	mOI_P
-t49:		
-	POB	t1
-	£AD	t0
-	POB	t3
-	£AD	t2
-	POB	t5
-	£AD	t4
-	POB	t7
-	£AD	t6
-	POB	t6
-	£AD	t8
-	POB	t4
-	ODE	t0
-	SOM	t11
-	SOB	t12
-t11:		
-	POB	t13
-	WYP	2
-	POB	t14
-	WYP	2
-	POB	t15
-	WYP	2
-	POB	t16
-	WYP	2
-	POB	t17
-	WYP	2
-	POB	t13
-	WYP	2
-	POB	t14
-	WYP	2
-	POB	t15
-	WYP	2
-	POB	t8
-	WYP	2
-	POB	t3
-	£AD	t10
-t18:		
-	POB	t10
-	ODE	t7
-	SOM	t19
-	SOB	t20
-t19:		
-	POB	t21
-	ODE	t10
-	SOM	t22
-	SOB	t23
-t22:		
-	POB	t8
-	WYP	2
-	POB	t10
-	DNS	
-	SDP	mOI
-	SOB	t24
-t23:		
-	POB	t10
-	ODE	t21
-	SOZ	t25
-	SOB	t26
-t25:		
-	POB	t8
-	WYP	2
-	POB	t27
-	WYP	2
-	POB	t28
-	WYP	2
-	POB	t29
-	WYP	2
-	POB	t30
-	WYP	2
-	POB	t31
-	WYP	2
-	POB	t32
-	WYP	2
-	POB	t27
-	WYP	2
-	POB	t33
-	WYP	2
-	POB	t34
-	WYP	2
-	POB	t35
-	WYP	2
-	POB	t36
-	WYP	2
-	POB	t32
-	WYP	2
-	POB	t30
-	WYP	2
-	POB	t37
-	WYP	2
-	POB	t27
-	WYP	2
-	POB	t38
-	WYP	2
-	POB	t39
-	WYP	2
-	SOB	t24
-t26:		
-	POB	t8
-	WYP	2
-	POB	t10
-	MNO	t41
-	£AD	t9
+mII:	PZS	
+	£AD	mIIp
 	POB	t9
+	£AD	mIIm
+	POB	t14
+	£AD	mIIs
+mII_P:	WPR	1
+	ODE	t13
+	SOZ	mII_M
+	DOD	t15
+	SOZ	mII_R
+	ODE	t16
+	£AD	mIIa
+	POB	mIIs
+	MNO	t10
+	£AD	mIIs
+	POB	mIIa
+	DOD	mIIs
+	£AD	mIIs
+	SOB	mII_P
+mII_M:	POB	mIIm
+	ODE	t9
+	ODE	t9
+	£AD	mIIm
+	SOB	mII_P
+mII_R:	POB	mIIs
+	MNO	mIIm
+	DNS	
+	POB	mIIp
+	DNS	
+	PWR	
+t8:		
+	SDP	mII
+	PZS	
+	£AD	t0
+	SDP	mII
+	PZS	
+	£AD	t1
+	POB	t0
+	DOD	t1
+	£AD	t2
+	POB	t3
+	WYP	2
+	POB	t4
+	WYP	2
+	POB	t5
+	WYP	2
+	POB	t6
+	WYP	2
+	POB	t7
+	WYP	2
+	POB	t2
 	DNS	
 	SDP	mOI
-t24:		
-	POB	t10
-	DOD	t42
-	£AD	t10
-	SOB	t18
-t20:		
-	SOB	t43
-t12:		
-	POB	t44
-	WYP	2
-	POB	t45
-	WYP	2
-	POB	t31
-	WYP	2
-	POB	t37
-	WYP	2
-	POB	t27
-	WYP	2
-	POB	t38
-	WYP	2
-	POB	t46
-	WYP	2
-	POB	t41
-	WYP	2
-	POB	t47
-	WYP	2
-	POB	t48
-	WYP	2
-	POB	t27
-	WYP	2
-	POB	t29
-	WYP	2
-	POB	t45
-	WYP	2
-t43:		
 	STP	
 t0:	RPA	
-t1:	RST	123
+t1:	RPA	
 t2:	RPA	
-t3:	RST	0
-t4:	RPA	
-t5:	RST	-123
-t6:	RPA	
-t7:	RST	10
-t8:	RPA	
-t9:	RPA	
-t10:	RPA	
-t13:	RST	49
-t14:	RST	50
-t15:	RST	51
-t16:	RST	60
-t17:	RST	45
-t21:	RST	5
-t27:	RST	105
-t28:	RST	87
-t29:	RST	-77
-t30:	RST	97
-t31:	RST	-100
-t32:	RST	110
-t33:	RST	101
-t34:	RST	114
-t35:	RST	-13
-t36:	RST	119
-t37:	RST	115
-t38:	RST	-22
-t39:	RST	53
-t41:	RST	100
-t42:	RST	1
-t44:	RST	67
-t45:	RST	111
-t46:	RST	122
-t47:	RST	117
-t48:	RST	112
+t3:	RST	83
+t4:	RST	85
+t5:	RST	77
+t6:	RST	65
+t7:	RST	58
+t9:	RST	1
 mOIl:	RPA	
 mOIp:	RPA	
 mOIa:	RPA	
+t10:	RST	10
 mOIb:	RPA	
-t50:	RST	48
-t51:	RST	-1
+t11:	RST	48
+t12:	RST	-1
+t13:	RST	45
+mIIp:	RPA	
+mIIm:	RPA	
+t14:	RST	0
+mIIs:	RPA	
+t15:	RST	13
+t16:	RST	16
+mIIa:	RPA	

@@ -9,13 +9,10 @@
 #include "For_expression.h"
 #include "Start_command.h"
 #include "Output_expression.h"
+#include "Input_expression.h"
 
 Assembler_section translate_string(const string &arg_string)
 {
-	//debug
-	fstream debug_log;
-	debug_log.open("Debug_log.txt", std::ios::app);
-	//debug
 
 	string buffer;
 	unsigned int how_many_bracked_symbol = 0;
@@ -90,8 +87,10 @@ Assembler_section translate_string(const string &arg_string)
 
 					break;
 				case const_regex::index_input_expression:
+
+					object_to_translate_ptr_vector.push_back(new Input_expression{ buffer });
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 				case const_regex::index_output_expression:
 
@@ -136,8 +135,9 @@ Assembler_section translate_string(const string &arg_string)
 					throw string("Tego jeszcze nie zaimplementowalem");
 					break;
 				case const_regex::index_comment:
+
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 
 
@@ -167,11 +167,6 @@ Assembler_section translate_string(const string &arg_string)
 		delete object_to_translate_ptr_vector[i];
 	}
 
-	debug_log << "\n\n\n " << arg_string << "   T³umaczone na:\n";
-	for (unsigned int i = 0; i < returner.program_assembler_vector.size(); i ++)
-	{
-		debug_log << returner.program_assembler_vector[i].tag << "\t" << returner.program_assembler_vector[i].W_command << "\t" << returner.program_assembler_vector[i].argument << "\n";
-	}
 
 	return returner;
 
