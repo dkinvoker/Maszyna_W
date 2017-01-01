@@ -1,6 +1,32 @@
-start:
-
-sub test():(A,B,C)
+sub test(_ina, _inb):(A,B,C)
 {
+	A = 1 + _ina;
+	B = 2 + _inb;
+	C = 3;
 	return;
 }
+
+start:
+int new_line_int = 10;
+char new_line;
+new_line = new_line_int;
+
+char LYL;
+char LYL2;
+
+int a;
+int b;
+int c;
+
+input(LYL);
+input(LYL2);
+
+
+
+call test (LYL, LYL2):(a,b,c);
+
+output(a);
+output(new_line);
+output(b);
+output(new_line);
+output(c);

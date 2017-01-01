@@ -2,19 +2,6 @@
 #include "translate_string.h"
 
 
-unsigned int find_first_braced(string &code)
-{
-	unsigned int i = 0;
-	for (i = 0; i < code.size(); i++)
-	{
-		if (code[i] == '(')
-		{
-			break;
-		}
-	}
-
-	return i;
-}
 
 void Sub_declaration_expression::extract_code_to_execute()
 {

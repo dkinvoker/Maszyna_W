@@ -13,6 +13,7 @@
 #include "Stop_expression.h"
 #include "Sub_declaration_expression.h"
 #include "Return_expression.h"
+#include "Call_expression.h"
 
 Assembler_section translate_string(const string &arg_string)
 {
@@ -108,8 +109,10 @@ Assembler_section translate_string(const string &arg_string)
 
 					break;
 				case const_regex::index_sub_call:
+
+					object_to_translate_ptr_vector.push_back(new Call_expression{ buffer });
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 				case const_regex::index_start:
 

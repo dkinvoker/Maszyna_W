@@ -130,6 +130,10 @@ Assembler_section Equation::translate()
 	}
 	else
 	{
+		if (tag_menager_ptr->get_type_by_name(operands_vector[0]) != Tag_type::variable_char && tag_menager_ptr->get_type_by_name(operands_vector[0]) != Tag_type::variable_int)
+		{
+			throw string("Odwo³anie do nazwy powi¹zanej z niew³aœciwym typem: " + operands_vector[0]);
+		}
 		returner.add_program("POB", tag_menager_ptr->get_tag_by_name(operands_vector[0]));
 	}
 
@@ -156,6 +160,10 @@ Assembler_section Equation::translate()
 			}
 			else
 			{
+				if (tag_menager_ptr->get_type_by_name(operands_vector[i]) != Tag_type::variable_char && tag_menager_ptr->get_type_by_name(operands_vector[i]) != Tag_type::variable_int)
+				{
+					throw string("Odwo³anie do nazwy powi¹zanej z niew³aœciwym typem: " + operands_vector[i]);
+				}
 				returner.add_program( "DOD", tag_menager_ptr->get_tag_by_name(operands_vector[i]) );
 			}
 
@@ -168,6 +176,10 @@ Assembler_section Equation::translate()
 			}
 			else
 			{
+				if (tag_menager_ptr->get_type_by_name(operands_vector[i]) != Tag_type::variable_char && tag_menager_ptr->get_type_by_name(operands_vector[i]) != Tag_type::variable_int)
+				{
+					throw string("Odwo³anie do nazwy powi¹zanej z niew³aœciwym typem: " + operands_vector[i]);
+				}
 				returner.add_program( "ODE", tag_menager_ptr->get_tag_by_name(operands_vector[i]) );
 			}
 
@@ -180,6 +192,10 @@ Assembler_section Equation::translate()
 			}
 			else
 			{
+				if (tag_menager_ptr->get_type_by_name(operands_vector[i]) != Tag_type::variable_char && tag_menager_ptr->get_type_by_name(operands_vector[i]) != Tag_type::variable_int)
+				{
+					throw string("Odwo³anie do nazwy powi¹zanej z niew³aœciwym typem: " + operands_vector[i]);
+				}
 				returner.add_program( "MNO", tag_menager_ptr->get_tag_by_name(operands_vector[i]) );
 			}
 
@@ -192,6 +208,10 @@ Assembler_section Equation::translate()
 			}
 			else
 			{
+				if (tag_menager_ptr->get_type_by_name(operands_vector[i]) != Tag_type::variable_char && tag_menager_ptr->get_type_by_name(operands_vector[i]) != Tag_type::variable_int)
+				{
+					throw string("Odwo³anie do nazwy powi¹zanej z niew³aœciwym typem: " + operands_vector[i]);
+				}
 				returner.add_program( "DZI", tag_menager_ptr->get_tag_by_name(operands_vector[i]) );
 			}
 

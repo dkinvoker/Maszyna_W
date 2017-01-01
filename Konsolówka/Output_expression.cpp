@@ -25,13 +25,16 @@ Assembler_section Output_expression::translate()
 			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(ID_or_string_to_output));
 			returner.add_program("WYP", "2");
 		}
-		//czyli, ¿e INT
-		else
+		else if(tag_menager_ptr->get_type_by_name(ID_or_string_to_output) == Tag_type::variable_int)
 		{
 			returner.add_meta_command("GENERATE_OUTPUT");
 			returner.add_program("POB", tag_menager_ptr->get_tag_by_name(ID_or_string_to_output));
 			returner.add_program("DNS", "");
 			returner.add_program("SDP", "mOI");
+		}
+		else
+		{
+			throw string("Odwo³anie do nazwy powi¹zanej z niew³aœciwym typem: " + ID_or_string_to_output);
 		}
 	}
 	else
@@ -39,7 +42,7 @@ Assembler_section Output_expression::translate()
 		string value;
 		extract_string();
 
-		for (int i = 0; i < ID_or_string_to_output.size(); i++)
+		for (unsigned int i = 0; i < ID_or_string_to_output.size(); i++)
 		{
 			value = Char_to_asci_code_as_string(ID_or_string_to_output[i]);
 			if (tag_menager_ptr->add_const(value))

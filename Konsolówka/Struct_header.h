@@ -94,6 +94,21 @@ inline int command_to_meta_ID(string a)
 	}
 }
 
+inline unsigned int find_first_braced(string &code)
+{
+	unsigned int i = 0;
+	for (i = 0; i < code.size(); i++)
+	{
+		if (code[i] == '(')
+		{
+			break;
+		}
+	}
+
+	return i;
+}
+
+
 struct sub_and_parameters
 {
 

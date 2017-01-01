@@ -17,14 +17,17 @@ Assembler_section Input_expression::translate()
 		returner.add_program("WPR", "1");
 		returner.add_program("£AD", tag_menager_ptr->get_tag_by_name(ID));
 	}
-	//czyli, ¿e int 
-	else
+	else if (tag_menager_ptr->get_type_by_name(ID) == Tag_type::variable_int)
 	{
 		returner.add_meta_command("GENERATE_INPUT");
 		returner.add_program("SDP", "mII");
 		returner.add_program("PZS", "");
 		returner.add_program("£AD", tag_menager_ptr->get_tag_by_name(ID));
 
+	}
+	else
+	{
+		throw string("Odwo³anie do nazwy powi¹zanej z niew³aœciwym typem: " + ID);
 	}
 
 

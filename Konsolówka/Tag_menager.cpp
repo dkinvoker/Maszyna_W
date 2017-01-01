@@ -14,7 +14,7 @@ string Int_TO_String(int a)
 Tag_and_its_name* Tag_menager::find_const_by_value(string value)
 {
 
-	for (int i = 0; i < Const_tags_vector.size(); i ++)
+	for (unsigned int i = 0; i < Const_tags_vector.size(); i ++)
 	{
 		if (Tags_vector[Const_tags_vector[i]].name == value)
 		{
@@ -52,7 +52,7 @@ Tag_and_its_name* Tag_menager::find_by_tag(string tag_to_find)
 
 Tag_and_its_name* Tag_menager::find_by_name(string name_to_find)
 {
-	for (int i = 0; i < Tags_vector.size(); i++)
+	for (unsigned int i = 0; i < Tags_vector.size(); i++)
 	{
 		if (Tags_vector[i].name == name_to_find)
 		{

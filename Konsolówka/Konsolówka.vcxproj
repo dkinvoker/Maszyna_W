@@ -118,6 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Call_expression.cpp" />
     <ClCompile Include="code_transformator.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="const_regex.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="While_expression.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Call_expression.h" />
     <ClInclude Include="code_transformator.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="const_regex.h" />
