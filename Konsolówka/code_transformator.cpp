@@ -16,6 +16,8 @@ void code_transformator::bind_commands()
 	Command::set_static_tag_menager_ptr(&tag_menager);
 	Command::set_last_success_string_ptr(&last_success);
 	Command::set_was_last_success_if_ptr(&was_last_success_if);
+	Command::set_sub_menager_ptr(&sub_menager);
+	Command::set_is_inside_sub_declaration(&inside_sub_declaration);
 }
 
 

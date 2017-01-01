@@ -1,11 +1,6 @@
 start:
-#Randomowy komentarz do beki#
 
-int a;
-int b;
-int wynik;
-input(a);
-input(b);
-wynik = a + b;
-output("SUMA: ");
-output(wynik);
+sub test():(A,B,C)
+{
+	return;
+}

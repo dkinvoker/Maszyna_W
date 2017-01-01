@@ -94,6 +94,23 @@ inline int command_to_meta_ID(string a)
 	}
 }
 
+struct sub_and_parameters
+{
+
+	string name;
+	vector<string> input_parameters;
+	vector<string> output_parameters;
+
+	sub_and_parameters(string name, vector<string> input_var, vector<string> output_var)
+		:
+		name(name),
+		input_parameters(input_var),
+		output_parameters(output_var)
+	{
+	}
+
+};
+
 struct tag_swaps
 {
 	string swaped_tag;

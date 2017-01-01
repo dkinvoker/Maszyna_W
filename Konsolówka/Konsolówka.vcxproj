@@ -129,7 +129,11 @@
     <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="Input_expression.cpp" />
     <ClCompile Include="Output_expression.cpp" />
+    <ClCompile Include="Return_expression.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Stop_expression.cpp" />
+    <ClCompile Include="Sub_declaration_expression.cpp" />
+    <ClCompile Include="Sub_menager.cpp" />
     <ClCompile Include="Tag_menager.cpp" />
     <ClCompile Include="translate_string.cpp" />
     <ClCompile Include="While_expression.cpp" />
@@ -146,8 +150,12 @@
     <ClInclude Include="Initialization.h" />
     <ClInclude Include="Input_expression.h" />
     <ClInclude Include="Output_expression.h" />
+    <ClInclude Include="Return_expression.h" />
     <ClInclude Include="Start_command.h" />
+    <ClInclude Include="Stop_expression.h" />
     <ClInclude Include="Struct_header.h" />
+    <ClInclude Include="Sub_declaration_expression.h" />
+    <ClInclude Include="Sub_menager.h" />
     <ClInclude Include="Tag_menager.h" />
     <ClInclude Include="translate_string.h" />
     <ClInclude Include="While_expression.h" />

@@ -10,6 +10,9 @@
 #include "Start_command.h"
 #include "Output_expression.h"
 #include "Input_expression.h"
+#include "Stop_expression.h"
+#include "Sub_declaration_expression.h"
+#include "Return_expression.h"
 
 Assembler_section translate_string(const string &arg_string)
 {
@@ -99,8 +102,10 @@ Assembler_section translate_string(const string &arg_string)
 
 					break;
 				case const_regex::index_sub_declaration:
+
+					object_to_translate_ptr_vector.push_back(new Sub_declaration_expression{ buffer });
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 				case const_regex::index_sub_call:
 					buffer.clear();
@@ -127,12 +132,14 @@ Assembler_section translate_string(const string &arg_string)
 
 					break;
 				case const_regex::index_return:
+
+					object_to_translate_ptr_vector.push_back(new Return_expression{ buffer });
 					buffer.clear();
-					throw string("Tego jeszcze nie zaimplementowalem");
+
 					break;
 				case const_regex::index_stop:
 
-					returner.add_program("STP", "");
+					object_to_translate_ptr_vector.push_back(new Stop_expression{ buffer });
 					buffer.clear();
 
 					break;

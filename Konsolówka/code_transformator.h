@@ -13,6 +13,7 @@
 #include "Tag_menager.h"
 #include "Command.h"
 #include "translate_string.h"
+#include "Sub_menager.h"
 
 
 using namespace std;
@@ -36,11 +37,14 @@ class code_transformator
 	vector<W_Assembler_line> data;
 
 	Tag_menager tag_menager;
+	Sub_menager sub_menager;
+
 
 	string last_success;
 	bool was_last_success_if;
 	bool generate_int_output_code = false;
 	bool generate_int_input_code = false;
+	bool inside_sub_declaration = false;
 	
 	string starting_tag;
 

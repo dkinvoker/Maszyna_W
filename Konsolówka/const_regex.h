@@ -73,7 +73,7 @@ namespace const_regex_string
 	const string code_surrounded_by_quotation_marks			{ regex_surrounded_STRING(any_code_string, quotation_mark_symbol) };
 	const string string_expression_surrounded_by_brackets	{ regex_in_brackets_characters_STRING(code_surrounded_by_quotation_marks) };
 	const string sub_parameters								{ regex_in_brackets_characters_STRING(ID + multi_regex_STRING(comma_symbol + ID)) };
-	const string sub_variables_to_call_with					{ regex_separation_STRING(sub_parameters, sub_parameters, colon_symbol) };
+	const string sub_variables_to_call_with					{ regex_separation_STRING( regex_or_regex_STRING(sub_parameters, "\\(\\)"), regex_or_regex_STRING(sub_parameters, "\\(\\)"), colon_symbol) };
 	const string ID_in_brackets								{ regex_in_brackets_characters_STRING(ID) };
 	const string comment_string								{ "(\\#" + any_code_string + "\\#)" };
 	const string int_declaration_no_init					{ "(" + int_string + ID + semicolon_symbol + ")" };

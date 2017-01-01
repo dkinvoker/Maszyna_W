@@ -5,6 +5,9 @@ Sprawdzanie sk³adni:
 	Blok: 0
 	OK
 
+	Blok: 1
+	OK
+
 
  Sk³adnia OK 
 
