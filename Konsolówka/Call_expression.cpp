@@ -102,7 +102,10 @@ Assembler_section Call_expression::translate()
 	{
 		returner.add_program("POB", tag_menager_ptr->get_tag_by_name(input_variables[i]));
 		returner.add_program("DNS", "");
+
 	}
+
+
 	returner.add_program("SDP", tag_menager_ptr->get_tag_by_name(name));
 
 	for (unsigned int i = 0; i < output_variables.size(); i++)

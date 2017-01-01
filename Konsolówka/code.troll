@@ -1,32 +1,26 @@
-sub test(_ina, _inb):(A,B,C)
+sub silnia(liczba):(wynik)
 {
-	A = 1 + _ina;
-	B = 2 + _inb;
-	C = 3;
+	if(liczba == 1)
+	{
+		wynik = 1;
+		return;
+	}
+	
+	int buffer;
+	buffer = liczba - 1;
+
+
+	call silnia(buffer):(wynik);
+	wynik = wynik * liczba;
+
 	return;
 }
 
 start:
-int new_line_int = 10;
-char new_line;
-new_line = new_line_int;
+int Liczba;
 
-char LYL;
-char LYL2;
+input(Liczba);
 
-int a;
-int b;
-int c;
+call silnia(Liczba):(Liczba);
 
-input(LYL);
-input(LYL2);
-
-
-
-call test (LYL, LYL2):(a,b,c);
-
-output(a);
-output(new_line);
-output(b);
-output(new_line);
-output(c);
+output(Liczba);

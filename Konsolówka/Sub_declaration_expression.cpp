@@ -132,6 +132,9 @@ Assembler_section Sub_declaration_expression::translate()
 		{
 			tag_menager_ptr->add(input_variables[i], Tag_type::variable_int);
 			returner.add_data(tag_menager_ptr->get_tag_by_name(input_variables[i]), "RPA", "");
+
+
+			
 		}
 	}
 
@@ -141,6 +144,8 @@ Assembler_section Sub_declaration_expression::translate()
 		{
 			tag_menager_ptr->add(output_variables[i], Tag_type::variable_int);
 			returner.add_data(tag_menager_ptr->get_tag_by_name(output_variables[i]), "RPA", "");
+
+			
 		}
 	}
 
@@ -149,6 +154,9 @@ Assembler_section Sub_declaration_expression::translate()
 		returner.add_program("PZS", "");
 		returner.add_program("£AD", tag_menager_ptr->get_tag_by_name(input_variables[input_variables.size() - 1 - i]));
 	}
+
+
+
 	returner.add_program("POB", tag_menager_ptr->get_tag_by_name(returning_memory_tag));
 	returner.add_program("DNS", "");
 
