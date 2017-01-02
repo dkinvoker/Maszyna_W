@@ -98,11 +98,18 @@ Assembler_section Call_expression::translate()
 		throw string("Próba wywo³ania '" + name + "' z niew³aœciw¹ liczb¹ paramatrów wyjœcia");
 	}
 
+	//!!!!!!!!!!!!!!!!!!!!!! Rzucanie paramsów poprzedniego wywo³ania
+	for (unsigned int i = 0; i < params.input_parameters.size(); i ++)
+	{
+		returner.add_program("POB", tag_menager_ptr->get_tag_by_name(params.input_parameters[i]));
+		returner.add_program("DNS", "");
+	}
+	//!!!!!!!!!!!!!!!!!!!!!!
+
 	for (unsigned int i = 0; i < input_variables.size(); i ++)
 	{
 		returner.add_program("POB", tag_menager_ptr->get_tag_by_name(input_variables[i]));
 		returner.add_program("DNS", "");
-
 	}
 
 

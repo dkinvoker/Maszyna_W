@@ -16,13 +16,40 @@ Assembler_section Return_expression::translate()
 	returner.add_program("PZS", "");
 	returner.add_program("£AD", tag_menager_ptr->get_tag_by_name(returning_tag));
 
+	//!!!!!!!!!!!!!!!!!! store params 0
+	for (unsigned int i = 0; i < params.input_parameters.size(); i ++)
+	{
+		returner.add_program("PZS", "");
+		returner.add_program("£AD", tag_menager_ptr->get_tag_by_name("0" + params.input_parameters[params.input_parameters.size() -1 - i]));
+	}
+
+	//!!!!!!!!!!!!!!!!!!
+
+
+
 	for (unsigned int i = 0; i < params.output_parameters.size(); i ++)
 	{
 		returner.add_program("POB", tag_menager_ptr->get_tag_by_name(params.output_parameters[i]));
 		returner.add_program("DNS", "");
 	}
 
+	//!!!!!!!!!!!!!!!!! Rzuæ output rzuæ params
 
+	for (unsigned int i = 0; i < params.input_parameters.size(); i++)
+	{
+		returner.add_program("POB", tag_menager_ptr->get_tag_by_name("0" + params.input_parameters[params.input_parameters.size() - 1 - i]));
+		returner.add_program("DNS", "");
+		
+	}
+
+	for (unsigned int i = 0; i < params.input_parameters.size(); i++)
+	{
+		returner.add_program("PZS", "");
+		returner.add_program("£AD", tag_menager_ptr->get_tag_by_name(params.input_parameters[i]));
+
+	}
+
+	//!!!!!!!!!!!!!!!!!
 
 	returner.add_program("POB", tag_menager_ptr->get_tag_by_name(returning_tag));
 	returner.add_program("DNS", "");
