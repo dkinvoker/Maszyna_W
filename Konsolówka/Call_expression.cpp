@@ -87,6 +87,15 @@ Assembler_section Call_expression::translate()
 
 	extract_name();
 	extract_variables();
+
+	if (*inside_sub_declaration == true)
+	{
+		if (sub_menager_ptr->get_translating_now() == name)
+		{
+			throw string("Rekurencja nie jest wspierana w tym standardzie :P mo¿e za rok \n");
+		}
+	}
+
 	sub_and_parameters params = sub_menager_ptr->get_parmeters_by_name(name);
 
 	if (input_variables.size() != params.input_parameters.size())
@@ -98,13 +107,13 @@ Assembler_section Call_expression::translate()
 		throw string("Próba wywo³ania '" + name + "' z niew³aœciw¹ liczb¹ paramatrów wyjœcia");
 	}
 
-	//!!!!!!!!!!!!!!!!!!!!!! Rzucanie paramsów poprzedniego wywo³ania
-	for (unsigned int i = 0; i < params.input_parameters.size(); i ++)
-	{
-		returner.add_program("POB", tag_menager_ptr->get_tag_by_name(params.input_parameters[i]));
-		returner.add_program("DNS", "");
-	}
-	//!!!!!!!!!!!!!!!!!!!!!!
+	////!!!!!!!!!!!!!!!!!!!!!! Rzucanie paramsów poprzedniego wywo³ania
+	//for (unsigned int i = 0; i < params.input_parameters.size(); i ++)
+	//{
+	//	returner.add_program("POB", tag_menager_ptr->get_tag_by_name(params.input_parameters[i]));
+	//	returner.add_program("DNS", "");
+	//}
+	////!!!!!!!!!!!!!!!!!!!!!!
 
 	for (unsigned int i = 0; i < input_variables.size(); i ++)
 	{

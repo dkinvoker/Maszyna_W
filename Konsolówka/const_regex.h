@@ -83,6 +83,7 @@ namespace const_regex_string
 	const string char_declaration_and_init					{ "(" + char_string + ID + eq + any_char + semicolon_symbol + ")" };
 	const string output_expression_ID						{ "(" + output_string + ID_in_brackets + semicolon_symbol + ")" };
 	const string output_string_data							{ "(" + output_string + string_expression_surrounded_by_brackets + semicolon_symbol + ")" };
+	const string new_line									{ "(nl" + semicolon_symbol + ")" };
 
 
 	const string while_expression_string					{ "(" + while_string + logic_condition_and_box + ")" };
@@ -127,6 +128,7 @@ namespace const_regex
 		index_return,
 		index_stop,
 		index_comment,
+		index_new_line
 	};
 
 	const regex regex_ID						{ const_regex_string::ID };
@@ -163,8 +165,9 @@ namespace const_regex
 	const regex regex_return					{ const_regex_string::return_expression };
 	const regex regex_stop						{ const_regex_string::stop_expression };
 	const regex regex_comment					{ const_regex_string::comment_string };
+	const regex regex_new_line					{ const_regex_string::new_line };
 
-	const vector<regex>	all_regex				{ regex_int_declaration, regex_arithmetical_equation, regex_while_expression, regex_if_expression, regex_else_expression, regex_for_expression, regex_input_expression, regex_output_rexpression, regex_sub_declaration, regex_sub_call, regex_start, regex_char_declaration, regex_return, regex_stop, regex_comment };
+	const vector<regex>	all_regex				{ regex_int_declaration, regex_arithmetical_equation, regex_while_expression, regex_if_expression, regex_else_expression, regex_for_expression, regex_input_expression, regex_output_rexpression, regex_sub_declaration, regex_sub_call, regex_start, regex_char_declaration, regex_return, regex_stop, regex_comment, regex_new_line };
 
 }
 

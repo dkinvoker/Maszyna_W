@@ -13,32 +13,95 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
 	ofstream output_file;
 	ofstream log_file;
 	ifstream input_file;
-	code_transformator CodeTranformator	{ log_file, input_file, output_file };
+	code_transformator CodeTranformator	 {input_file, output_file };
+	bool input_path_done = false;
+	bool output_path_done = false;
+	bool log_path_done = false;
+
+	try
+	{
+		if (argc != 5 && argc != 7)
+		{
+			throw string("Nieprawid³owa liczba argumentów!\n");
+		}
+		for (int i = 1; i < argc; i++)
+		{
+			if ( string(*(argv+ i)) == "-i")
+			{
+				i++;
+				input_file.open(*(argv + i));
+				input_path_done = true;
+				
+			}
+			else if ( string(*(argv + i)) == "-o")
+			{
+				i++;
+				output_file.open(*(argv + i));
+				output_path_done = true;
+			}
+			else if( string(*(argv + i)) == "-l")
+			{
+				i++;
+				log_file.open(*(argv + i));
+				log_path_done = true;
+			}
+			else
+			{
+				throw string("Nieprawid³owe parametry dla programu");
+			}
+		}
+		if (input_path_done != true || output_path_done != true)
+		{
+			throw string("Musisz podaæ œciê¿kê wejœciow¹ i wyjœciow¹!\n");
+		}
+
+		if (!input_file.is_open())
+		{
+			throw string("Plik wejœciowy nie zosta³ odnaleziony, lub nie mo¿na go otworzyæ!\n");
+		}
+		if (!output_file.is_open())
+		{
+			throw string("Plik wyjœciowy nie zosta³ odnaleziony, lub nie mo¿na go otworzyæ!\n");
+		}
+
+		if (log_path_done == true)
+		{
+			if (!log_file.is_open())
+			{
+				throw string("Plik wyjœciowy logów nie zosta³ odnaleziony, lub nie mo¿na go otworzyæ!\n");
+			}
+			CodeTranformator.set_log_output(&log_file);
+		}
+
+	}
+	catch (const string &ERROR)
+	{
+		cout << ERROR;
+		return 0;
+	}
 
 
-	input_file.open("code.troll");
-	output_file.open("Asembler.prg");
-	log_file.open("Log.txt");
-	CodeTranformator.bind_commands();
+	
 
 
 	try
 	{
+		CodeTranformator.bind_commands();
 		CodeTranformator.clear_blank_and_save();
 		CodeTranformator.code_into_sections();
 		CodeTranformator.check_syntax();
-		//CodeTranformator.catch_consts();
 		CodeTranformator.generate_assembler_code();
 		CodeTranformator.execute_meta_commands();
 		CodeTranformator.merge_tags();
 		CodeTranformator.save_start_to_the_file();
 		CodeTranformator.save_additional_subs();
 		CodeTranformator.add_stop_at_the_end();
+		CodeTranformator.tag_absorption();
 		CodeTranformator.save_generated_code();
 		log_file << "\n\nTranslacja zakoñczona sukcesem";
 	}
@@ -51,62 +114,12 @@ int main()
 				<< "\n NIEPOWODZENIE";
 	}
 
-
-
-
-	//// SEKCJA TESTOWA
-	//log_file << "\nTEST:\n";
-
-	//Declaration test{ "char_XXX;" };
-	//Declaration test2{ "char_XXX;" };
-	//Initialization test3{ "intDUPA=123;" };
-	//Initialization test4{ "intDUPAA=123;" };
-	//Equation eq_test{ "_XXX=_XXX+1/DUPA*DUPA-DUPAA;" };
-	//Equation eq_test2{ "DUPA=3;" };
-	//Equation eq_test3{ "DUP=3;" };
-	//If_expression test_ifa{"if(troll!=elizabet+8){randomaction}"};
-
-
-	//Initialization test5{ CodeTranformator.code, CodeTranformator };
-	//Initialization test5{ "chara=\"a\";" };
-	try
-	{
-		//CodeTranformator.adapt_section(test.translate());
-		////CodeTranformator.adapt_section(test2.translate());
-		//CodeTranformator.adapt_section(test3.translate());
-		//CodeTranformator.adapt_section(test4.translate());
-		//CodeTranformator.adapt_section(test5.translate());
-		//CodeTranformator.adapt_section(eq_test.translate());
-		//CodeTranformator.adapt_section(eq_test2.translate());
-		//CodeTranformator.adapt_section(eq_test3.translate());
-		//test_ifa.translate();
-
-	}
-	catch (string &Error)
-	{
-		log_file
-			<< Error
-			<< "\n\n" << "Ostatnie wyra¿enie rozwiniête z sukcesem: " << "\n" << CodeTranformator.get_last_successfully_translated_command()
-			<< "\n\n" << "Zaniechanie dalszej pracy\n";
-	}
-
-
-
-
-
-
-	// KONIEC SEKCJI TESTOWEJ
-
-
-	//log_file << "\n KONIEC \n";
-
 	output_file.close();
 	input_file.close();
 	log_file.close();
 
 
 
-	//system("pause");
 
 
 

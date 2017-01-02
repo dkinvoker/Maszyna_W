@@ -29,6 +29,32 @@ const string code_transformator::get_last_successfully_translated_command()
 void code_transformator::clear_blank_and_save()
 {
 	string IN_buffer;
+	//char char_buffer;
+	//bool quotion = false;
+
+	//while ((char_buffer = input.get()) != EOF)
+	//{
+	//	if (quotion == false)
+	//	{
+	//		if (char_buffer != ' ' && char_buffer != '\t' && char_buffer != '\n')
+	//		{
+	//			if (char_buffer == '"')
+	//			{
+	//				quotion = true;
+	//			}
+	//			IN_buffer += char_buffer;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		if (char_buffer == '"')
+	//		{
+	//			quotion = false;
+	//		}
+	//		IN_buffer += char_buffer;
+	//	}
+	//	
+	//}
 
 	while (input >> IN_buffer)
 	{
@@ -41,16 +67,14 @@ void code_transformator::clear_blank_and_save()
 void code_transformator::check_syntax()
 {
 
-	log_output << "Sprawdzanie sk³adni:\n";
-	log_output.flush();
+	*log_output << "Sprawdzanie sk³adni:\n";
 
 
 	for (unsigned int x = 0; x < code_sections.size(); x ++)
 	{
 		string code_selected = code_sections[x].code;
 		string buffer;
-		log_output << "\tBlok: "<< x << "\n";
-		log_output.flush();
+		*log_output << "\tBlok: "<< x << "\n";
 		unsigned int box_open = 0;
 		unsigned int box_close = 0;
 		for (unsigned int i = 0; i < code_selected.size(); i++)
@@ -137,13 +161,12 @@ void code_transformator::check_syntax()
 			throw string("\t\tBlok zawiera b³¹d sk³adniowy:\n\t" + buffer + "\n");
 		}
 
-		log_output << "\tOK\n\n";
-		log_output.flush();
+		*log_output << "\tOK\n\n";
 	}
 
 	//---------------------------------------------------
 
-	log_output << "\n Sk³adnia OK \n";
+	*log_output << "\n Sk³adnia OK \n";
 }
 
 void code_transformator::code_into_sections()
@@ -151,8 +174,7 @@ void code_transformator::code_into_sections()
 	int open_number = 0;
 	int close_number = 0;
 
-	log_output << "Dzielenie kodu na sekcje:\n";
-	log_output.flush();
+	*log_output << "Dzielenie kodu na sekcje:\n";
 
 	for (unsigned int i = 0; i < code.size(); i++)
 	{
@@ -205,8 +227,7 @@ void code_transformator::code_into_sections()
 		code_sections[i].begin_index++;
 	}
 
-	log_output << "\t\tOK\n\n";
-	log_output.flush();
+	*log_output << "\t\tOK\n\n";
 
 }
 
@@ -292,9 +313,9 @@ void code_transformator::adapt_section(Assembler_section &section_to_add)
 
 void code_transformator::generate_assembler_code()
 {
-	log_output << "\n Generowanie assemblera:\n";
+	*log_output << "\n Generowanie assemblera:\n";
 	this->adapt_section(translate_string(code));
-	log_output << "\tOK";
+	*log_output << "\tOK";
 }
 
 void code_transformator::save_one_line_of_assembler_code(W_Assembler_line &line)
@@ -331,7 +352,7 @@ Tag_menager& code_transformator::get_tag_menager_ref()
 
 void code_transformator::merge_tags()
 {
-	log_output << "\nScalanie Etykiet";
+	*log_output << "\nScalanie Etykiet";
 
 	vector<W_Assembler_line> returning_swaping_asembler_line_vector;
 	vector<tag_swaps> swaping_tags;
@@ -364,9 +385,8 @@ void code_transformator::merge_tags()
 	//}
 
 
-
 	//detecting swaps
-	for (unsigned int i = 0; i < program.size() - 1; i++)
+	for (int i = 0; i < int(program.size()) - 1; i++)
 	{
 		if (program[i].is_just_tag() && program[i+1].is_just_tag())
 		{
@@ -418,13 +438,13 @@ void code_transformator::merge_tags()
 
 
 	program = returning_swaping_asembler_line_vector;
-	log_output << "\n\tOK";
+	*log_output << "\n\tOK";
 }
 
 
 void code_transformator::execute_meta_commands()
 {
-	log_output << "\nWykonywanie Meta-Rozkazów\n";
+	*log_output << "\nWykonywanie Meta-Rozkazów\n";
 
 	vector<W_Assembler_line> returning_program;
 	W_Assembler_line buffer{"", "", ""};
@@ -490,7 +510,7 @@ void code_transformator::execute_meta_commands()
 	}
 
 	program = returning_program;
-	log_output << "\tOK";
+	*log_output << "\tOK";
 
 }
 
@@ -536,7 +556,7 @@ void code_transformator::execute_meta_commands()
 
 void code_transformator::save_additional_subs()
 {
-	log_output << "\nDodawanie predefiniowanych procedur:\n";
+	*log_output << "\nDodawanie predefiniowanych procedur:\n";
 	if (generate_int_output_code)
 	{
 		if (tag_menager.add_const("1"))
@@ -729,8 +749,24 @@ void code_transformator::save_additional_subs()
 
 	}
 
-	log_output << "\tOK\n";
+	*log_output << "\tOK\n";
 
+}
+
+void code_transformator::tag_absorption()
+{
+	vector<W_Assembler_line> new_program;
+
+	for (unsigned int i = 0; i < program.size() - 1; i++)
+	{
+		if (program[i].is_just_tag())
+		{
+			program[i + 1].tag = program[i].tag;
+			continue;
+		}
+		new_program.push_back(program[i]);
+	}
+	program = new_program;
 }
 
 void code_transformator::save_start_to_the_file()
@@ -742,9 +778,14 @@ void code_transformator::save_start_to_the_file()
 	save_one_line_of_assembler_code(W_Assembler_line{ "" ,"SOB", starting_tag });
 }
 
-code_transformator::code_transformator(ostream &log_output, ifstream &input, ofstream &output)
+void code_transformator::set_log_output(ostream *lyl)
+{
+	log_output = lyl;
+}
+
+code_transformator::code_transformator(ifstream &input, ofstream &output)
 	:
-	log_output(log_output), input(input), assembler_prg_output_file(output)
+	input(input), assembler_prg_output_file(output)
 {
 }
 

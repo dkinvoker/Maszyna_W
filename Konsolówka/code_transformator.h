@@ -23,7 +23,7 @@ using namespace std;
 
 class code_transformator
 {
-	ostream &log_output = cout;
+	ostream *log_output = &cout;
 	ofstream &assembler_prg_output_file;
 	ifstream &input;
 
@@ -100,8 +100,13 @@ public:
 	//obvious
 	void save_start_to_the_file();
 
+	//obvious
+	void set_log_output(ostream *lyl);
+
+	void tag_absorption();
+
 	code_transformator() = delete;
-	code_transformator(ostream &log_output, ifstream &input, ofstream &output);
+	code_transformator(ifstream &input, ofstream &output);
 	~code_transformator();
 };
 

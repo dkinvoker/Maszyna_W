@@ -1,26 +1,50 @@
-sub silnia(liczba):(wynik)
+sub suma(a,b):()
 {
-	if(liczba == 1)
-	{
-		wynik = 1;
-		return;
-	}
-	
-	int buffer;
-	buffer = liczba - 1;
-
-
-	call silnia(buffer):(wynik);
-	wynik = wynik * liczba;
-
+	a=a+b;
+	output("Suma:");
+	output(a);
 	return;
 }
 
+sub iloczyn(a,b):()
+{
+	a=a*b;
+	output("Iloczyn:");
+	output(a);
+	return;
+}
+
+sub roznica(a,b):()
+{
+	a=a-b;
+	output("Roznica:");
+	output(a);
+	return;
+}
+
+sub iloraz(a,b):()
+{
+	a=a/b;
+	output("Iloraz:");
+	output(a);
+	return;
+}
+
+sub kalk(KALK_a, KALK_b):()
+{
+	call suma(KALK_a, KALK_b):();
+	nl;
+	call roznica(KALK_a, KALK_b):();
+	nl;
+	call iloczyn (KALK_a, KALK_b):();
+	nl;
+	call iloraz(KALK_a, KALK_b):();
+	return;
+}
 start:
-int Liczba;
+int liczba;
+int liczba2;
 
-input(Liczba);
-
-call silnia(Liczba):(Liczba);
-
-output(Liczba);
+input(liczba);
+input(liczba2);
+call kalk (liczba, liczba2):();

@@ -10,7 +10,7 @@ sub_and_parameters Sub_menager::get_parmeters_by_name(string name)
 		}
 	}
 
-	throw string("Sub meganer: jakiœ hard b³¹d");
+	throw string("Sub meganer: próba wywo³ania nieistniej¹cego podrpogramu: " + name + "\n");
 }
 
 void Sub_menager::register_variables(string name, vector<string> input_var, vector<string> output_var)

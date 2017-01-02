@@ -11,6 +11,15 @@ Sprawdzanie sk³adni:
 	Blok: 2
 	OK
 
+	Blok: 3
+	OK
+
+	Blok: 4
+	OK
+
+	Blok: 5
+	OK
+
 
  Sk³adnia OK 
 

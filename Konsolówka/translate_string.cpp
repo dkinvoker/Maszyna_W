@@ -14,6 +14,7 @@
 #include "Sub_declaration_expression.h"
 #include "Return_expression.h"
 #include "Call_expression.h"
+#include "New_line_expression.h"
 
 Assembler_section translate_string(const string &arg_string)
 {
@@ -152,6 +153,12 @@ Assembler_section translate_string(const string &arg_string)
 
 					break;
 
+				case const_regex::index_new_line:
+
+					object_to_translate_ptr_vector.push_back(new New_line_expression{ buffer });
+					buffer.clear();
+
+					break;
 
 				default:
 					break;

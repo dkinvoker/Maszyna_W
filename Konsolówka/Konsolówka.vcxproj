@@ -129,6 +129,7 @@
     <ClCompile Include="If_expression.cpp" />
     <ClCompile Include="Initialization.cpp" />
     <ClCompile Include="Input_expression.cpp" />
+    <ClCompile Include="New_line_expression.cpp" />
     <ClCompile Include="Output_expression.cpp" />
     <ClCompile Include="Return_expression.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="If_expression.h" />
     <ClInclude Include="Initialization.h" />
     <ClInclude Include="Input_expression.h" />
+    <ClInclude Include="New_line_expression.h" />
     <ClInclude Include="Output_expression.h" />
     <ClInclude Include="Return_expression.h" />
     <ClInclude Include="Start_command.h" />

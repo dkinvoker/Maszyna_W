@@ -68,7 +68,7 @@ mII_R:	POB	mIIs
 	POB	mIIp
 	DNS	
 	PWR	
-t0:	PZS	
+	PZS	
 	£AD	t1
 	PZS	
 	£AD	t3
@@ -93,11 +93,6 @@ t0:	PZS
 	DNS	
 	SDP	mOI
 	PZS	
-	£AD	t1
-	POB	t1
-	DNS	
-	PWR	
-t9:	PZS	
 	£AD	t10
 	PZS	
 	£AD	t3
@@ -128,11 +123,6 @@ t9:	PZS
 	DNS	
 	SDP	mOI
 	PZS	
-	£AD	t10
-	POB	t10
-	DNS	
-	PWR	
-t18:	PZS	
 	£AD	t19
 	PZS	
 	£AD	t3
@@ -163,11 +153,6 @@ t18:	PZS
 	DNS	
 	SDP	mOI
 	PZS	
-	£AD	t19
-	POB	t19
-	DNS	
-	PWR	
-t22:	PZS	
 	£AD	t23
 	PZS	
 	£AD	t3
@@ -196,11 +181,6 @@ t22:	PZS
 	DNS	
 	SDP	mOI
 	PZS	
-	£AD	t23
-	POB	t23
-	DNS	
-	PWR	
-t25:	PZS	
 	£AD	t26
 	PZS	
 	£AD	t28
@@ -234,22 +214,13 @@ t25:	PZS
 	POB	t28
 	DNS	
 	SDP	t22
-	PZS	
-	£AD	t26
-	POB	t26
-	DNS	
-	PWR	
-t32:	SDP	mII
+	SDP	mII
 	PZS	
 	£AD	t30
 	SDP	mII
 	PZS	
 	£AD	t31
-	POB	t30
-	DNS	
-	POB	t31
-	DNS	
-	SDP	t25
+	STP	
 t1:	RPA	
 t2:	RPA	
 t3:	RPA	
@@ -274,7 +245,7 @@ t24:	RST	114
 t26:	RPA	
 t27:	RPA	
 t28:	RPA	
-t29:	RST	10
+t29:	RPA	
 t30:	RPA	
 t31:	RPA	
 t33:	RST	1
