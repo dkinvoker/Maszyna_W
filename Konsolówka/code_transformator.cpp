@@ -766,6 +766,7 @@ void code_transformator::tag_absorption()
 		}
 		new_program.push_back(program[i]);
 	}
+	new_program.push_back(program[program.size() - 1]);
 	program = new_program;
 }
 
