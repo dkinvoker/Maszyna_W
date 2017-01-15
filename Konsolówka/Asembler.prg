@@ -250,6 +250,7 @@ t32:	SDP	mII
 	POB	t31
 	DNS	
 	SDP	t25
+	STP	
 t1:	RPA	
 t2:	RPA	
 t3:	RPA	
