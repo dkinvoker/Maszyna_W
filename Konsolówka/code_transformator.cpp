@@ -753,6 +753,7 @@ void code_transformator::save_additional_subs()
 
 }
 
+//
 void code_transformator::tag_absorption()
 {
 	vector<W_Assembler_line> new_program;
