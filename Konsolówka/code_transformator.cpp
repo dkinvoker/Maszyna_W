@@ -1,14 +1,6 @@
 #include "code_transformator.h"
 
 
-//---------------------------
-//OH KURNA to jest mistrzostwo chiñskiego programowania..... 
-//string Char_to_asci_code_as_string(char arg_char)
-//{
-//	int buffer = arg_char;
-//	return to_string(buffer);
-//}
-//---------------------------
 
 
 void code_transformator::bind_commands()
@@ -29,32 +21,6 @@ const string code_transformator::get_last_successfully_translated_command()
 void code_transformator::clear_blank_and_save()
 {
 	string IN_buffer;
-	//char char_buffer;
-	//bool quotion = false;
-
-	//while ((char_buffer = input.get()) != EOF)
-	//{
-	//	if (quotion == false)
-	//	{
-	//		if (char_buffer != ' ' && char_buffer != '\t' && char_buffer != '\n')
-	//		{
-	//			if (char_buffer == '"')
-	//			{
-	//				quotion = true;
-	//			}
-	//			IN_buffer += char_buffer;
-	//		}
-	//	}
-	//	else
-	//	{
-	//		if (char_buffer == '"')
-	//		{
-	//			quotion = false;
-	//		}
-	//		IN_buffer += char_buffer;
-	//	}
-	//	
-	//}
 
 	while (input >> IN_buffer)
 	{
@@ -99,49 +65,12 @@ void code_transformator::check_syntax()
 			}
 
 
-			//if (regex_match(buffer, const_regex::regex_all_commands))
-			//{
-
-			//	if (box_open != 0)
-			//	{
-			//		i = box_close;
-			//		box_open = 0;
-			//	}
-
-			//	buffer.clear();
-			//	break;
-			//}
-
 
 			for (unsigned int j = 0; j < const_regex::all_regex.size(); j++)
 			{
 
 				if (regex_match(buffer, const_regex::all_regex[j]))
 				{
-					//log_output << "\t\t" << buffer << " -> " << j << "\n";
-					//log_output.flush();
-
-					//if (j == const_regex::index_char_declaration)
-					//{
-					//	if (regex_match(buffer, const_regex::regex_char_declaration_and_init))
-					//	{
-					//		expression_with_consts.push_back(Const_expresion{ buffer, const_regex::index_char_declaration });
-					//	}
-					//}
-					//else if (j == const_regex::index_int_declaration)
-					//{
-					//	if (regex_match(buffer, const_regex::regex_int_declaration_and_init))
-					//	{
-					//		expression_with_consts.push_back(Const_expresion{ buffer, const_regex::index_int_declaration });
-					//	}
-					//}
-					//else if (j == const_regex::index_output_expression)
-					//{
-					//	if (regex_match(buffer, const_regex::regex_output_string))
-					//	{
-					//		expression_with_consts.push_back(Const_expresion{ buffer, const_regex::index_output_expression });
-					//	}
-					//}
 
 					if (box_open != 0)
 					{
@@ -231,72 +160,6 @@ void code_transformator::code_into_sections()
 
 }
 
-//void code_transformator::catch_consts()
-//{
-//	log_output << "\n Zbieranie Sta³ych:\n";
-//	log_output.flush();
-//
-//	int start_reading_index = 0;
-//	int stop_reading_index = 0;
-//	string buffer;
-//	string tag_creator;
-//
-//	for (int i = 0; i < expression_with_consts.size(); i ++)
-//	{
-//		if (expression_with_consts[i].expression_type == const_regex::index_char_declaration)
-//		{
-//			
-//			if (!const_set.const_exists(expression_with_consts[i].expression_code[expression_with_consts[i].expression_code.size() - 3]))
-//			{
-//				tag_creator = "t" + to_string(tag_iterator++);
-//				data.push_back(W_Assembler_line{ tag_creator, "RST", Char_to_asci_code_as_string (expression_with_consts[i].expression_code[expression_with_consts[i].expression_code.size() - 3]) });
-//				const_set.add(data.back());
-//
-//				log_output 
-//					<< "\t"
-//					<< expression_with_consts[i].expression_code[expression_with_consts[i].expression_code.size() - 3] 
-//					<< " -> "
-//					<< data.back().argument
-//					<<"\n";
-//				log_output.flush();
-//
-//			}
-//			
-//
-//
-//		}
-//		else if (expression_with_consts[i].expression_type == const_regex::index_int_declaration)
-//		{
-//			start_reading_index = expression_with_consts[i].expression_code.find('=') + 1;
-//			stop_reading_index = expression_with_consts[i].expression_code.find(';');
-//			buffer = expression_with_consts[i].expression_code.substr(start_reading_index, stop_reading_index - start_reading_index);
-//
-//			if (!const_set.const_exists(stoi(buffer)))
-//			{
-//				tag_creator = "t" + to_string(tag_iterator++);
-//				data.push_back(W_Assembler_line{ tag_creator, "RST", buffer });
-//				const_set.add(data.back());
-//
-//				log_output
-//					<< "\t"
-//					<< buffer
-//					<< "\n";
-//				log_output.flush();
-//			}
-//
-//
-//		}
-//		else if (expression_with_consts[i].expression_type == const_regex::index_output_expression)
-//		{
-//			start_reading_index = 8;
-//			stop_reading_index = expression_with_consts[i].expression_code.size() - 4;
-//			//!!!
-//		}
-//	}
-//
-//	log_output << "\tOK\n";
-//
-//}
 
 void code_transformator::adapt_section(Assembler_section &section_to_add)
 {
@@ -358,31 +221,6 @@ void code_transformator::merge_tags()
 	vector<tag_swaps> swaping_tags;
 
 	unsigned int swap_index;
-
-	//for (unsigned int i = 0; i < program.size() - 1; i ++)
-	//{
-	//	if (program[i].is_just_tag() && program[i+1].is_just_tag())
-	//	{
-	//		swap_index = i + 1;
-	//		unsigned int memory = i + 2;
-	//		while (memory < program.size())
-	//		{
-	//			if (program[memory].is_just_tag())
-	//			{
-	//				swap_index = memory;
-	//				memory++;
-	//			}
-	//			else
-	//			{
-	//				break;
-	//			}
-	//			
-	//		}
-	//		
-	//		swaping_tags.push_back(tag_swaps{ return_without_last_symbol(program[i].tag), return_without_last_symbol(program[swap_index].tag) });
-
-	//	}
-	//}
 
 
 	//detecting swaps
@@ -753,7 +591,6 @@ void code_transformator::save_additional_subs()
 
 }
 
-//
 void code_transformator::tag_absorption()
 {
 	vector<W_Assembler_line> new_program;

@@ -236,9 +236,6 @@ Equation::Equation(string code)
 {
 }
 
-//Equation::Equation()
-//{
-//}
 
 
 Equation::~Equation()

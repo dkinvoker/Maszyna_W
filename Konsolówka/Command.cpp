@@ -11,12 +11,6 @@ void Command::Load_sring_into(string &a)
 	command_string = a;
 }
 
-//Command::Command(Tag_menager &ref, string code)
-//	:command_string(code),
-//	tag_menager_ptr(ref)
-//{
-//
-//}
 
 void Command::set_is_inside_sub_declaration(bool *ptr)
 {
@@ -49,10 +43,6 @@ Command::Command(string code)
 {
 }
 
-
-//Command::Command()
-//{
-//}
 
 
 Command::~Command()

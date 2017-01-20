@@ -469,11 +469,6 @@ If_expression::If_expression(string code)
 }
 
 
-//If_expression::If_expression()
-//{
-//}
-
-
 If_expression::~If_expression()
 {
 }

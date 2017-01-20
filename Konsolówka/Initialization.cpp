@@ -65,9 +65,6 @@ Initialization::Initialization(string code)
 }
 
 
-//Initialization::Initialization()
-//{
-//}
 
 
 Initialization::~Initialization()

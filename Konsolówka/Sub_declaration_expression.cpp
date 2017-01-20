@@ -133,13 +133,6 @@ Assembler_section Sub_declaration_expression::translate()
 			tag_menager_ptr->add(input_variables[i], Tag_type::variable_int);
 			returner.add_data(tag_menager_ptr->get_tag_by_name(input_variables[i]), "RPA", "");
 		}
-		////!!!!!!!!!!!!!!!!! Deklarowanie store params "0"
-		//if (tag_menager_ptr->find_by_name("0" + input_variables[i]) == nullptr)
-		//{
-		//	tag_menager_ptr->add("0" + input_variables[i], Tag_type::variable_int);
-		//	returner.add_data(tag_menager_ptr->get_tag_by_name("0" + input_variables[i]), "RPA", "");
-		//}
-		////!!!!!!!!!!!!!!!!!
 	}
 
 	for (unsigned int i = 0; i < output_variables.size(); i ++ )

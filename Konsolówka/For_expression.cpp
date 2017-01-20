@@ -94,10 +94,6 @@ For_expression::For_expression(string code)
 {
 }
 
-//For_expression::For_expression()
-//{
-//}
-
 
 For_expression::~For_expression()
 {

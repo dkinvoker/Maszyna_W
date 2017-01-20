@@ -42,9 +42,6 @@ Declaration::Declaration(string code)
 {
 }
 
-//Declaration::Declaration()
-//{
-//}
 
 Declaration::~Declaration()
 {
